@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -115,7 +115,7 @@
   .hero p{max-width:600px;margin:0 auto 1.8rem;color:#e2e6ee;font-size:1.2rem;font-weight:600}
   
   .btn-group{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
-  .btn{display:inline-block;font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-weight:600;font-size:.9rem;background:var(--blue);color:#fff;padding:.9rem 1.8rem;border-radius:3px;transition:background .2s,transform .15s;border:none;cursor:pointer}
+  .btn{display:inline-block;font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-weight:600;font-size:.9rem;background:var(--blue);color:#fff;padding:.9rem 1.8rem;border-radius:3px;transition:background .2s,transform .15s;border:none;cursor:pointer;text-align:center;}
   .btn:hover{background:var(--navy);transform:translateY(-2px)}
   .btn.line{background:transparent;border:2px solid #fff}
   .btn.line:hover{background:#fff;color:var(--navy)}
@@ -182,7 +182,7 @@
   .ncard .more{font-family:'Oswald';color:var(--blue);letter-spacing:2px;text-transform:uppercase;font-size:.85rem;font-weight:600;margin-top:1rem;display:inline-block}
 
   /* SCHEDA SPECIAL CORSA SAN GABRIELE */
-  .ncard.featured{border:2px solid var(--blue); background:#fafbfd;}
+  .ncard.featured{border:2px solid var(--blue); background:#fafbfd; display:flex; flex-direction:row; flex-wrap:wrap;}
   .ncard.featured .date{background:var(--navy)}
 
   /* LA FAMIGLIA APD ISOLA */
@@ -198,6 +198,40 @@
   .stats .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;text-align:center}
   .stats .num{font-family:'Oswald';font-size:3rem;font-weight:700;color:var(--blue);line-height:1}
   .stats .lbl{font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:.78rem;color:#9aa1b0;margin-top:.5rem}
+
+  /* WIDGET ASSISTENTE IA DOCUMENTI */
+  .ai-box{
+    background:#fff;
+    border:2px solid var(--blue);
+    border-radius:12px;
+    padding:2rem;
+    box-shadow:0 8px 30px rgba(0,115,206,0.12);
+    margin-top:2.5rem;
+    text-align:left;
+  }
+  .ai-chat{
+    background:var(--light);
+    border-radius:8px;
+    padding:1rem;
+    margin-top:1rem;
+    min-height:100px;
+  }
+  .ai-btn-option{
+    background:#fff;
+    border:1px solid var(--blue);
+    color:var(--navy);
+    padding:.6rem 1rem;
+    border-radius:6px;
+    font-size:.88rem;
+    font-weight:600;
+    cursor:pointer;
+    margin:.3rem .3rem 0 0;
+    transition:all .2s;
+  }
+  .ai-btn-option:hover{
+    background:var(--blue);
+    color:#fff;
+  }
 
   /* CONTATTI */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
@@ -216,13 +250,30 @@
   footer a:hover{color:var(--blue)}
   .fbot{border-top:1px solid #22242e;padding-top:1.5rem;text-align:center;font-size:.78rem;color:#666d7d}
 
+  /* ===== OTTIMIZZAZIONE RESPONSIVE MOBILE ===== */
   @media(max-width:860px){
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--black);flex-direction:column;align-items:flex-start;padding:1.2rem 1.5rem;gap:1.1rem}
     .nav-links.open{display:flex}
     .burger{display:block}
-    .cgrid,.fgrid{grid-template-columns:1fr}
+
+    .logo img{width:60px !important; height:60px !important; margin-bottom:-10px !important;}
+    .logo .t{font-size:1.1rem;}
+
+    .hero{height:auto; min-height:500px; padding:6rem 0 3rem;}
+    .hero .cap{position:relative; bottom:0;}
     .hero h1{font-size:2.2rem}
-    .matchbar .wrap{justify-content:center;text-align:center}
+    .btn-group{flex-direction:column; width:100%;}
+    .btn-group .btn{width:100%; margin-left:0 !important; margin-bottom:0.4rem;}
+
+    .matchbar .wrap{justify-content:center; text-align:center;}
+    .matchbar .when{width:100%;}
+
+    .ncard.featured{flex-direction:column !important;}
+    .ncard.featured .ph{width:100% !important; min-height:240px !important;}
+    .ncard.featured .body{padding:1.2rem !important;}
+
+    iframe{height:400px !important;}
+    .cgrid,.fgrid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -239,6 +290,7 @@
       <li><a href="#news">News</a></li>
       <li><a href="#squadre">Squadre</a></li>
       <li><a href="#calendario">Calendario</a></li>
+      <li><a href="#assistente-ia">🤖 Assistente IA</a></li>
       <li><a href="#contatti">Contatti</a></li>
       <li><a class="medica" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank">📄 Visita Medica</a></li>
       <li><a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti</a></li>
@@ -257,7 +309,7 @@
     <div class="btn-group">
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti Ora</a>
       <a class="btn line" href="#squadre">Le Squadre</a>
-      <a class="btn line" href="#eventi">Eventi & Tornei</a>
+      <a class="btn line" href="#assistente-ia">Trova Documenti IA</a>
     </div>
   </div>
 </div>
@@ -292,6 +344,38 @@
   </div>
 </section>
 
+<!-- SEZIONE ASSISTENTE IA DOCUMENTI -->
+<section id="assistente-ia" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Aiuto Intelligente</div>
+      <h2>Trova i tuoi Documenti con l'IA</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="ai-box">
+      <div style="display:flex; align-items:center; gap:.8rem;">
+        <span style="font-size:2rem;">🤖</span>
+        <div>
+          <h3 style="font-family:'Oswald'; font-size:1.3rem; margin:0;">Assistente Documenti APD Isola</h3>
+          <p style="font-size:.88rem; color:#666; margin:0;">Di quale documento o modulo hai bisogno oggi?</p>
+        </div>
+      </div>
+
+      <div class="ai-chat" id="aiChat">
+        <p><strong>Assistente IA:</strong> Ciao! Seleziona una delle opzioni qui sotto per trovare subito il documento di cui hai bisogno:</p>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <button class="ai-btn-option" onclick="askAI('visita')">🩺 Richiesta Visita Medica</button>
+        <button class="ai-btn-option" onclick="askAI('iscrizione')">📝 Modulo Tesseramento / Iscrizione</button>
+        <button class="ai-btn-option" onclick="askAI('corsa')">🏃‍♂️ Corsa di San Gabriele (Regolamento/Iscrizione)</button>
+        <button class="ai-btn-option" onclick="askAI('altro')">❓ Altro / Contatti Segreteria</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SEZIONE EVENTI E TORNEI ESTIVI -->
 <section id="eventi" style="padding: 4.5rem 0; background: #fff;">
   <div class="wrap">
@@ -303,7 +387,7 @@
     
     <!-- SCHEDA SPECIALE: CORSA DI SAN GABRIELE -->
     <div class="cards" style="grid-template-columns: 1fr;">
-      <article class="ncard featured" style="display:flex; flex-direction:row; flex-wrap:wrap;">
+      <article class="ncard featured">
         <div class="ph" style="flex:1; min-width:280px; height:auto; min-height:300px;">
           <img src="corsa-san-gabriele.jpg" alt="Corsa di San Gabriele" style="height:100%; object-fit:cover;">
           <div class="date"><b>19</b><span>SET 2026</span></div>
@@ -322,7 +406,7 @@
             <li>📞 <strong>Info & Prenotazioni:</strong> Emanuele (WhatsApp) <a href="https://wa.me/393715735977" target="_blank" style="color:var(--blue); font-weight:bold;">371 5735977</a></li>
           </ul>
 
-          <div style="margin-top:1rem;">
+          <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
             <a class="btn" href="https://wa.me/393715735977" target="_blank">Richiedi Info su WhatsApp</a>
             <a class="btn line" href="https://www.timingrun.it" target="_blank" style="border-color:var(--blue); color:var(--blue);">Iscriviti su TimingRun</a>
           </div>
@@ -512,6 +596,23 @@
 </footer>
 
 <script>
+  // Script Assistente IA Documenti
+  function askAI(type) {
+    const chat = document.getElementById('aiChat');
+    if (type === 'visita') {
+      chat.innerHTML = `<p><strong>Assistente IA:</strong> Per richiedere la visita medica agonistica/non agonistica, scarica il modello ufficiale direttamente in formato PDF dal nostro Google Drive:</p>
+      <p>👉 <a href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Scarica Modello Visita Medica (PDF)</a></p>`;
+    } else if (type === 'iscrizione') {
+      chat.innerHTML = `<p><strong>Assistente IA:</strong> Puoi effettuare il tesseramento e l'iscrizione online per qualsiasi nostra disciplina tramite il modulo ufficiale Google:</p>
+      <p>👉 <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Apri Modulo Iscrizione Online</a></p>`;
+    } else if (type === 'corsa') {
+      chat.innerHTML = `<p><strong>Assistente IA:</strong> Le iscrizioni alla 3ª Corsa di San Gabriele (19 Settembre 2026) si effettuano online su TimingRun:</p>
+      <p>👉 <a href="https://www.timingrun.it" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Iscriviti alla Corsa su TimingRun.it</a><br>📲 Oppure contatta via WhatsApp Emanuele: <strong>371 5735977</strong></p>`;
+    } else if (type === 'altro') {
+      chat.innerHTML = `<p><strong>Assistente IA:</strong> Se cerchi un altro documento o vuoi parlare con la segreteria, inviaci un messaggio diretto dal modulo in fondo alla pagina o scrivici a <strong>apd.isolags@gmail.com</strong>.</p>`;
+    }
+  }
+
   // Gestione contatori
   const nums = document.querySelectorAll('.stats .num');
   const io = new IntersectionObserver(entries=>{
