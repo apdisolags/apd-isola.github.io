@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -91,44 +91,52 @@
   .nav-links a.medica:hover{background:var(--blue);color:#fff;}
   .burger{display:none;background:none;border:none;color:#fff;font-size:1.7rem;cursor:pointer}
 
-  /* ===== HERO FISSA ===== */
-  .hero{position:relative;height:88vh;min-height:560px;overflow:hidden;background:var(--black);background-image:url('pallavolo-femminile.jpg');background-size:cover;background-position:center 30%}
-  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.55) 0%,rgba(10,10,15,.35) 45%,rgba(10,10,15,.92) 100%)}
-  .hero .cap{position:absolute;left:0;right:0;bottom:10%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
+  /* ===== HERO CON LA NUOVA FOTO COPERTINA-SITO.JPG ===== */
+  .hero{
+    position:relative;
+    height:90vh;
+    min-height:600px;
+    overflow:hidden;
+    background:var(--black);
+    background-image:url('Copertina-sito.jpg'); /* FOTO COPERTINA AGGIORNATA */
+    background-size:cover;
+    background-position:center 30%;
+  }
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.65) 0%,rgba(10,10,15,.45) 45%,rgba(10,10,15,.95) 100%)}
+  .hero .cap{position:absolute;left:0;right:0;bottom:8%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
   
-  /* ANIMAZIONE CORRETTA LOGO PARABOLA PALLAVOLO */
+  /* ANIMAZIONE LOGO PARABOLA IMPONENTE */
   .hero-ball-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
   }
 
   .hero-ball-logo {
-    width: 120px;
-    height: 120px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
-    border: 4px solid var(--blue);
-    box-shadow: 0 8px 30px rgba(0, 115, 206, 0.7);
+    border: 5px solid var(--blue);
+    box-shadow: 0 10px 40px rgba(0, 115, 206, 0.8), 0 0 20px rgba(255, 255, 255, 0.2);
     background: var(--black);
     will-change: transform, opacity;
     opacity: 0;
     
-    /* Animazione attivata al caricamento della pagina */
-    animation: volleyballParabola 2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    animation: volleyballParabola 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
   }
 
   @keyframes volleyballParabola {
     0% {
       opacity: 0;
-      transform: translate3d(-200px, -250px, 0) rotate(-720deg) scale(0.3);
+      transform: translate3d(-250px, -300px, 0) rotate(-720deg) scale(0.2);
     }
     55% {
       opacity: 1;
-      transform: translate3d(0px, -80px, 0) rotate(-180deg) scale(1.2); /* Apice traiettoria */
+      transform: translate3d(0px, -90px, 0) rotate(-180deg) scale(1.15);
     }
     100% {
       opacity: 1;
-      transform: translate3d(0, 0, 0) rotate(0deg) scale(1); /* Posizione di riposo al centro */
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
     }
   }
 
@@ -137,14 +145,14 @@
     color:#fff;
     background:var(--blue);
     display:inline-block;
-    padding:.3rem 1.2rem;
+    padding:.35rem 1.4rem;
     border-radius:4px;
     letter-spacing:3px;
     text-transform:uppercase;
-    font-size:.95rem;
+    font-size:1rem;
     font-weight:700;
     box-shadow:0 4px 12px rgba(0,0,0,0.3);
-    margin-bottom:.5rem;
+    margin-bottom:.6rem;
   }
   
   .hero h1{font-family:'Oswald';font-size:clamp(2.5rem,7vw,4.8rem);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.05;margin:.4rem 0 .8rem}
@@ -390,9 +398,9 @@
     .logo img{width:60px !important; height:60px !important; margin-bottom:-10px !important;}
     .logo .t{font-size:1.1rem;}
 
-    .hero{height:auto; min-height:500px; padding:5rem 0 3rem;}
+    .hero{height:auto; min-height:540px; padding:4rem 0 2.5rem;}
     .hero .cap{position:relative; bottom:0;}
-    .hero-ball-logo{width:90px; height:90px;}
+    .hero-ball-logo{width:125px; height:125px;}
     .hero h1{font-size:2.2rem}
     .btn-group{flex-direction:column; width:100%;}
     .btn-group .btn{width:100%; margin-left:0 !important; margin-bottom:0.4rem;}
@@ -432,10 +440,10 @@
   </nav>
 </header>
 
-<!-- HERO PRINCIPALE FISSA -->
+<!-- HERO PRINCIPALE FISSA CON COPERTINA-SITO.JPG -->
 <div class="hero" id="hero">
   <div class="cap">
-    <!-- CONTENITORE DEL LOGO CON ANIMAZIONE A PARABOLA -->
+    <!-- LOGO ANIMATO A PARABOLA DI PALLAVOLO -->
     <div class="hero-ball-container">
       <img src="logo.png" alt="Logo APD Isola Volley" class="hero-ball-logo">
     </div>
