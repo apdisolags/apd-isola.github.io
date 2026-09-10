@@ -164,7 +164,7 @@
   .sec-head .line{width:60px;height:3px;background:var(--blue);margin:1rem auto 0}
   .alt{background:var(--light)}
 
-  /* NEWS CARDS */
+  /* CARDS EVENTI E NEWS */
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.8rem}
   .ncard{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 24px rgba(10,10,15,.08);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
   .ncard:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(10,10,15,.16)}
@@ -179,6 +179,10 @@
   .ncard p{font-size:.9rem;color:#5c6370;flex:1}
   .ncard .more{font-family:'Oswald';color:var(--blue);letter-spacing:2px;text-transform:uppercase;font-size:.78rem;font-weight:600;margin-top:1rem}
   .ncard .more:hover{color:var(--navy)}
+
+  /* EVENTI IN EVIDENZA */
+  .ncard.featured{border:2px solid var(--blue)}
+  .ncard.featured .date{background:var(--navy)}
 
   /* STATS */
   .stats{background:var(--black);color:#fff}
@@ -235,6 +239,7 @@
       <span class="t">A.P.D. ISOLA<small>Isola del Gran Sasso</small></span>
     </a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="#eventi">Eventi</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#squadre">Squadre</a></li>
       <li><a href="#calendario">Calendario</a></li>
@@ -255,7 +260,7 @@
     <div class="btn-group">
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti Ora</a>
       <a class="btn line" href="#squadre">Le Squadre</a>
-      <a class="btn line" href="#calendario">News ed Appuntamenti</a>
+      <a class="btn line" href="#eventi">Eventi & Tornei</a>
     </div>
   </div>
 </div>
@@ -290,6 +295,60 @@
   </div>
 </section>
 
+<!-- SEZIONE EVENTI E TORNEI ESTIVI -->
+<section id="eventi" style="padding: 4.5rem 0; background: #fff;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Estate in movimento</div>
+      <h2>Eventi & Tornei Estivi</h2>
+      <div class="line"></div>
+    </div>
+    <div class="cards">
+      <!-- CORSA DI SAN GABRIELE -->
+      <article class="ncard featured">
+        <div class="ph">
+          <img src="foglia-2.jpg" alt="Corsa di San Gabriele">
+          <div class="date"><b>19</b><span>Set</span></div>
+        </div>
+        <div class="body">
+          <small style="color:var(--blue); font-weight:700; font-family:'Oswald'; letter-spacing:1px; text-transform:uppercase;">3ª Edizione</small>
+          <h3>Corsa di San Gabriele</h3>
+          <p>La storica gara podistica ai piedi del Gran Sasso. Un percorso immerso nella natura tra sport, tradizione e condivisione per atleti e appassionati.</p>
+          <a class="more" href="#contatti">Info & Iscrizioni Corsa →</a>
+        </div>
+      </article>
+
+      <!-- TORNEO ISOLA4VOLLEY -->
+      <article class="ncard">
+        <div class="ph">
+          <img src="isola4volley.jpg" alt="Torneo Isola4Volley">
+          <div class="date"><b>AGOSTO</b><span>Estate</span></div>
+        </div>
+        <div class="body">
+          <small style="color:var(--blue); font-weight:700; font-family:'Oswald'; letter-spacing:1px; text-transform:uppercase;">Torneo Estivo</small>
+          <h3>Torneo Isola4Volley</h3>
+          <p>Il grande classico della pallavolo estiva ad Isola del Gran Sasso. Squadre, divertimento, musica e sfide sulla sabbia e in campo.</p>
+          <a class="more" href="#contatti">Scopri i dettagli →</a>
+        </div>
+      </article>
+
+      <!-- TORNEO DI CALCIO A 5 -->
+      <article class="ncard">
+        <div class="ph">
+          <img src="blue-basket.jpg" alt="Torneo Calcio a 5">
+          <div class="date"><b>LUGLIO</b><span>Estate</span></div>
+        </div>
+        <div class="body">
+          <small style="color:var(--blue); font-weight:700; font-family:'Oswald'; letter-spacing:1px; text-transform:uppercase;">Torneo Outdoor</small>
+          <h3>Torneo Calcio a 5</h3>
+          <p>Torneo amatoriale ed agonistico di Calcio a 5 per rianimare le serate estive. Aperto a tutte le categorie con premi per le squadre vincenti.</p>
+          <a class="more" href="#contatti">Iscrivi la tua squadra →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- NEWS DAI CAMPI -->
 <section id="news" class="alt">
   <div class="wrap">
@@ -302,14 +361,14 @@
         <div class="ph"><img src="isola4volley.jpg" alt="Torneo Isola4Volley"><div class="date"><b>30</b><span>Ago</span></div></div>
         <div class="body">
           <h3>Campioni dell'VIII Torneo Isola4Volley!</h3>
-          <p>I ragazzi del 2000 conquistano l'edizione 2025 del torneo estivo: cuore, grinta e gioco di squadra, campioni dentro e fuori dal campo.</p>
+          <p>I ragazzi del 2000 conquistano l'edizione del torneo estivo: cuore, grinta e gioco di squadra, campioni dentro e fuori dal campo.</p>
           <a class="more" href="#">Scopri di più →</a>
         </div>
       </article>
       <article class="ncard">
         <div class="ph"><img src="pallavolo-femminile.jpg" alt="Squadra pallavolo"><div class="date"><b>07</b><span>Set</span></div></div>
         <div class="body">
-          <h3>Al via gli allenamenti della stagione 2026/27</h3>
+          <h3>Al via gli allenamenti della stagione</h3>
           <p>Tutte le squadre tornano in palestra da lunedì 15 settembre. Il calendario completo degli allenamenti è disponibile in segreteria.</p>
           <a class="more" href="#">Scopri di più →</a>
         </div>
@@ -416,8 +475,7 @@
             <option value="" disabled selected>Sono interessato a…</option>
             <option>Pallavolo</option><option>Minivolley / scuola sport</option>
             <option>Basket</option><option>Calcio a 5</option>
-            <option>Tennis</option><option>eSports / Tre Porte United</option>
-            <option>Prenotazione palestra</option><option>Altro</option>
+            <option>Corsa di San Gabriele</option><option>Altro</option>
           </select>
           <textarea rows="4" placeholder="Messaggio" required></textarea>
           <button class="btn" type="submit">Invia messaggio</button>
@@ -436,7 +494,7 @@
       </div>
       <div>
         <h4>Sezioni</h4>
-        <a href="#news">News</a><a href="#squadre">Squadre</a><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscrizioni</a>
+        <a href="#eventi">Eventi</a><a href="#news">News</a><a href="#squadre">Squadre</a><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscrizioni</a>
       </div>
       <div>
         <h4>Società</h4>
