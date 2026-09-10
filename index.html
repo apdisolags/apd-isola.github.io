@@ -455,6 +455,45 @@
   .pay-info b{color:var(--black)}
   .pay-note{background:#fdf3d7;border-left:4px solid var(--warn,#e0a800);border-radius:6px;padding:.7rem .9rem;font-size:.8rem;color:#6b5a12;margin-top:.4rem}
 
+  /* ===== MATCH CENTER (stile Lube) ===== */
+  .mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+  .mc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.6rem;border-top:3px solid var(--blue)}
+  .mc-card .mc-lab{font-family:'Oswald';letter-spacing:3px;text-transform:uppercase;font-size:.72rem;color:var(--blue);font-weight:600;margin-bottom:1rem}
+  .mc-vs{display:flex;align-items:center;justify-content:space-between;gap:.8rem;text-align:center}
+  .mc-vs .team{font-family:'Oswald';font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.5px;flex:1}
+  .mc-vs .team small{display:block;font-family:'Inter';font-weight:400;font-size:.68rem;color:#9aa1b0;text-transform:none;letter-spacing:0;margin-top:.25rem}
+  .mc-vs .mid{font-family:'Oswald';font-size:1.6rem;font-weight:700;color:var(--blue);flex-shrink:0}
+  .mc-meta{font-size:.82rem;color:#9aa1b0;margin-top:1rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);padding-top:.9rem}
+  .countdown{display:flex;gap:.6rem;justify-content:center;margin:1.1rem 0 .4rem}
+  .countdown div{background:rgba(0,115,206,.15);border:1px solid rgba(0,115,206,.5);border-radius:8px;padding:.5rem .3rem;min-width:62px;text-align:center}
+  .countdown b{display:block;font-family:'Oswald';font-size:1.5rem;color:#fff;line-height:1}
+  .countdown span{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:#9fc6ee}
+  .sets{margin-top:.4rem}
+  .sets .row{display:flex;justify-content:space-between;padding:.45rem .2rem;border-bottom:1px dashed rgba(255,255,255,.12);font-size:.88rem}
+  .sets .row:last-child{border-bottom:none}
+  .sets .row b{font-family:'Oswald';letter-spacing:1px}
+  .sets .win{color:#5fd68b;font-weight:700}
+  .mini-table{width:100%;border-collapse:collapse;font-size:.85rem}
+  .mini-table th{color:#9aa1b0;font-family:'Oswald';font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:.45rem .4rem;border-bottom:1px solid rgba(255,255,255,.15)}
+  .mini-table td{padding:.5rem .4rem;border-bottom:1px solid rgba(255,255,255,.06);color:#d6dae3}
+  .mini-table tr.me td{color:#fff;font-weight:700;background:rgba(0,115,206,.18)}
+  .mini-table tr.me td:first-child{box-shadow:inset 3px 0 0 var(--blue)}
+
+  /* ===== PALMARES (stile Lube) ===== */
+  .palm{background:radial-gradient(circle at 50% 0%,rgba(0,115,206,.18),transparent 60%),var(--black);color:#fff;text-align:center}
+  .palm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem}
+  .palm .n{font-family:'Oswald';font-size:2.8rem;font-weight:700;color:var(--blue);line-height:1}
+  .palm .t{font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:.75rem;color:#9aa1b0;margin-top:.5rem}
+  .palm .ic{font-size:1.4rem;margin-bottom:.3rem}
+
+  /* ===== TITOLI QUOTE (stile Sir) ===== */
+  .quote-title{font-size:1.35rem !important;line-height:1.25}
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
   /* CONTATTI */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
   .cinfo h3{font-family:'Oswald';text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;color:var(--black)}
@@ -515,6 +554,7 @@
       <li><a href="#news">News</a></li>
       <li><a href="#squadre">Squadre</a></li>
       <li><a href="#bacheca">Bacheca</a></li>
+      <li><a href="#matchcenter">Partite</a></li>
       <li><a href="#calendario">Calendario</a></li>
       <li><a href="#contatti">Contatti</a></li>
       <li><a class="medica" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank">📄 Visita Medica</a></li>
@@ -557,6 +597,66 @@
     </div>
   </div>
 </div>
+
+
+<!-- MATCH CENTER -->
+<section id="matchcenter" style="padding:4rem 0;background:linear-gradient(180deg,#0e1524 0%,#0a0a0f 100%);color:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Match Center</div>
+      <h2 style="color:#fff">Prossima & Ultima partita</h2><div class="line"></div>
+    </div>
+    <div class="mc-grid">
+
+      <div class="mc-card">
+        <div class="mc-lab">🏐 Prossima partita · Pallavolo femminile</div>
+        <div class="mc-vs">
+          <div class="team">APD ISOLA<small>Casa</small></div>
+          <div class="mid">VS</div>
+          <div class="team">ATLETICO<br>GRAN SASSO<small>Trasferta</small></div>
+        </div>
+        <div class="countdown" id="countdown">
+          <div><b id="cd-d">--</b><span>Giorni</span></div>
+          <div><b id="cd-h">--</b><span>Ore</span></div>
+          <div><b id="cd-m">--</b><span>Min</span></div>
+          <div><b id="cd-s">--</b><span>Sec</span></div>
+        </div>
+        <div class="mc-meta">📅 Domenica 21 settembre · ore 17:00<br>📍 Palestra Via San Gabriele — Isola del Gran Sasso</div>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-lab">✅ Ultima partita giocata · Under 18</div>
+        <div class="mc-vs" style="margin-bottom:.6rem">
+          <div class="team">APD ISOLA<small>Casa</small></div>
+          <div class="mid" style="font-size:1.15rem">3 – 1</div>
+          <div class="team">PALLAVOLO<br>TERAMO<small>Trasferta</small></div>
+        </div>
+        <div class="sets">
+          <div class="row"><span>1° Set</span><b class="win">25 – 21</b></div>
+          <div class="row"><span>2° Set</span><b>22 – 25</b></div>
+          <div class="row"><span>3° Set</span><b class="win">25 – 19</b></div>
+          <div class="row"><span>4° Set</span><b class="win">25 – 23</b></div>
+        </div>
+        <div class="mc-meta">🏆 Vittoria! · 07/09/2026 · <a href="#news" style="color:var(--blue)">Leggi il match report →</a></div>
+      </div>
+
+      <div class="mc-card">
+        <div class="mc-lab">📊 Classifica · Girone A — Provinciale</div>
+        <table class="mini-table">
+          <tr><th>#</th><th>Squadra</th><th>PT</th></tr>
+          <tr><td>1</td><td>Pallavolo Teramo</td><td>9</td></tr>
+          <tr class="me"><td>2</td><td>APD ISOLA</td><td>7</td></tr>
+          <tr><td>3</td><td>Atletico Gran Sasso</td><td>6</td></tr>
+          <tr><td>4</td><td>Volley Val Vibrata</td><td>4</td></tr>
+          <tr><td>5</td><td>Torricella Volley</td><td>3</td></tr>
+          <tr><td>6</td><td>Sporting Colonnella</td><td>1</td></tr>
+        </table>
+        <div class="mc-meta">Aggiornata al 10/09/2026</div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- CALENDARIO GOOGLE -->
 <section id="calendario" style="padding: 3rem 0; background: #fff;">
@@ -652,7 +752,7 @@
       <article class="ncard">
         <div class="ph"><img loading="lazy" src="isola4volley.jpg" alt="Torneo Isola4Volley"><div class="date"><b>30</b><span>Ago</span></div></div>
         <div class="body">
-          <h3>Campioni dell'VIII Torneo Isola4Volley!</h3>
+          <h3 class="quote-title">«CAMPIONI DENTRO E FUORI DAL CAMPO: L'VIII ISOLA4VOLLEY È NOSTRO!»</h3>
           <p>I ragazzi del 2000 conquistano l'edizione del torneo estivo: cuore, grinta e gioco di squadra, campioni dentro e fuori dal campo.</p>
           <a class="more" href="#">Scopri di più →</a>
         </div>
@@ -716,6 +816,24 @@
       <div><div class="num" data-n="6">0</div><div class="lbl">Discipline</div></div>
       <div><div class="num" data-n="9">0</div><div class="lbl">Allenatori federali</div></div>
       <div><div class="num" data-n="64">0</div><div class="lbl">Soci sostenitori</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PALMARES -->
+<section class="palm" style="padding:4rem 0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">La nostra storia parla da sola</div>
+      <h2 style="color:#fff">Il Palmares APD Isola</h2><div class="line"></div>
+    </div>
+    <div class="palm-grid">
+      <div><div class="ic">🏐</div><div class="n" data-p="8">0</div><div class="t">Edizioni Isola4Volley</div></div>
+      <div><div class="ic">🏆</div><div class="n" data-p="12">0</div><div class="t">Trofei estivi</div></div>
+      <div><div class="ic">🥇</div><div class="n" data-p="5">0</div><div class="t">Titoli giovanili</div></div>
+      <div><div class="ic">⬆️</div><div class="n" data-p="3">0</div><div class="t">Promozioni in Serie D</div></div>
+      <div><div class="ic">🎽</div><div class="n" data-p="176">0</div><div class="t">Atleti in gioco</div></div>
     </div>
   </div>
 </section>
@@ -943,6 +1061,40 @@
     const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta);
     ta.select(); try{document.execCommand('copy'); done();}catch(e){} document.body.removeChild(ta);
   }
+
+  /* ===== COUNTDOWN PROSSIMA PARTITA ===== */
+  const cdTarget = new Date('2026-09-21T17:00:00+02:00').getTime();
+  function tick(){
+    const d = cdTarget - Date.now();
+    if(d <= 0){ document.getElementById('cd-d').textContent='0'; document.getElementById('cd-h').textContent='00';
+      document.getElementById('cd-m').textContent='00'; document.getElementById('cd-s').textContent='00'; return; }
+    document.getElementById('cd-d').textContent = Math.floor(d/86400000);
+    document.getElementById('cd-h').textContent = String(Math.floor(d%86400000/3600000)).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(Math.floor(d%3600000/60000)).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(Math.floor(d%60000/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ===== CONTATORI PALMARES ===== */
+  document.querySelectorAll('.palm .n').forEach(el=>{
+    const io2 = new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const t = +el.dataset.p; let v = 0;
+        const step = ()=>{ v += Math.max(1, Math.ceil(t/60)); if(v>=t) v=t; el.textContent = v + (t>=100 ? '' : ''); if(v<t) requestAnimationFrame(step); };
+        step(); io2.unobserve(el);
+      });
+    },{threshold:.5});
+    io2.observe(el);
+  });
+
+  /* ===== SCROLL REVEAL ===== */
+  const revealEls = document.querySelectorAll('.sec-head, .ncard, .dcard, .mc-card, .palm-grid > div, .bacheca-grid figure, .upload-box, .cgrid > div, .card');
+  revealEls.forEach(el=>el.classList.add('reveal'));
+  const io3 = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io3.unobserve(e.target); } });
+  },{threshold:.12});
+  revealEls.forEach(el=>io3.observe(el));
 </script>
 
 </body>
