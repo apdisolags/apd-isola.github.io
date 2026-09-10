@@ -22,13 +22,67 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
   .osw{font-family:'Oswald',sans-serif}
 
-  /* ===== HEADER ===== */
-  header{position:sticky;top:0;z-index:200;background:rgba(10,10,15,.96);backdrop-filter:blur(6px)}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.5rem;max-width:1180px;margin:0 auto}
-  .logo{display:flex;align-items:center;gap:.7rem}
-  .logo img{width:52px;height:52px;border-radius:50%;border:2px solid var(--blue)}
-  .logo .t{color:#fff;font-family:'Oswald';font-weight:700;font-size:1.35rem;letter-spacing:1px;line-height:1}
-  .logo .t small{display:block;font-family:'Inter';font-weight:600;font-size:.58rem;letter-spacing:3px;color:var(--blue);margin-top:3px}
+  /* ===== HEADER & LOGO DINAMICO ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:200;
+    background:rgba(10,10,15,.96);
+    backdrop-filter:blur(6px);
+    transition:padding .3s ease;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:.6rem 1.5rem;
+    max-width:1180px;
+    margin:0 auto;
+    position:relative;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+    position:relative;
+    z-index:210;
+  }
+  .logo img{
+    width:85px; /* Logo grande di partenza */
+    height:85px;
+    border-radius:50%;
+    border:3px solid var(--blue);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    margin-bottom:-25px; /* Sporge in basso sulla foto */
+    transition:all .3s ease;
+    background:var(--black);
+  }
+  .logo .t{
+    color:#fff;
+    font-family:'Oswald';
+    font-weight:700;
+    font-size:1.4rem;
+    letter-spacing:1px;
+    line-height:1;
+  }
+  .logo .t small{
+    display:block;
+    font-family:'Inter';
+    font-weight:600;
+    font-size:.6rem;
+    letter-spacing:3px;
+    color:var(--blue);
+    margin-top:3px;
+  }
+
+  /* Logo rimpicciolito allo scroll */
+  header.scrolled nav .logo img{
+    width:50px;
+    height:50px;
+    margin-bottom:0;
+    border-width:2px;
+  }
+
   .nav-links{display:flex;list-style:none;align-items:center;gap:1.6rem}
   .nav-links a{color:#c9ceda;font-family:'Oswald';font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
   .nav-links a:hover{color:var(--blue)}
@@ -36,13 +90,29 @@
   .nav-links a.cta:hover{background:#fff;color:var(--navy)}
   .burger{display:none;background:none;border:none;color:#fff;font-size:1.7rem;cursor:pointer}
 
-  /* ===== HERO Fissa ===== */
+  /* ===== HERO FISSA ===== */
   .hero{position:relative;height:88vh;min-height:560px;overflow:hidden;background:var(--black);background-image:url('pallavolo-femminile.jpg');background-size:cover;background-position:center 30%}
   .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.55) 0%,rgba(10,10,15,.35) 45%,rgba(10,10,15,.92) 100%)}
   .hero .cap{position:absolute;left:0;right:0;bottom:14%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
-  .hero .kicker{font-family:'Oswald';color:var(--blue);letter-spacing:4px;text-transform:uppercase;font-size:.85rem;font-weight:600}
-  .hero h1{font-family:'Oswald';font-size:clamp(2.2rem,6vw,4.3rem);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.05;margin:.4rem 0 .8rem}
-  .hero p{max-width:600px;margin:0 auto 1.6rem;color:#d6dae3;font-size:1.05rem}
+  
+  /* Risalto Polisportiva Isola del Gran Sasso */
+  .hero .kicker{
+    font-family:'Oswald';
+    color:#fff;
+    background:var(--blue);
+    display:inline-block;
+    padding:.3rem 1.2rem;
+    border-radius:4px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:.95rem;
+    font-weight:700;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    margin-bottom:.5rem;
+  }
+  
+  .hero h1{font-family:'Oswald';font-size:clamp(2.5rem,7vw,4.8rem);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.05;margin:.4rem 0 .8rem}
+  .hero p{max-width:600px;margin:0 auto 1.8rem;color:#e2e6ee;font-size:1.2rem;font-weight:600}
   
   /* PULSANTI HERO */
   .btn-group{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
@@ -126,14 +196,14 @@
     .nav-links.open{display:flex}
     .burger{display:block}
     .cgrid,.fgrid{grid-template-columns:1fr}
-    .hero h1{font-size:2rem}
+    .hero h1{font-size:2.2rem}
     .matchbar .wrap{justify-content:center;text-align:center}
   }
 </style>
 </head>
 <body>
 
-<header>
+<header id="siteHeader">
   <nav>
     <a class="logo" href="#">
       <img src="logo.png" alt="Logo APD Isola">
@@ -155,9 +225,9 @@
 <!-- HERO PRINCIPALE FISSA -->
 <div class="hero" id="hero">
   <div class="cap">
-    <div class="kicker">Polisportiva · Isola del Gran Sasso</div>
+    <div class="kicker">Polisportiva Isola del Gran Sasso</div>
     <h1>Uniti dallo sport</h1>
-    <p>Pallavolo, basket, calcio a 5, tennis, minivolley ed eSports: una grande famiglia ai piedi del Gran Sasso.</p>
+    <p>Una grande famiglia ai piedi del Gran Sasso</p>
     <div class="btn-group">
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti Ora</a>
       <a class="btn line" href="#squadre">Le Squadre</a>
@@ -352,7 +422,7 @@
 </footer>
 
 <script>
-  // Contatori animati
+  // Gestione contatori
   const nums = document.querySelectorAll('.stats .num');
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
@@ -363,6 +433,16 @@
     });
   },{threshold:.5});
   nums.forEach(n=>io.observe(n));
+
+  // Effetto rimpicciolimento logo allo scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 </script>
 
 </body>
