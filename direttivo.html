@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area Riservata — A.P.D. Isola</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#0073ce;--navy:#182983;--black:#0a0a0f;--light:#f5f6f8;--text:#23262d}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--light);line-height:1.6}
+  a{text-decoration:none}
+  header{background:var(--black);padding:.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;max-width:100%;flex-wrap:wrap;gap:.5rem}
+  .logo{display:flex;align-items:center;gap:.6rem;color:#fff;font-family:'Oswald';font-weight:700;font-size:1.15rem;letter-spacing:1px}
+  .logo img{width:44px;height:44px;border-radius:50%;border:2px solid var(--blue)}
+  .back{color:#c9ceda;font-size:.85rem;font-family:'Oswald';letter-spacing:1.5px;text-transform:uppercase}
+  .back:hover{color:var(--blue)}
+  .wrap{max-width:1000px;margin:0 auto;padding:3rem 1.5rem}
+  h2,h3{font-family:'Oswald';letter-spacing:1px}
+  .sub{color:#5c6370;margin-bottom:2rem}
+
+  .login-box{max-width:400px;margin:4rem auto;background:#fff;border-radius:10px;padding:2.5rem;box-shadow:0 10px 34px rgba(10,10,15,.14);text-align:center;border-top:4px solid var(--blue)}
+  .login-box img{width:90px;height:90px;border-radius:50%;margin:0 auto 1rem}
+  input,select{padding:.8rem 1rem;border:1px solid #d4d9e2;border-radius:4px;font:inherit;width:100%;margin-bottom:1rem}
+  input:focus{outline:2px solid var(--blue)}
+  .btn{display:inline-block;font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-weight:600;font-size:.88rem;background:var(--blue);color:#fff;padding:.85rem 2rem;border-radius:3px;border:none;cursor:pointer}
+  .btn:hover{background:var(--navy)}
+  .err{color:#c0392b;font-size:.85rem;margin-top:.8rem;display:none}
+
+  .card{background:#fff;border-radius:10px;padding:1.8rem;box-shadow:0 6px 24px rgba(10,10,15,.08);margin-bottom:1.5rem;border-top:4px solid var(--blue)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+  .doc{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-bottom:1px solid #e8eaef}
+  .doc:last-child{border-bottom:none}
+  .doc .meta{font-size:.8rem;color:#8b93a5}
+  .tag{display:inline-block;background:#e8f2fb;color:var(--blue);font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:99px}
+  .btn.small{width:auto;padding:.45rem 1rem;font-size:.8rem}
+  .btn.drive{background:#1a73e8}
+  #panel{display:none}
+  table{width:100%;border-collapse:collapse;font-size:.93rem}
+  th,td{padding:.6rem;text-align:left;border-bottom:1px solid #e8eaef}
+  th{color:var(--navy);font-size:.75rem;text-transform:uppercase;font-family:'Oswald';letter-spacing:1px}
+  canvas{max-width:100%}
+  .logout{color:#8b93a5;font-size:.85rem;cursor:pointer}
+  .logout:hover{color:var(--blue)}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html"><img src="img/logo.png" alt="Logo">A.P.D. ISOLA</a>
+  <a class="back" href="index.html">← Torna al sito</a>
+</header>
+
+<!-- LOGIN -->
+<div class="login-box" id="loginBox">
+  <img src="img/logo.png" alt="Logo APD Isola">
+  <h2>AREA RISERVATA</h2>
+  <p style="color:#5c6370;font-size:.9rem;margin-bottom:1.5rem">Accesso consentito solo ai membri del direttivo</p>
+  <form onsubmit="return doLogin(event)">
+    <input type="email" id="user" placeholder="Email" required>
+    <input type="password" id="pass" placeholder="Password" required>
+    <button class="btn" type="submit" style="width:100%">Accedi</button>
+    <p class="err" id="err">Credenziali non valide. Riprova.</p>
+  </form>
+</div>
+
+<!-- PANNELLO -->
+<div class="wrap" id="panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div><h2>📋 AREA DIRETTIVO</h2><p class="sub" style="margin-bottom:0">Documenti, statistiche e risorse condivise</p></div>
+    <span class="logout" onclick="doLogout()">Esci ➜</span>
+  </div>
+  <br>
+  <div class="grid">
+    <div class="card">
+      <h3 style="margin-bottom:1rem">📁 Documenti</h3>
+      <div class="doc"><div><strong>Verbale direttivo — Agosto 2026</strong><div class="meta">PDF · 245 KB</div></div><span class="tag">Verbali</span></div>
+      <div class="doc"><div><strong>Bilancio preventivo 2026/27</strong><div class="meta">PDF · 512 KB</div></div><span class="tag">Contabilità</span></div>
+      <div class="doc"><div><strong>Modulo tesseramento FIGC/FIPAV</strong><div class="meta">PDF · 88 KB</div></div><span class="tag">Modulistica</span></div>
+      <div class="doc"><div><strong>Regolamento interno società</strong><div class="meta">PDF · 320 KB</div></div><span class="tag">Regolamenti</span></div>
+      <div style="text-align:center;margin-top:1.2rem"><button class="btn small" onclick="alert('Qui si collegherà l\'archivio documenti (Google Drive o gestionale)')">＋ Carica documento</button></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:1rem">📊 Statistiche società</h3>
+      <canvas id="chart" width="500" height="280"></canvas>
+      <br>
+      <table>
+        <tr><th>Voce</th><th>2024/25</th><th>2025/26</th></tr>
+        <tr><td>Atleti tesserati</td><td>162</td><td>176</td></tr>
+        <tr><td>Squadre</td><td>15</td><td>17</td></tr>
+        <tr><td>Soci sostenitori</td><td>51</td><td>64</td></tr>
+        <tr><td>Quote incassate</td><td>€ 18.400</td><td>€ 21.250</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" style="margin-top:1.5rem;text-align:center">
+    <h3 style="margin-bottom:.5rem">☁️ Archivio Google Drive</h3>
+    <p style="color:#5c6370;font-size:.9rem;margin-bottom:1.2rem">Foto storiche, video, contratti e file di lavoro del direttivo.</p>
+    <!-- ⬇️ Sostituisci href con il link della cartella Drive condivisa solo col direttivo -->
+    <a class="btn drive" href="https://drive.google.com/drive/folders/INSERISCI-LINK-CARTELLA" target="_blank" rel="noopener">Apri Google Drive del direttivo</a>
+  </div>
+</div>
+
+<script>
+  /* ⚠️ DEMO — password lato client: ok per provare, NON sicura.
+     Per la sicurezza reale useremo Netlify Identity o Cloudflare Access (gratis) al momento della pubblicazione. */
+  const USER = 'direttivo@apdisola.it';
+  const PASS = 'isola2026';
+
+  function doLogin(e){
+    e.preventDefault();
+    const ok = document.getElementById('user').value.trim().toLowerCase() === USER
+            && document.getElementById('pass').value === PASS;
+    if(ok){ sessionStorage.setItem('apd_auth','1'); showPanel(); }
+    else { document.getElementById('err').style.display = 'block'; }
+    return false;
+  }
+  function doLogout(){ sessionStorage.removeItem('apd_auth'); location.reload(); }
+  function showPanel(){ document.getElementById('loginBox').style.display='none'; document.getElementById('panel').style.display='block'; drawChart(); }
+  if(sessionStorage.getItem('apd_auth')) showPanel();
+
+  function drawChart(){
+    const c = document.getElementById('chart'), x = c.getContext('2d');
+    const data = [['Pallavolo',62],['Basket',38],['Calcio a 5',24],['Tennis',20],['Minivolley',22],['eSports',10]];
+    const max = 70, W = c.width, H = c.height, bw = W/data.length;
+    x.font = '12px Inter';
+    data.forEach((d,i)=>{
+      const h = (d[1]/max)*(H-60);
+      const bx = i*bw+14, by = H-30-h;
+      x.fillStyle = '#182983'; x.fillRect(bx,by,bw-28,h);
+      x.fillStyle = '#0073ce'; x.fillRect(bx,by,bw-28,6);
+      x.fillStyle = '#23262d'; x.fillText(d[1], bx+(bw-28)/2-8, by-8);
+      x.fillStyle = '#5c6370';
+      const label = d[0].length>10 ? d[0].slice(0,9)+'…' : d[0];
+      x.fillText(label, bx+2, H-10);
+    });
+  }
+</script>
+
+</body>
+</html>
