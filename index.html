@@ -48,12 +48,12 @@
     z-index:210;
   }
   .logo img{
-    width:85px; /* Logo grande di partenza */
+    width:85px;
     height:85px;
     border-radius:50%;
     border:3px solid var(--blue);
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
-    margin-bottom:-25px; /* Sporge in basso sulla foto */
+    margin-bottom:-25px;
     transition:all .3s ease;
     background:var(--black);
   }
@@ -75,7 +75,6 @@
     margin-top:3px;
   }
 
-  /* Logo rimpicciolito allo scroll */
   header.scrolled nav .logo img{
     width:50px;
     height:50px;
@@ -95,7 +94,6 @@
   .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.55) 0%,rgba(10,10,15,.35) 45%,rgba(10,10,15,.92) 100%)}
   .hero .cap{position:absolute;left:0;right:0;bottom:14%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
   
-  /* Risalto Polisportiva Isola del Gran Sasso */
   .hero .kicker{
     font-family:'Oswald';
     color:#fff;
@@ -114,19 +112,49 @@
   .hero h1{font-family:'Oswald';font-size:clamp(2.5rem,7vw,4.8rem);font-weight:700;text-transform:uppercase;letter-spacing:1px;line-height:1.05;margin:.4rem 0 .8rem}
   .hero p{max-width:600px;margin:0 auto 1.8rem;color:#e2e6ee;font-size:1.2rem;font-weight:600}
   
-  /* PULSANTI HERO */
   .btn-group{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .btn{display:inline-block;font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-weight:600;font-size:.9rem;background:var(--blue);color:#fff;padding:.9rem 1.8rem;border-radius:3px;transition:background .2s,transform .15s;border:none;cursor:pointer}
   .btn:hover{background:var(--navy);transform:translateY(-2px)}
   .btn.line{background:transparent;border:2px solid #fff}
   .btn.line:hover{background:#fff;color:var(--navy)}
 
-  /* ===== MATCH STRIP ===== */
-  .matchbar{background:linear-gradient(90deg,var(--navy),var(--blue));color:#fff}
-  .matchbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.1rem 1.5rem;flex-wrap:wrap}
-  .matchbar .lab{font-family:'Oswald';letter-spacing:3px;font-size:.72rem;text-transform:uppercase;color:#bcd8f5}
-  .matchbar .teams{font-family:'Oswald';font-size:1.3rem;font-weight:600;letter-spacing:1px}
-  .matchbar .when{font-size:.85rem;color:#d6e6f7}
+  /* ===== SEZIONE PROSSIMO IMPEGNO INGRANDITA ===== */
+  .matchbar{
+    background:linear-gradient(135deg, var(--navy), var(--blue));
+    color:#fff;
+    padding: 2.2rem 0;
+    border-bottom: 4px solid var(--blue);
+  }
+  .matchbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2rem;
+    flex-wrap:wrap;
+  }
+  .matchbar .lab{
+    font-family:'Oswald';
+    letter-spacing:3px;
+    font-size:.9rem;
+    text-transform:uppercase;
+    color:#bcd8f5;
+    margin-bottom:.3rem;
+  }
+  .matchbar .teams{
+    font-family:'Oswald';
+    font-size:clamp(1.6rem, 3.5vw, 2.3rem);
+    font-weight:700;
+    letter-spacing:1.5px;
+    line-height:1.1;
+  }
+  .matchbar .when{
+    font-size:1.05rem;
+    color:#eaf2fb;
+    background: rgba(0, 0, 0, 0.25);
+    padding: .8rem 1.4rem;
+    border-radius: 6px;
+    border-left: 4px solid #fff;
+  }
 
   /* ===== SEZIONI ===== */
   section{padding:4.5rem 0}
@@ -158,16 +186,13 @@
   .stats .num{font-family:'Oswald';font-size:3rem;font-weight:700;color:var(--blue);line-height:1}
   .stats .lbl{font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:.78rem;color:#9aa1b0;margin-top:.5rem}
 
-  /* DISCIPLINE */
-  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem}
-  .dcard{position:relative;border-radius:8px;overflow:hidden;height:300px;box-shadow:0 6px 20px rgba(10,10,15,.12)}
+  /* LA FAMIGLIA APD ISOLA (CARDS) */
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}
+  .dcard{position:relative;border-radius:8px;overflow:hidden;height:280px;box-shadow:0 6px 20px rgba(10,10,15,.12)}
   .dcard img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
   .dcard:hover img{transform:scale(1.07)}
-  .dcard .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,10,15,.92));display:flex;flex-direction:column;justify-content:flex-end;padding:1.3rem}
-  .dcard .ov small{font-family:'Oswald';color:var(--blue);letter-spacing:2px;text-transform:uppercase;font-size:.7rem;font-weight:600}
-  .dcard .ov h3{color:#fff;font-family:'Oswald';font-size:1.35rem;text-transform:uppercase;letter-spacing:1px}
-  .dcard .ov p{color:#c5cad6;font-size:.82rem;margin-top:.3rem;opacity:0;max-height:0;transition:opacity .3s,max-height .3s}
-  .dcard:hover .ov p{opacity:1;max-height:80px}
+  .dcard .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,10,15,.92));display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem}
+  .dcard .ov h3{color:#fff;font-family:'Oswald';font-size:1.5rem;text-transform:uppercase;letter-spacing:1px}
 
   /* SPONSOR STRIP */
   .sponsors{border-top:1px solid #e8eaef;text-align:center}
@@ -212,7 +237,6 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#news">News</a></li>
       <li><a href="#squadre">Squadre</a></li>
-      <li><a href="#discipline">Discipline</a></li>
       <li><a href="#calendario">Calendario</a></li>
       <li><a href="#contatti">Contatti</a></li>
       <li><a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti</a></li>
@@ -236,12 +260,17 @@
   </div>
 </div>
 
-<!-- MATCH STRIP -->
+<!-- MATCH STRIP INGRANDITA -->
 <div class="matchbar">
   <div class="wrap">
-    <div><div class="lab">Prossimo impegno</div><div class="teams">APD ISOLA &nbsp;VS&nbsp; ATLETICO GRAN SASSO</div></div>
-    <div class="when">🏐 Pallavolo femminile · Serie D<br>📅 Domenica 21 settembre · ore 17:00 · Palestra Via San Gabriele</div>
-    <a class="btn line" href="#calendario" style="margin-left:0">Calendario</a>
+    <div>
+      <div class="lab">Prossimo impegno imminente</div>
+      <div class="teams">APD ISOLA &nbsp;VS&nbsp; ATLETICO GRAN SASSO</div>
+    </div>
+    <div class="when">
+      🏐 <strong>Pallavolo femminile · Serie D</strong><br>
+      📅 Domenica 21 settembre · ore 17:00 · Palestra Via San Gabriele
+    </div>
   </div>
 </div>
 
@@ -261,12 +290,12 @@
   </div>
 </section>
 
-<!-- NEWS -->
+<!-- NEWS DAI CAMPI -->
 <section id="news" class="alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="kicker">Resta aggiornato</div>
-      <h2>Ultime news</h2><div class="line"></div>
+      <h2>News dai campi</h2><div class="line"></div>
     </div>
     <div class="cards">
       <article class="ncard">
@@ -297,6 +326,36 @@
   </div>
 </section>
 
+<!-- LA FAMIGLIA APD ISOLA -->
+<section id="squadre" style="padding: 4.5rem 0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Volti e colori</div>
+      <h2>La famiglia APD Isola</h2><div class="line"></div>
+    </div>
+    <div class="dgrid">
+      <div class="dcard">
+        <img src="pallavolo-femminile.jpg" alt="Isola Volley">
+        <div class="ov">
+          <h3>ISOLA VOLLEY</h3>
+        </div>
+      </div>
+      <div class="dcard">
+        <img src="basket-giovanili.jpg" alt="Mini Volley">
+        <div class="ov">
+          <h3>MINI VOLLEY</h3>
+        </div>
+      </div>
+      <div class="dcard">
+        <img src="blue-basket.jpg" alt="Blue Basket Isola">
+        <div class="ov">
+          <h3>BLUE BASKET ISOLA</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- STATS -->
 <section class="stats">
   <div class="wrap">
@@ -306,39 +365,6 @@
       <div><div class="num" data-n="6">0</div><div class="lbl">Discipline</div></div>
       <div><div class="num" data-n="9">0</div><div class="lbl">Allenatori federali</div></div>
       <div><div class="num" data-n="64">0</div><div class="lbl">Soci sostenitori</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DISCIPLINE -->
-<section id="discipline">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">17 squadre · 6 sport</div>
-      <h2>Le nostre discipline</h2><div class="line"></div>
-    </div>
-    <div class="dgrid">
-      <div class="dcard"><img src="pallavolo-femminile.jpg" alt="Pallavolo"><div class="ov"><small>Di squadra</small><h3>Pallavolo</h3><p>Squadre maschili e femminili, dai giovanili all'agonismo.</p></div></div>
-      <div class="dcard"><img src="blue-basket.jpg" alt="Basket"><div class="ov"><small>Di squadra</small><h3>Basket</h3><p>Blue Basket Isola: scuola, giovanili e prima squadra.</p></div></div>
-      <div class="dcard"><img src="basket-giovanili.jpg" alt="Minivolley"><div class="ov"><small>Giovanili</small><h3>Minivolley</h3><p>Avviamento allo sport per bambini e bambine dai 6 anni.</p></div></div>
-      <div class="dcard"><img src="pallavolo-2.jpg" alt="Calcio a 5 e tennis"><div class="ov"><small>Anche</small><h3>Calcio a 5 · Tennis</h3><p>Attività agonistiche e corsi per tutti i livelli.</p></div></div>
-    </div>
-    <p style="text-align:center;margin-top:2rem;color:#5c6370">🎮 E per i gamers: <strong>eSports Tre Porte United</strong> — FIFA 25, calcio balilla e subbuteo, affiliati FIGC LND.</p>
-  </div>
-</section>
-
-<!-- GALLERY STRIP -->
-<section class="alt" id="squadre" style="padding:3rem 0">
-  <div class="wrap">
-    <div class="sec-head" style="margin-bottom:2rem">
-      <div class="kicker">Volti e colori</div>
-      <h2>La famiglia APD Isola</h2><div class="line"></div>
-    </div>
-    <div class="dgrid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
-      <div class="dcard" style="height:220px"><img src="pallavolo-2.jpg" alt="Pallavolo under"><div class="ov"><h3 style="font-size:1.05rem">Pallavolo Under</h3></div></div>
-      <div class="dcard" style="height:220px"><img src="basket-giovanili.jpg" alt="Giovanili basket"><div class="ov"><h3 style="font-size:1.05rem">Scuola Basket</h3></div></div>
-      <div class="dcard" style="height:220px"><img src="blue-basket.jpg" alt="Blue Basket"><div class="ov"><h3 style="font-size:1.05rem">Blue Basket Isola</h3></div></div>
-      <div class="dcard" style="height:220px"><img src="pallavolo-femminile.jpg" alt="Pallavolo femminile"><div class="ov"><h3 style="font-size:1.05rem">Pallavolo Femminile</h3></div></div>
     </div>
   </div>
 </section>
@@ -410,7 +436,7 @@
       </div>
       <div>
         <h4>Sezioni</h4>
-        <a href="#news">News</a><a href="#squadre">Squadre</a><a href="#discipline">Discipline</a><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscrizioni</a>
+        <a href="#news">News</a><a href="#squadre">Squadre</a><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscrizioni</a>
       </div>
       <div>
         <h4>Società</h4>
