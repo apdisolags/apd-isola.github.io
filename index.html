@@ -91,33 +91,33 @@
   .nav-links a.medica:hover{background:var(--blue);color:#fff;}
   .burger{display:none;background:none;border:none;color:#fff;font-size:1.7rem;cursor:pointer}
 
-  /* ===== HERO CON LA NUOVA FOTO COPERTINA-SITO.JPG ===== */
+  /* ===== HERO CON SFONDO COPERTINA-SITO.JPG ===== */
   .hero{
     position:relative;
-    height:90vh;
-    min-height:600px;
+    height:92vh;
+    min-height:650px;
     overflow:hidden;
     background:var(--black);
-    background-image:url('Copertina-sito.jpg'); /* FOTO COPERTINA AGGIORNATA */
+    background-image:url('Copertina-sito.jpg');
     background-size:cover;
     background-position:center 30%;
   }
   .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.65) 0%,rgba(10,10,15,.45) 45%,rgba(10,10,15,.95) 100%)}
-  .hero .cap{position:absolute;left:0;right:0;bottom:8%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
+  .hero .cap{position:absolute;left:0;right:0;bottom:6%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
   
-  /* ANIMAZIONE LOGO PARABOLA IMPONENTE */
+  /* CONTENITORE E LOGO CENTRALE EXTRA LARGE */
   .hero-ball-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-ball-logo {
-    width: 170px;
-    height: 170px;
+    width: 230px; /* DIMENSIONE MAXI PER ESSERE L'ELEMENTO CENTRALE */
+    height: 230px;
     border-radius: 50%;
-    border: 5px solid var(--blue);
-    box-shadow: 0 10px 40px rgba(0, 115, 206, 0.8), 0 0 20px rgba(255, 255, 255, 0.2);
+    border: 6px solid var(--blue);
+    box-shadow: 0 12px 50px rgba(0, 115, 206, 0.9), 0 0 30px rgba(255, 255, 255, 0.3);
     background: var(--black);
     will-change: transform, opacity;
     opacity: 0;
@@ -128,11 +128,11 @@
   @keyframes volleyballParabola {
     0% {
       opacity: 0;
-      transform: translate3d(-250px, -300px, 0) rotate(-720deg) scale(0.2);
+      transform: translate3d(-300px, -350px, 0) rotate(-720deg) scale(0.15);
     }
     55% {
       opacity: 1;
-      transform: translate3d(0px, -90px, 0) rotate(-180deg) scale(1.15);
+      transform: translate3d(0px, -100px, 0) rotate(-180deg) scale(1.1);
     }
     100% {
       opacity: 1;
@@ -398,9 +398,9 @@
     .logo img{width:60px !important; height:60px !important; margin-bottom:-10px !important;}
     .logo .t{font-size:1.1rem;}
 
-    .hero{height:auto; min-height:540px; padding:4rem 0 2.5rem;}
+    .hero{height:auto; min-height:560px; padding:4rem 0 2.5rem;}
     .hero .cap{position:relative; bottom:0;}
-    .hero-ball-logo{width:125px; height:125px;}
+    .hero-ball-logo{width:160px; height:160px; border-width:4px;} /* Adattato per schermo mobile */
     .hero h1{font-size:2.2rem}
     .btn-group{flex-direction:column; width:100%;}
     .btn-group .btn{width:100%; margin-left:0 !important; margin-bottom:0.4rem;}
@@ -443,7 +443,7 @@
 <!-- HERO PRINCIPALE FISSA CON COPERTINA-SITO.JPG -->
 <div class="hero" id="hero">
   <div class="cap">
-    <!-- LOGO ANIMATO A PARABOLA DI PALLAVOLO -->
+    <!-- LOGO ANIMATO A PARABOLA DI PALLAVOLO EXTRA LARGE -->
     <div class="hero-ball-container">
       <img src="logo.png" alt="Logo APD Isola Volley" class="hero-ball-logo">
     </div>
