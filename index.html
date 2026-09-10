@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -82,11 +82,13 @@
     border-width:2px;
   }
 
-  .nav-links{display:flex;list-style:none;align-items:center;gap:1.6rem}
+  .nav-links{display:flex;list-style:none;align-items:center;gap:1.4rem}
   .nav-links a{color:#c9ceda;font-family:'Oswald';font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
   .nav-links a:hover{color:var(--blue)}
-  .nav-links a.cta{background:var(--blue);color:#fff;padding:.55rem 1.3rem;border-radius:4px}
+  .nav-links a.cta{background:var(--blue);color:#fff;padding:.55rem 1.1rem;border-radius:4px}
   .nav-links a.cta:hover{background:#fff;color:var(--navy)}
+  .nav-links a.medica{background:transparent;border:1.5px solid var(--blue);color:#fff;padding:.45rem .9rem;border-radius:4px;}
+  .nav-links a.medica:hover{background:var(--blue);color:#fff;}
   .burger{display:none;background:none;border:none;color:#fff;font-size:1.7rem;cursor:pointer}
 
   /* ===== HERO FISSA ===== */
@@ -118,7 +120,7 @@
   .btn.line{background:transparent;border:2px solid #fff}
   .btn.line:hover{background:#fff;color:var(--navy)}
 
-  /* ===== SEZIONE PROSSIMO IMPEGNO INGRANDITA ===== */
+  /* ===== SEZIONE PROSSIMO IMPEGNO ===== */
   .matchbar{
     background:linear-gradient(135deg, var(--navy), var(--blue));
     color:#fff;
@@ -168,29 +170,22 @@
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.8rem}
   .ncard{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 24px rgba(10,10,15,.08);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
   .ncard:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(10,10,15,.16)}
-  .ncard .ph{height:200px;overflow:hidden;position:relative}
+  .ncard .ph{height:220px;overflow:hidden;position:relative}
   .ncard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
   .ncard:hover .ph img{transform:scale(1.06)}
   .ncard .date{position:absolute;top:12px;left:12px;background:var(--blue);color:#fff;font-family:'Oswald';text-align:center;line-height:1.1;padding:.45rem .7rem;border-radius:4px}
   .ncard .date b{display:block;font-size:1.25rem}
   .ncard .date span{font-size:.62rem;letter-spacing:1px;text-transform:uppercase}
   .ncard .body{padding:1.4rem;display:flex;flex-direction:column;flex:1}
-  .ncard h3{font-family:'Oswald';font-size:1.15rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem;color:var(--black)}
+  .ncard h3{font-family:'Oswald';font-size:1.25rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem;color:var(--black)}
   .ncard p{font-size:.9rem;color:#5c6370;flex:1}
-  .ncard .more{font-family:'Oswald';color:var(--blue);letter-spacing:2px;text-transform:uppercase;font-size:.78rem;font-weight:600;margin-top:1rem}
-  .ncard .more:hover{color:var(--navy)}
+  .ncard .more{font-family:'Oswald';color:var(--blue);letter-spacing:2px;text-transform:uppercase;font-size:.85rem;font-weight:600;margin-top:1rem;display:inline-block}
 
-  /* EVENTI IN EVIDENZA */
-  .ncard.featured{border:2px solid var(--blue)}
+  /* SCHEDA SPECIAL CORSA SAN GABRIELE */
+  .ncard.featured{border:2px solid var(--blue); background:#fafbfd;}
   .ncard.featured .date{background:var(--navy)}
 
-  /* STATS */
-  .stats{background:var(--black);color:#fff}
-  .stats .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;text-align:center}
-  .stats .num{font-family:'Oswald';font-size:3rem;font-weight:700;color:var(--blue);line-height:1}
-  .stats .lbl{font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:.78rem;color:#9aa1b0;margin-top:.5rem}
-
-  /* LA FAMIGLIA APD ISOLA (CARDS) */
+  /* LA FAMIGLIA APD ISOLA */
   .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}
   .dcard{position:relative;border-radius:8px;overflow:hidden;height:280px;box-shadow:0 6px 20px rgba(10,10,15,.12)}
   .dcard img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
@@ -198,10 +193,11 @@
   .dcard .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,10,15,.92));display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem}
   .dcard .ov h3{color:#fff;font-family:'Oswald';font-size:1.5rem;text-transform:uppercase;letter-spacing:1px}
 
-  /* SPONSOR STRIP */
-  .sponsors{border-top:1px solid #e8eaef;text-align:center}
-  .sponsors .row{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;margin-top:2rem}
-  .sponsors .ph{width:150px;height:70px;border:2px dashed #cfd4de;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#9aa1b0;font-size:.75rem;letter-spacing:1px;text-transform:uppercase}
+  /* STATS */
+  .stats{background:var(--black);color:#fff}
+  .stats .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;text-align:center}
+  .stats .num{font-family:'Oswald';font-size:3rem;font-weight:700;color:var(--blue);line-height:1}
+  .stats .lbl{font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:.78rem;color:#9aa1b0;margin-top:.5rem}
 
   /* CONTATTI */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
@@ -244,6 +240,7 @@
       <li><a href="#squadre">Squadre</a></li>
       <li><a href="#calendario">Calendario</a></li>
       <li><a href="#contatti">Contatti</a></li>
+      <li><a class="medica" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank">📄 Visita Medica</a></li>
       <li><a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti</a></li>
       <li><a href="direttivo.html">🔒 Direttivo</a></li>
     </ul>
@@ -265,16 +262,16 @@
   </div>
 </div>
 
-<!-- MATCH STRIP INGRANDITA -->
+<!-- MATCH STRIP -->
 <div class="matchbar">
   <div class="wrap">
     <div>
-      <div class="lab">Prossimo impegno imminente</div>
-      <div class="teams">APD ISOLA &nbsp;VS&nbsp; ATLETICO GRAN SASSO</div>
+      <div class="lab">Prossimo evento speciale</div>
+      <div class="teams">LA CORSA DI SAN GABRIELE (3ª Edizione)</div>
     </div>
     <div class="when">
-      🏐 <strong>Pallavolo femminile · Serie D</strong><br>
-      📅 Domenica 21 settembre · ore 17:00 · Palestra Via San Gabriele
+      🏃‍♂️ <strong>Circuito UISP · 9,9 KM</strong><br>
+      📅 Sabato 19 Settembre 2026 · Ore 16:00 · Parco Palestra APD Isola
     </div>
   </div>
 </div>
@@ -299,26 +296,42 @@
 <section id="eventi" style="padding: 4.5rem 0; background: #fff;">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker">Estate in movimento</div>
-      <h2>Eventi & Tornei Estivi</h2>
+      <div class="kicker">Manifestazioni in programma</div>
+      <h2>Eventi & Tornei</h2>
       <div class="line"></div>
     </div>
-    <div class="cards">
-      <!-- CORSA DI SAN GABRIELE -->
-      <article class="ncard featured">
-        <div class="ph">
-          <img src="foglia-2.jpg" alt="Corsa di San Gabriele">
-          <div class="date"><b>19</b><span>Set</span></div>
+    
+    <!-- SCHEDA SPECIALE: CORSA DI SAN GABRIELE -->
+    <div class="cards" style="grid-template-columns: 1fr;">
+      <article class="ncard featured" style="display:flex; flex-direction:row; flex-wrap:wrap;">
+        <div class="ph" style="flex:1; min-width:280px; height:auto; min-height:300px;">
+          <img src="corsa-san-gabriele.jpg" alt="Corsa di San Gabriele" style="height:100%; object-fit:cover;">
+          <div class="date"><b>19</b><span>SET 2026</span></div>
         </div>
-        <div class="body">
-          <small style="color:var(--blue); font-weight:700; font-family:'Oswald'; letter-spacing:1px; text-transform:uppercase;">3ª Edizione</small>
-          <h3>Corsa di San Gabriele</h3>
-          <p>La storica gara podistica ai piedi del Gran Sasso. Un percorso immerso nella natura tra sport, tradizione e condivisione per atleti e appassionati.</p>
-          <a class="more" href="#contatti">Info & Iscrizioni Corsa →</a>
+        <div class="body" style="flex:2; min-width:300px; padding:2rem;">
+          <small style="color:var(--blue); font-weight:700; font-family:'Oswald'; letter-spacing:2px; text-transform:uppercase;">Circuito UISP · Corrilabruzzo (Punti 150)</small>
+          <h3 style="font-size:1.8rem; margin:.4rem 0;">3ª Corsa di San Gabriele</h3>
+          <p>Gara podistica su anello panoramico di <strong>9,9 KM</strong> (3 giri) con passaggio davanti al Santuario di San Gabriele e salita a Cesa di Francia. Organizzata da APD Isola in collaborazione con UISP Teramo.</p>
+          
+          <ul style="list-style:none; margin:1rem 0; font-size:.92rem; color:#4a505e; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.6rem;">
+            <li>🏃‍♂️ <strong>Competitiva (9,9 KM):</strong> € 10,00 (Pacco gara: 2 panini + 2 birre)</li>
+            <li>🚶‍♀️ <strong>Non Competitiva / Camminata:</strong> € 5,00 (Pacco gara: 1 panino + 1 birra)</li>
+            <li>👦 <strong>Gara Ragazzi (6-15 anni):</strong> GRATUITA (Medaglia + Snack)</li>
+            <li>⏰ <strong>Ritrovo:</strong> Ore 14:00 presso Palestra APD Isola</li>
+            <li>📲 <strong>Iscrizioni online:</strong> Su <a href="https://www.timingrun.it" target="_blank" style="color:var(--blue); text-decoration:underline;">www.timingrun.it</a></li>
+            <li>📞 <strong>Info & Prenotazioni:</strong> Emanuele (WhatsApp) <a href="https://wa.me/393715735977" target="_blank" style="color:var(--blue); font-weight:bold;">371 5735977</a></li>
+          </ul>
+
+          <div style="margin-top:1rem;">
+            <a class="btn" href="https://wa.me/393715735977" target="_blank">Richiedi Info su WhatsApp</a>
+            <a class="btn line" href="https://www.timingrun.it" target="_blank" style="border-color:var(--blue); color:var(--blue);">Iscriviti su TimingRun</a>
+          </div>
         </div>
       </article>
+    </div>
 
-      <!-- TORNEO ISOLA4VOLLEY -->
+    <!-- ALTRI TORNEI -->
+    <div class="cards" style="margin-top:2rem;">
       <article class="ncard">
         <div class="ph">
           <img src="isola4volley.jpg" alt="Torneo Isola4Volley">
@@ -332,7 +345,6 @@
         </div>
       </article>
 
-      <!-- TORNEO DI CALCIO A 5 -->
       <article class="ncard">
         <div class="ph">
           <img src="blue-basket.jpg" alt="Torneo Calcio a 5">
@@ -428,26 +440,17 @@
   </div>
 </section>
 
-<!-- SPONSOR -->
-<section class="sponsors">
-  <div class="wrap">
-    <div class="sec-head" style="margin-bottom:0">
-      <div class="kicker">Grazie al sostegno di</div>
-      <h2>I nostri sponsor</h2>
-    </div>
-    <div class="row">
-      <div class="ph">Sponsor 1</div><div class="ph">Sponsor 2</div><div class="ph">Sponsor 3</div><div class="ph">Sponsor 4</div>
-    </div>
-  </div>
-</section>
-
-<!-- ISCRIZIONI -->
+<!-- ISCRIZIONI E CERTIFICATI -->
 <section id="iscrizioni" class="stats" style="background:linear-gradient(120deg,var(--navy),var(--blue))">
   <div class="wrap" style="text-align:center">
-    <div class="kicker osw" style="color:#bcd8f5;letter-spacing:4px;text-transform:uppercase;font-size:.8rem">Tesseramenti aperti</div>
+    <div class="kicker osw" style="color:#bcd8f5;letter-spacing:4px;text-transform:uppercase;font-size:.8rem">Tesseramenti e Certificati</div>
     <h2 class="osw" style="color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;margin:.5rem 0 1rem">Entra nella famiglia APD Isola</h2>
-    <p style="color:#d6e6f7;max-width:560px;margin:0 auto 2rem">Prima lezione di prova gratuita per tutte le discipline. Iscrizioni online tramite modulo o in segreteria.</p>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" style="background:#fff;color:var(--navy)">Modulo Iscrizione Online</a>
+    <p style="color:#d6e6f7;max-width:560px;margin:0 auto 2rem">Prima lezione di prova gratuita per tutte le discipline. Compila il modulo online e scarica la richiesta per la visita medica sportiva.</p>
+    
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" style="background:#fff;color:var(--navy)">Modulo Iscrizione Online</a>
+      <a class="btn line" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank">Richiedi Visita Medica (PDF)</a>
+    </div>
   </div>
 </section>
 
@@ -473,9 +476,12 @@
           <input type="email" placeholder="Email" required>
           <select required>
             <option value="" disabled selected>Sono interessato a…</option>
-            <option>Pallavolo</option><option>Minivolley / scuola sport</option>
-            <option>Basket</option><option>Calcio a 5</option>
-            <option>Corsa di San Gabriele</option><option>Altro</option>
+            <option>Corsa di San Gabriele</option>
+            <option>Pallavolo / Isola Volley</option>
+            <option>Minivolley</option>
+            <option>Basket / Blue Basket</option>
+            <option>Richiesta Visita Medica</option>
+            <option>Altro</option>
           </select>
           <textarea rows="4" placeholder="Messaggio" required></textarea>
           <button class="btn" type="submit">Invia messaggio</button>
