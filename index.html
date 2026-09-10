@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -94,8 +94,44 @@
   /* ===== HERO FISSA ===== */
   .hero{position:relative;height:88vh;min-height:560px;overflow:hidden;background:var(--black);background-image:url('pallavolo-femminile.jpg');background-size:cover;background-position:center 30%}
   .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,.55) 0%,rgba(10,10,15,.35) 45%,rgba(10,10,15,.92) 100%)}
-  .hero .cap{position:absolute;left:0;right:0;bottom:14%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
+  .hero .cap{position:absolute;left:0;right:0;bottom:10%;text-align:center;color:#fff;padding:0 1.5rem;z-index:2}
   
+  /* ANIMAZIONE CORRETTA LOGO PARABOLA PALLAVOLO */
+  .hero-ball-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .hero-ball-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--blue);
+    box-shadow: 0 8px 30px rgba(0, 115, 206, 0.7);
+    background: var(--black);
+    will-change: transform, opacity;
+    opacity: 0;
+    
+    /* Animazione attivata al caricamento della pagina */
+    animation: volleyballParabola 2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  }
+
+  @keyframes volleyballParabola {
+    0% {
+      opacity: 0;
+      transform: translate3d(-200px, -250px, 0) rotate(-720deg) scale(0.3);
+    }
+    55% {
+      opacity: 1;
+      transform: translate3d(0px, -80px, 0) rotate(-180deg) scale(1.2); /* Apice traiettoria */
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1); /* Posizione di riposo al centro */
+    }
+  }
+
   .hero .kicker{
     font-family:'Oswald';
     color:#fff;
@@ -199,7 +235,7 @@
   .stats .num{font-family:'Oswald';font-size:3rem;font-weight:700;color:var(--blue);line-height:1}
   .stats .lbl{font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:.78rem;color:#9aa1b0;margin-top:.5rem}
 
-  /* ===== LOGO IA FLUTTUANTE ANIMATO & WIDGET CHAT ===== */
+  /* LOGO IA FLUTTUANTE ANIMATO */
   .ai-floating-widget {
     position: fixed;
     bottom: 25px;
@@ -253,7 +289,6 @@
     100% { box-shadow: 0 0 0 0 rgba(0, 115, 206, 0); }
   }
 
-  /* Modal Chat dell'Assistente IA */
   .ai-modal {
     display: none;
     width: 340px;
@@ -346,7 +381,7 @@
   footer a:hover{color:var(--blue)}
   .fbot{border-top:1px solid #22242e;padding-top:1.5rem;text-align:center;font-size:.78rem;color:#666d7d}
 
-  /* ===== OTTIMIZZAZIONE RESPONSIVE MOBILE ===== */
+  /* RESPONSIVE MOBILE */
   @media(max-width:860px){
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--black);flex-direction:column;align-items:flex-start;padding:1.2rem 1.5rem;gap:1.1rem}
     .nav-links.open{display:flex}
@@ -355,8 +390,9 @@
     .logo img{width:60px !important; height:60px !important; margin-bottom:-10px !important;}
     .logo .t{font-size:1.1rem;}
 
-    .hero{height:auto; min-height:500px; padding:6rem 0 3rem;}
+    .hero{height:auto; min-height:500px; padding:5rem 0 3rem;}
     .hero .cap{position:relative; bottom:0;}
+    .hero-ball-logo{width:90px; height:90px;}
     .hero h1{font-size:2.2rem}
     .btn-group{flex-direction:column; width:100%;}
     .btn-group .btn{width:100%; margin-left:0 !important; margin-bottom:0.4rem;}
@@ -370,7 +406,6 @@
 
     iframe{height:400px !important;}
     .cgrid,.fgrid{grid-template-columns:1fr}
-
     .ai-modal { width: 300px; }
   }
 </style>
@@ -400,6 +435,11 @@
 <!-- HERO PRINCIPALE FISSA -->
 <div class="hero" id="hero">
   <div class="cap">
+    <!-- CONTENITORE DEL LOGO CON ANIMAZIONE A PARABOLA -->
+    <div class="hero-ball-container">
+      <img src="logo.png" alt="Logo APD Isola Volley" class="hero-ball-logo">
+    </div>
+    
     <div class="kicker">Polisportiva Isola del Gran Sasso</div>
     <h1>Uniti dallo sport</h1>
     <p>Una grande famiglia ai piedi del Gran Sasso</p>
@@ -425,7 +465,7 @@
   </div>
 </div>
 
-<!-- SEZIONE CALENDARIO GOOGLE -->
+<!-- CALENDARIO GOOGLE -->
 <section id="calendario" style="padding: 3rem 0; background: #fff;">
   <div class="wrap">
     <div class="sec-head">
@@ -441,7 +481,7 @@
   </div>
 </section>
 
-<!-- SEZIONE EVENTI E TORNEI ESTIVI -->
+<!-- EVENTI E TORNEI ESTIVI -->
 <section id="eventi" style="padding: 4.5rem 0; background: #fff;">
   <div class="wrap">
     <div class="sec-head">
@@ -450,7 +490,6 @@
       <div class="line"></div>
     </div>
     
-    <!-- SCHEDA SPECIALE: CORSA DI SAN GABRIELE -->
     <div class="cards" style="grid-template-columns: 1fr;">
       <article class="ncard featured">
         <div class="ph" style="flex:1; min-width:280px; height:auto; min-height:300px;">
@@ -479,7 +518,6 @@
       </article>
     </div>
 
-    <!-- ALTRI TORNEI -->
     <div class="cards" style="margin-top:2rem;">
       <article class="ncard">
         <div class="ph">
@@ -589,7 +627,7 @@
   </div>
 </section>
 
-<!-- ISCRIZIONI E CERTIFICATI -->
+<!-- ISCRIZIONI -->
 <section id="iscrizioni" class="stats" style="background:linear-gradient(120deg,var(--navy),var(--blue))">
   <div class="wrap" style="text-align:center">
     <div class="kicker osw" style="color:#bcd8f5;letter-spacing:4px;text-transform:uppercase;font-size:.8rem">Tesseramenti e Certificati</div>
@@ -642,7 +680,6 @@
 
 <!-- WIDGET LOGO IA FLUTTUANTE -->
 <div class="ai-floating-widget">
-  <!-- Finestra Chat Modale -->
   <div class="ai-modal" id="aiModal">
     <div class="ai-modal-header">
       <h4>🤖 Assistente Documenti IA</h4>
@@ -659,7 +696,6 @@
     </div>
   </div>
 
-  <!-- Pulsante Trigger Logo -->
   <div class="ai-logo-trigger" onclick="toggleAIModal()">
     <span class="ai-badge">IA</span>
     <img src="logo.png" alt="Assistente IA APD Isola">
@@ -687,17 +723,11 @@
 </footer>
 
 <script>
-  // Apertura/Chiusura Modal IA
   function toggleAIModal() {
     const modal = document.getElementById('aiModal');
-    if (modal.style.display === 'block') {
-      modal.style.display = 'none';
-    } else {
-      modal.style.display = 'block';
-    }
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
   }
 
-  // Risposte IA per i documenti
   function askAI(type) {
     const msg = document.getElementById('aiModalMsg');
     if (type === 'visita') {
@@ -711,7 +741,6 @@
     }
   }
 
-  // Gestione contatori
   const nums = document.querySelectorAll('.stats .num');
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
@@ -723,7 +752,6 @@
   },{threshold:.5});
   nums.forEach(n=>io.observe(n));
 
-  // Effetto rimpicciolimento logo allo scroll
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
