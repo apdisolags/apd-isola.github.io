@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A.P.D. Isola — Polisportiva Isola del Gran Sasso</title>
 <meta name="description" content="A.P.D. Isola: pallavolo, basket, calcio a 5, minivolley ed eSports a Isola del Gran Sasso d'Italia. Uniti dallo sport, per crescere insieme.">
+<link rel="preload" as="image" href="Copertina-sito.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -16,6 +17,7 @@
     --text:#23262d;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.6}
   a{text-decoration:none;color:inherit}
   img{max-width:100%;display:block}
@@ -122,22 +124,38 @@
     will-change: transform, opacity;
     opacity: 0;
     
-    animation: volleyballParabola 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+    animation: volleyballParabola 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+                logoBreath 5s ease-in-out 3s infinite;
   }
 
   @keyframes volleyballParabola {
     0% {
       opacity: 0;
-      transform: translate3d(-300px, -350px, 0) rotate(-720deg) scale(0.15);
+      transform: translate3d(-240px, -320px, 0) rotate(-420deg) scale(0.2);
+      animation-timing-function: cubic-bezier(.25,.6,.35,1);
     }
-    55% {
+    45% {
       opacity: 1;
-      transform: translate3d(0px, -100px, 0) rotate(-180deg) scale(1.1);
+      transform: translate3d(14px, -70px, 0) rotate(-60deg) scale(1.09);
+      animation-timing-function: cubic-bezier(.3,.8,.4,1);
+    }
+    68% {
+      transform: translate3d(-4px, 10px, 0) rotate(14deg) scale(.97);
+      animation-timing-function: cubic-bezier(.4,0,.2,1);
+    }
+    85% {
+      transform: translate3d(2px, -3px, 0) rotate(-4deg) scale(1.01);
     }
     100% {
       opacity: 1;
       transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
     }
+  }
+
+  /* Leggero respiro/fluttuazione dopo l'atterraggio */
+  @keyframes logoBreath {
+    0%, 100% { box-shadow: 0 12px 50px rgba(0,115,206,.9), 0 0 30px rgba(255,255,255,.3); }
+    50% { box-shadow: 0 12px 60px rgba(0,115,206,1), 0 0 44px rgba(255,255,255,.45); }
   }
 
   .hero .kicker{
@@ -372,6 +390,71 @@
     color: #fff;
   }
 
+  /* BACHECA FOTO COMMUNITY */
+  .bacheca-grid{columns:3 280px;column-gap:1.2rem}
+  .bacheca-grid figure{break-inside:avoid;margin-bottom:1.2rem;border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(10,10,15,.12);position:relative;background:#fff}
+  .bacheca-grid img{width:100%;transition:transform .5s}
+  .bacheca-grid figure:hover img{transform:scale(1.04)}
+  .bacheca-grid figcaption{padding:.7rem .9rem;font-size:.82rem;color:#5c6370;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+  .bacheca-grid figcaption b{font-family:'Oswald';letter-spacing:.5px;color:var(--black);text-transform:uppercase;font-size:.8rem}
+  .upload-box{margin-top:2.5rem;background:linear-gradient(120deg,var(--navy),var(--blue));border-radius:12px;color:#fff;padding:2.2rem;text-align:center}
+  .upload-box h3{font-family:'Oswald';text-transform:uppercase;letter-spacing:1px;font-size:1.4rem;margin-bottom:.5rem}
+  .upload-box p{color:#d6e6f7;max-width:560px;margin:0 auto 1.4rem;font-size:.95rem}
+  .upload-box .btn{background:#fff;color:var(--navy);font-size:1rem;padding:1rem 2.4rem}
+  .upload-box .btn:hover{background:var(--black);color:#fff}
+  .upload-steps{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-top:1.6rem;font-size:.85rem;color:#bcd8f5}
+  .upload-steps span{display:flex;align-items:center;gap:.45rem}
+
+  /* ===== PAGAMENTO QUOTE — PULSANTE LATERALE + MODAL ===== */
+  .pay-tab{
+    position:fixed;right:0;top:55%;z-index:998;
+    background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;
+    font-family:'Oswald';font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.78rem;
+    padding:.9rem .7rem .9rem .9rem;border:none;border-radius:10px 0 0 10px;cursor:pointer;
+    box-shadow:-4px 4px 18px rgba(10,10,15,.35);
+    display:flex;flex-direction:column;align-items:center;gap:.35rem;
+    transition:transform .2s ease, padding .2s ease;
+  }
+  .pay-tab:hover{transform:translateX(-4px);padding-right:1.1rem}
+  .pay-tab .ico{font-size:1.3rem}
+  .pay-tab .vt{writing-mode:vertical-rl;transform:rotate(180deg)}
+
+  .pay-modal{
+    display:none;position:fixed;inset:0;z-index:999;
+    background:rgba(10,10,15,.72);backdrop-filter:blur(3px);
+    align-items:center;justify-content:center;padding:1.2rem;
+  }
+  .pay-modal.open{display:flex}
+  .pay-box{
+    background:#fff;border-radius:14px;max-width:480px;width:100%;overflow:hidden;
+    box-shadow:0 24px 70px rgba(0,0,0,.45);animation:payIn .35s cubic-bezier(.22,1,.36,1);
+    max-height:90vh;overflow-y:auto;
+  }
+  @keyframes payIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+  .pay-head{
+    background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;
+    padding:1.4rem 1.6rem;display:flex;justify-content:space-between;align-items:center;
+  }
+  .pay-head h3{font-size:1.25rem;text-transform:uppercase;letter-spacing:1px}
+  .pay-head small{display:block;font-family:'Inter';text-transform:none;letter-spacing:0;color:#cfe3f8;font-weight:400;font-size:.8rem;margin-top:.2rem}
+  .pay-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:1.05rem;cursor:pointer;flex-shrink:0}
+  .pay-close:hover{background:rgba(255,255,255,.3)}
+  .pay-body{padding:1.6rem}
+  .pay-opt{border:1.5px solid #e3e7ee;border-radius:10px;padding:1.2rem;margin-bottom:1.1rem;transition:border-color .2s}
+  .pay-opt:hover{border-color:var(--blue)}
+  .pay-opt .lbl{font-family:'Oswald';letter-spacing:1px;text-transform:uppercase;font-size:.75rem;color:var(--blue);font-weight:600;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+  .iban-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .iban{
+    font-family:'Courier New',monospace;font-weight:700;font-size:1.02rem;letter-spacing:.5px;
+    background:#f2f6fb;border:1px dashed var(--blue);border-radius:6px;padding:.55rem .8rem;
+    user-select:all;flex:1;min-width:200px;
+  }
+  .copy-btn{background:var(--blue);color:#fff;border:none;font-family:'Oswald';letter-spacing:1px;text-transform:uppercase;font-size:.72rem;font-weight:600;padding:.6rem 1rem;border-radius:6px;cursor:pointer}
+  .copy-btn:hover{background:var(--navy)}
+  .pay-info{font-size:.82rem;color:#5c6370;margin-top:.6rem;line-height:1.5}
+  .pay-info b{color:var(--black)}
+  .pay-note{background:#fdf3d7;border-left:4px solid var(--warn,#e0a800);border-radius:6px;padding:.7rem .9rem;font-size:.8rem;color:#6b5a12;margin-top:.4rem}
+
   /* CONTATTI */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
   .cinfo h3{font-family:'Oswald';text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;color:var(--black)}
@@ -417,6 +500,7 @@
     .ai-modal { width: 300px; }
   }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -430,11 +514,12 @@
       <li><a href="#eventi">Eventi</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#squadre">Squadre</a></li>
+      <li><a href="#bacheca">Bacheca</a></li>
       <li><a href="#calendario">Calendario</a></li>
       <li><a href="#contatti">Contatti</a></li>
       <li><a class="medica" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank">📄 Visita Medica</a></li>
       <li><a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank">Iscriviti</a></li>
-      <li><a href="direttivo.html">🔒 Direttivo</a></li>
+      <li><a href="direttivo.html">🔒 Area riservata</a></li>
     </ul>
     <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
   </nav>
@@ -501,7 +586,7 @@
     <div class="cards" style="grid-template-columns: 1fr;">
       <article class="ncard featured">
         <div class="ph" style="flex:1; min-width:280px; height:auto; min-height:300px;">
-          <img src="corsa-san-gabriele.jpg" alt="Corsa di San Gabriele" style="height:100%; object-fit:cover;">
+          <img loading="lazy" src="corsa-san-gabriele.jpg" alt="Corsa di San Gabriele" style="height:100%; object-fit:cover;">
           <div class="date"><b>19</b><span>SET 2026</span></div>
         </div>
         <div class="body" style="flex:2; min-width:300px; padding:2rem;">
@@ -529,7 +614,7 @@
     <div class="cards" style="margin-top:2rem;">
       <article class="ncard">
         <div class="ph">
-          <img src="isola4volley.jpg" alt="Torneo Isola4Volley">
+          <img loading="lazy" src="isola4volley.jpg" alt="Torneo Isola4Volley">
           <div class="date"><b>AGOSTO</b><span>Estate</span></div>
         </div>
         <div class="body">
@@ -542,7 +627,7 @@
 
       <article class="ncard">
         <div class="ph">
-          <img src="blue-basket.jpg" alt="Torneo Calcio a 5">
+          <img loading="lazy" src="blue-basket.jpg" alt="Torneo Calcio a 5">
           <div class="date"><b>LUGLIO</b><span>Estate</span></div>
         </div>
         <div class="body">
@@ -565,7 +650,7 @@
     </div>
     <div class="cards">
       <article class="ncard">
-        <div class="ph"><img src="isola4volley.jpg" alt="Torneo Isola4Volley"><div class="date"><b>30</b><span>Ago</span></div></div>
+        <div class="ph"><img loading="lazy" src="isola4volley.jpg" alt="Torneo Isola4Volley"><div class="date"><b>30</b><span>Ago</span></div></div>
         <div class="body">
           <h3>Campioni dell'VIII Torneo Isola4Volley!</h3>
           <p>I ragazzi del 2000 conquistano l'edizione del torneo estivo: cuore, grinta e gioco di squadra, campioni dentro e fuori dal campo.</p>
@@ -573,7 +658,7 @@
         </div>
       </article>
       <article class="ncard">
-        <div class="ph"><img src="pallavolo-femminile.jpg" alt="Squadra pallavolo"><div class="date"><b>07</b><span>Set</span></div></div>
+        <div class="ph"><img loading="lazy" src="pallavolo-femminile.jpg" alt="Squadra pallavolo"><div class="date"><b>07</b><span>Set</span></div></div>
         <div class="body">
           <h3>Al via gli allenamenti della stagione</h3>
           <p>Tutte le squadre tornano in palestra da lunedì 15 settembre. Il calendario completo degli allenamenti è disponibile in segreteria.</p>
@@ -581,7 +666,7 @@
         </div>
       </article>
       <article class="ncard">
-        <div class="ph"><img src="basket-giovanili.jpg" alt="Scuola basket"><div class="date"><b>20</b><span>Set</span></div></div>
+        <div class="ph"><img loading="lazy" src="basket-giovanili.jpg" alt="Scuola basket"><div class="date"><b>20</b><span>Set</span></div></div>
         <div class="body">
           <h3>Open Day: minivolley e scuola basket</h3>
           <p>Sabato 20 settembre, dalle 16:00, porte aperte in palestra per i più piccoli: prova gratuita e iscrizioni per tutte le attività giovanili.</p>
@@ -601,19 +686,19 @@
     </div>
     <div class="dgrid">
       <div class="dcard">
-        <img src="pallavolo-femminile.jpg" alt="Isola Volley">
+        <img loading="lazy" src="pallavolo-femminile.jpg" alt="Isola Volley">
         <div class="ov">
           <h3>ISOLA VOLLEY</h3>
         </div>
       </div>
       <div class="dcard">
-        <img src="basket-giovanili.jpg" alt="Mini Volley">
+        <img loading="lazy" src="basket-giovanili.jpg" alt="Mini Volley">
         <div class="ov">
           <h3>MINI VOLLEY</h3>
         </div>
       </div>
       <div class="dcard">
-        <img src="blue-basket.jpg" alt="Blue Basket Isola">
+        <img loading="lazy" src="blue-basket.jpg" alt="Blue Basket Isola">
         <div class="ov">
           <h3>BLUE BASKET ISOLA</h3>
         </div>
@@ -645,6 +730,39 @@
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" style="background:#fff;color:var(--navy)">Modulo Iscrizione Online</a>
       <a class="btn line" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank">Richiedi Visita Medica (PDF)</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- BACHECA FOTO DELLE RAGAZZE -->
+<section id="bacheca" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">La nostra community</div>
+      <h2>La bacheca delle ragazze</h2><div class="line"></div>
+    </div>
+    <p style="text-align:center;color:#5c6370;max-width:640px;margin:-1.5rem auto 2.5rem">Uno spazio di tutte e per tutte: allenamenti, partite, spogliatoio, feste e momenti di squadra. Carica le tue foto direttamente dal telefono!</p>
+
+    <div class="bacheca-grid">
+      <figure><img src="pallavolo-femminile.jpg" alt="Foto bacheca"><figcaption><b>Isola Volley</b><span>📸 Squadra</span></figcaption></figure>
+      <figure><img src="pallavolo-2.jpg" alt="Foto bacheca"><figcaption><b>Under</b><span>📸 Allenamento</span></figcaption></figure>
+      <figure><img src="isola4volley.jpg" alt="Foto bacheca"><figcaption><b>Isola4Volley</b><span>📸 Torneo</span></figcaption></figure>
+      <figure><img src="blue-basket.jpg" alt="Foto bacheca"><figcaption><b>Amiche di squadra</b><span>📸 Festa</span></figcaption></figure>
+      <figure><img src="basket-giovanili.jpg" alt="Foto bacheca"><figcaption><b>Giovanili</b><span>📸 Evento</span></figcaption></figure>
+      <figure><img src="pallavolo-femminile.jpg" alt="Foto bacheca"><figcaption><b>Post partita</b><span>📸 Vittoria</span></figcaption></figure>
+    </div>
+
+    <div class="upload-box">
+      <h3>📸 Vuoi caricare le tue foto?</h3>
+      <p>Niente app, niente account: si apre una pagina Google Drive, scegli le foto dal telefono e carica. Il direttivo le approva e le pubblica qui.</p>
+      <!-- ⬇️ Sostituisci con il link "Ricevi file" della cartella Drive (vedi istruzioni) -->
+      <a class="btn" href="https://drive.google.com/drive/folders/INSERISCI-LINK-BACHECA" target="_blank" rel="noopener">Carica le tue foto</a>
+      <div class="upload-steps">
+        <span>1️⃣ Tocca il pulsante</span>
+        <span>2️⃣ Scegli le foto</span>
+        <span>3️⃣ Carica: fatto!</span>
+      </div>
     </div>
   </div>
 </section>
@@ -690,12 +808,12 @@
 <div class="ai-floating-widget">
   <div class="ai-modal" id="aiModal">
     <div class="ai-modal-header">
-      <h4>🤖 Assistente Documenti IA</h4>
+      <h4>📄 Moduli Rapidi</h4>
       <button class="ai-modal-close" onclick="toggleAIModal()">✕</button>
     </div>
     <div class="ai-modal-body">
       <div class="ai-chat-msg" id="aiModalMsg">
-        <strong>Assistente IA:</strong> Ciao! Di quale documento o modulo hai bisogno oggi?
+        <strong>Moduli Rapidi:</strong> Ciao! Di quale documento o modulo hai bisogno oggi?
       </div>
       <button class="ai-btn-option" onclick="askAI('visita')">🩺 Richiesta Visita Medica</button>
       <button class="ai-btn-option" onclick="askAI('iscrizione')">📝 Modulo Tesseramento / Iscrizione</button>
@@ -705,8 +823,50 @@
   </div>
 
   <div class="ai-logo-trigger" onclick="toggleAIModal()">
-    <span class="ai-badge">IA</span>
-    <img src="logo.png" alt="Assistente IA APD Isola">
+    <span class="ai-badge">📄</span>
+    <img src="logo.png" alt="Moduli rapidi APD Isola">
+  </div>
+</div>
+
+
+<!-- PULSANTE LATERALE PAGAMENTO QUOTE -->
+<button class="pay-tab" onclick="openPay()" aria-label="Paga la tua quota">
+  <span class="ico">💳</span><span class="vt">Paga la quota</span>
+</button>
+
+<!-- FINESTRA PAGAMENTO -->
+<div class="pay-modal" id="payModal" onclick="if(event.target===this)closePay()">
+  <div class="pay-box" role="dialog" aria-modal="true" aria-label="Pagamento quote">
+    <div class="pay-head">
+      <div><h3>💳 Pagamento quote</h3><small>Scegli il metodo che preferisci — riceverai conferma via email/WhatsApp</small></div>
+      <button class="pay-close" onclick="closePay()" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="pay-body">
+
+      <div class="pay-opt">
+        <div class="lbl">🏦 Bonifico bancario</div>
+        <div class="iban-row">
+          <!-- ⬇️ Sostituisci con l'IBAN reale dell'associazione -->
+          <span class="iban" id="ibanCode">IT00 A000 0000 0000 0000 0000 000</span>
+          <button class="copy-btn" onclick="copyIban(this)">📋 Copia IBAN</button>
+        </div>
+        <div class="pay-info">
+          <b>Intestato a:</b> A.P.D. Isola — Isola del Gran Sasso d'Italia<br>
+          <b>Causale obbligatoria:</b> <em>Quota socio 2026/27 — Nome e Cognome</em>
+        </div>
+        <div class="pay-note">⚠️ Senza causale corretta non possiamo associare il pagamento! Invia poi la ricevuta su WhatsApp <b>351 76 09 481</b>.</div>
+      </div>
+
+      <div class="pay-opt">
+        <div class="lbl">💳 Carta di credito / debito</div>
+        <p style="font-size:.88rem;color:#5c6370;margin-bottom:.9rem">Pagamento rapido e sicuro con <b>SumUp</b> — nessuna registrazione richiesta.</p>
+        <!-- ⬇️ Sostituisci con il tuo link di pagamento SumUp -->
+        <a class="btn" style="width:100%;background:var(--blue)" href="https://pay.sumup.com/b2c/INSERISCI-TUO-LINK-SUMUP" target="_blank" rel="noopener">Paga con carta → SumUp</a>
+        <div class="pay-info" style="text-align:center;margin-top:.6rem">Apple Pay e Google Pay supportati ✓</div>
+      </div>
+
+      <p style="font-size:.75rem;color:#8b93a5;text-align:center">Problemi con il pagamento? Scrivi a <b>apd.isolags@gmail.com</b> o chiama il <b>351 76 09 481</b></p>
+    </div>
   </div>
 </div>
 
@@ -723,7 +883,7 @@
       </div>
       <div>
         <h4>Società</h4>
-        <a href="#contatti">Contatti</a><a href="direttivo.html">🔒 Area direttivo</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a>
+        <a href="#contatti">Contatti</a><a href="direttivo.html">🔒 Area riservata</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a>
       </div>
     </div>
     <div class="fbot">© 2026 A.P.D. Isola — Isola del Gran Sasso d'Italia · Uniti dallo sport, per crescere insieme</div>
@@ -739,13 +899,13 @@
   function askAI(type) {
     const msg = document.getElementById('aiModalMsg');
     if (type === 'visita') {
-      msg.innerHTML = `<strong>Assistente IA:</strong> Scarica il modello per la visita medica direttamente dal Google Drive:<br><br>👉 <a href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Scarica Visita Medica (PDF)</a>`;
+      msg.innerHTML = `<strong>Moduli Rapidi:</strong> Scarica il modello per la visita medica direttamente dal Google Drive:<br><br>👉 <a href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Scarica Visita Medica (PDF)</a>`;
     } else if (type === 'iscrizione') {
-      msg.innerHTML = `<strong>Assistente IA:</strong> Compila online il modulo d'iscrizione e tesseramento:<br><br>👉 <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Apri Modulo Iscrizione</a>`;
+      msg.innerHTML = `<strong>Moduli Rapidi:</strong> Compila online il modulo d'iscrizione e tesseramento:<br><br>👉 <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Apri Modulo Iscrizione</a>`;
     } else if (type === 'corsa') {
-      msg.innerHTML = `<strong>Assistente IA:</strong> Iscriviti alla 3ª Corsa di San Gabriele:<br><br>👉 <a href="https://www.timingrun.it" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Iscriviti su TimingRun.it</a><br>📲 Info WhatsApp: <strong>371 5735977</strong>`;
+      msg.innerHTML = `<strong>Moduli Rapidi:</strong> Iscriviti alla 3ª Corsa di San Gabriele:<br><br>👉 <a href="https://www.timingrun.it" target="_blank" style="color:var(--blue); font-weight:bold; text-decoration:underline;">Iscriviti su TimingRun.it</a><br>📲 Info WhatsApp: <strong>371 5735977</strong>`;
     } else if (type === 'altro') {
-      msg.innerHTML = `<strong>Assistente IA:</strong> Scrivi direttamente alla segreteria dal modulo contatti in fondo alla pagina o a <strong>apd.isolags@gmail.com</strong>.`;
+      msg.innerHTML = `<strong>Moduli Rapidi:</strong> Scrivi direttamente alla segreteria dal modulo contatti in fondo alla pagina o a <strong>apd.isolags@gmail.com</strong>.`;
     }
   }
 
@@ -768,6 +928,21 @@
       header.classList.remove('scrolled');
     }
   });
+
+  /* ===== PAGAMENTO QUOTE ===== */
+  function openPay(){ document.getElementById('payModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closePay(){ document.getElementById('payModal').classList.remove('open'); document.body.style.overflow=''; }
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePay(); });
+  function copyIban(btn){
+    const iban = document.getElementById('ibanCode').textContent.replace(/\s/g,'');
+    const done = ()=>{ const t=btn.textContent; btn.textContent='✓ Copiato!'; setTimeout(()=>btn.textContent=t,2000); };
+    if(navigator.clipboard){ navigator.clipboard.writeText(iban).then(done).catch(()=>fallbackCopy(iban,done)); }
+    else fallbackCopy(iban,done);
+  }
+  function fallbackCopy(text,done){
+    const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta);
+    ta.select(); try{document.execCommand('copy'); done();}catch(e){} document.body.removeChild(ta);
+  }
 </script>
 
 </body>
