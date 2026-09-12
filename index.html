@@ -352,6 +352,566 @@ footer a:hover{color:var(--blue-soft)}
   .pay-tab{top:auto;bottom:110px}
   .hero-ball{width:150px;height:150px;border-width:4px}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   APD ISOLA — PREMIUM OVERRIDE v2
+   Visual system: editorial sports / luxury tech / Gran Sasso
+   Content and CONFIG remain unchanged.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root{
+  --blue:#2f7de1;
+  --blue-soft:#73b2ff;
+  --navy:#07102b;
+  --ink:#03050b;
+  --paper:#f4f7fc;
+  --gold:#e4bd67;
+  --txt:#172033;
+  --mut:#657086;
+  --card:rgba(255,255,255,.88);
+  --glass:rgba(255,255,255,.065);
+  --line:rgba(255,255,255,.13);
+  --r-lg:26px;
+  --r-md:18px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --font-d:'Sora',sans-serif;
+  --font-b:'Space Grotesk',sans-serif;
+  --shadow:0 24px 80px rgba(7,16,43,.13);
+}
+
+html{scroll-padding-top:92px}
+body{
+  background:
+    radial-gradient(circle at 10% 15%,rgba(47,125,225,.06),transparent 28%),
+    radial-gradient(circle at 90% 55%,rgba(217,178,95,.045),transparent 25%),
+    var(--paper);
+  font-family:var(--font-b);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    linear-gradient(115deg,transparent 0 48%,rgba(47,125,225,.018) 50%,transparent 52%),
+    linear-gradient(25deg,transparent 0 48%,rgba(217,178,95,.015) 50%,transparent 52%);
+  background-size:180px 180px;
+}
+
+/* Selection + focus */
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:3px solid rgba(115,178,255,.8);outline-offset:4px}
+
+/* Loader */
+#loader{
+  background:
+    radial-gradient(circle at 50% 42%,rgba(47,125,225,.18),transparent 22%),
+    radial-gradient(circle at 50% 50%,rgba(217,178,95,.07),transparent 42%),
+    var(--ink);
+}
+#loader:before{
+  content:"A.P.D. ISOLA";position:absolute;top:30px;left:50%;
+  transform:translateX(-50%);font:800 .68rem/1 var(--font-d);
+  letter-spacing:5px;color:rgba(255,255,255,.55)
+}
+#loader .ball{
+  width:104px;height:104px;border-width:2px;
+  box-shadow:0 0 0 10px rgba(47,125,225,.05),0 24px 90px rgba(47,125,225,.35);
+}
+#loader .bar{width:220px;height:2px;background:rgba(255,255,255,.09)}
+#loader .bar i{background:linear-gradient(90deg,var(--blue),var(--blue-soft),var(--gold))}
+
+/* Header */
+header .bar{
+  padding-top:.75rem;padding-bottom:.75rem;
+  background:rgba(3,5,11,.28);
+  border-bottom-color:rgba(255,255,255,.05);
+}
+header.scrolled .bar{
+  background:rgba(3,5,11,.76);
+  box-shadow:0 12px 45px rgba(0,0,0,.16);
+}
+.logo{gap:.85rem}
+.logo img{
+  width:48px;height:48px;border:1px solid rgba(115,178,255,.8);
+  box-shadow:0 6px 22px rgba(0,0,0,.25);
+}
+.logo .t{font-size:1.05rem;letter-spacing:.9px}
+.logo .t small{font-size:.52rem;letter-spacing:3.5px}
+.nav-links{gap:1.35rem}
+.nav-links a{font-size:.73rem;letter-spacing:1.8px}
+.nav-links a.cta{
+  padding:.68rem 1.25rem;
+  background:linear-gradient(135deg,var(--blue),#4b99ff);
+  box-shadow:0 8px 28px rgba(47,125,225,.35);
+}
+.nav-links a.medica{padding:.58rem 1rem;background:rgba(47,125,225,.04)}
+
+/* Hero */
+.hero{min-height:100svh;isolation:isolate}
+.hero-bg{
+  filter:saturate(.92) contrast(1.04);
+  transform:scale(1.08);
+}
+.hero-veil{
+  background:
+    radial-gradient(ellipse 75% 45% at 50% 72%,rgba(47,125,225,.18),transparent 65%),
+    linear-gradient(180deg,rgba(3,5,11,.74) 0%,rgba(3,5,11,.18) 42%,rgba(3,5,11,.97) 100%);
+}
+.hero:after{
+  content:"";position:absolute;inset:auto 0 0;height:180px;z-index:2;
+  background:linear-gradient(180deg,transparent,rgba(3,5,11,.75));
+  pointer-events:none;
+}
+.hero .cap{padding-bottom:9vh}
+.hero-ball{
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:
+    0 0 0 8px rgba(47,125,225,.06),
+    0 20px 80px rgba(47,125,225,.42),
+    0 0 80px rgba(255,255,255,.12);
+}
+.kicker{
+  padding:.5rem 1.15rem;
+  font-size:.67rem;
+  letter-spacing:3.4px;
+  background:rgba(47,125,225,.74);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(12px);
+}
+.hero h1{
+  font-size:clamp(3rem,8.8vw,7.2rem);
+  letter-spacing:-.045em;
+  text-shadow:0 10px 45px rgba(0,0,0,.28);
+}
+.hero h1 .accent{
+  background:linear-gradient(105deg,#68adff 0%,#c4e1ff 42%,var(--gold) 90%);
+}
+.hero p{
+  color:rgba(235,241,252,.82);
+  font-size:clamp(1rem,1.8vw,1.16rem);
+  line-height:1.75;
+}
+.btn{
+  padding:1rem 1.65rem;
+  min-height:50px;
+  letter-spacing:1.6px;
+  box-shadow:none;
+}
+.btn-solid{
+  background:linear-gradient(135deg,var(--blue),#4b99ff);
+  box-shadow:0 12px 36px rgba(47,125,225,.32);
+}
+.btn-solid:hover{background:linear-gradient(135deg,#428fe9,var(--navy))}
+.btn-line{
+  border:1px solid rgba(255,255,255,.55);
+  background:rgba(255,255,255,.035);
+  backdrop-filter:blur(10px);
+}
+.btn-gold{
+  background:linear-gradient(135deg,#f1cf7c,var(--gold));
+}
+
+/* Ribbon */
+.ribbon{
+  padding:.72rem 0;
+  background:linear-gradient(90deg,#050915,var(--navy) 45%,#050915);
+  box-shadow:0 12px 40px rgba(0,0,0,.12);
+}
+.ribbon span{font-size:.72rem;letter-spacing:3px;color:#dfe8f7}
+.ribbon i{color:var(--gold)}
+
+/* Section architecture */
+section{position:relative}
+section:not(.hero):after{
+  content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:min(88%,1240px);height:1px;background:linear-gradient(90deg,transparent,rgba(23,32,51,.08),transparent);
+}
+.sec-head{margin-bottom:3.8rem}
+.sec-head .kicker{
+  background:rgba(47,125,225,.055);
+  border:1px solid rgba(47,125,225,.22);
+  padding:.46rem 1rem;
+  letter-spacing:2.6px;
+}
+.sec-head h2{
+  font-size:clamp(2rem,4.8vw,3.35rem);
+  letter-spacing:-.035em;
+}
+.sec-head .sub{max-width:650px;margin:.9rem auto 0;line-height:1.75}
+
+/* Dark sections */
+#matchcenter,.stats-band{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(47,125,225,.16),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(217,178,95,.08),transparent 28%),
+    var(--ink);
+}
+#matchcenter:before,.stats-band:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,transparent,black 20%,black 80%,transparent);
+}
+
+/* Match cards */
+.mc-tabs{gap:.65rem}
+.mc-tab{
+  padding:.72rem 1.25rem;
+  background:rgba(255,255,255,.035);
+  border-color:rgba(255,255,255,.1);
+  transition:transform .3s var(--ease),background .3s,border-color .3s;
+}
+.mc-tab:hover{transform:translateY(-2px);border-color:rgba(115,178,255,.35)}
+.mc-tab.on{background:linear-gradient(135deg,var(--blue),#4b99ff);border-color:transparent}
+.mc-card{
+  padding:2rem;
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 60px rgba(0,0,0,.24);
+}
+.countdown div{
+  background:linear-gradient(160deg,rgba(47,125,225,.16),rgba(47,125,225,.05));
+  border-color:rgba(115,178,255,.25);
+}
+
+/* Featured event */
+.feat{
+  border-radius:30px;
+  box-shadow:0 30px 90px rgba(11,16,48,.16);
+  border:1px solid rgba(255,255,255,.7);
+}
+.feat .ph{min-height:430px}
+.feat .ph:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 45%,rgba(3,5,11,.14));
+  pointer-events:none;
+}
+.feat .body{padding:clamp(2rem,4vw,3.5rem)}
+.feat h3{font-size:clamp(1.65rem,3.5vw,2.5rem);letter-spacing:-.025em}
+.chip{
+  padding:.48rem .9rem;
+  background:#f2f6fc;
+  border-color:#dce6f5;
+  box-shadow:0 4px 12px rgba(11,16,48,.035);
+}
+
+/* Cards */
+.cards{gap:1.35rem}
+.ncard{
+  border-radius:22px;
+  box-shadow:0 12px 45px rgba(11,16,48,.075);
+  border:1px solid rgba(11,16,48,.07);
+}
+.ncard .ph{height:225px}
+.ncard .ph:after,.dcard:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 48%,rgba(3,5,11,.15));
+}
+.ncard .body{padding:1.55rem}
+.ncard h3{font-size:1.15rem;letter-spacing:-.01em}
+.more{margin-top:1.2rem}
+
+/* Team cards */
+.dgrid{gap:1.25rem}
+.dcard{
+  height:360px;border-radius:26px;
+  box-shadow:0 22px 65px rgba(11,16,48,.16);
+}
+.dcard .ov{padding:1.7rem}
+.dcard .ov h3{font-size:1.45rem;letter-spacing:-.015em}
+.dcard .ov .lv{letter-spacing:2.8px}
+
+/* Stats */
+.stats-grid{gap:.5rem}
+.stat{
+  padding:1.5rem 1rem;
+  border-right:1px solid rgba(255,255,255,.07);
+}
+.stat:last-child{border-right:0}
+.stat .num{font-size:clamp(2.5rem,5vw,3.8rem)}
+.stat .lbl{font-size:.66rem}
+
+/* Palmares */
+.palm-grid{gap:1rem}
+.palm{
+  padding:2rem 1rem;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+}
+.palm .n{font-size:2.7rem}
+
+/* CTA */
+.cta-band{
+  background:
+    radial-gradient(circle at 12% 25%,rgba(255,255,255,.12),transparent 26%),
+    radial-gradient(circle at 88% 75%,rgba(217,178,95,.2),transparent 30%),
+    linear-gradient(125deg,#07102b 0%,#2166bd 58%,#3d8ef0 100%);
+}
+.cta-band h2{letter-spacing:-.035em}
+.cta-band .kicker{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25)}
+
+/* Calendar */
+.cal-shell{
+  border-radius:24px;
+  box-shadow:0 22px 70px rgba(11,16,48,.12);
+}
+
+/* Gallery */
+.bacheca-grid{columns:3 260px;column-gap:1rem}
+.bacheca-grid figure{
+  border-radius:20px;
+  box-shadow:0 14px 40px rgba(11,16,48,.09);
+}
+.bacheca-grid figure:after{
+  content:"↗";position:absolute;right:12px;top:12px;width:34px;height:34px;
+  border-radius:50%;display:grid;place-items:center;
+  color:#fff;background:rgba(3,5,11,.55);backdrop-filter:blur(8px);
+  opacity:0;transform:scale(.8);transition:.3s var(--ease);
+}
+.bacheca-grid figure:hover:after{opacity:1;transform:scale(1)}
+.upload-box{
+  border-radius:24px;
+  box-shadow:0 22px 60px rgba(11,16,48,.13);
+}
+
+/* Contacts */
+.cgrid{gap:3.2rem}
+.cinfo{
+  position:sticky;top:110px;
+}
+.cinfo p{line-height:1.6}
+.form-card{
+  border-radius:24px;
+  box-shadow:0 22px 70px rgba(11,16,48,.1);
+  padding:2.25rem;
+}
+input,select,textarea{
+  border-radius:14px;
+  background:#f9fbfe;
+  min-height:52px;
+}
+textarea{min-height:130px}
+
+/* Footer */
+footer{
+  background:
+    radial-gradient(circle at 15% 0%,rgba(47,125,225,.12),transparent 32%),
+    var(--ink);
+}
+.fgrid{gap:3rem}
+.fbot{border-top-color:rgba(255,255,255,.08)}
+
+/* Floating controls */
+.ai-trigger{
+  width:62px;height:62px;
+  box-shadow:0 12px 35px rgba(47,125,225,.36);
+}
+.ai-modal{
+  border:1px solid rgba(47,125,225,.35);
+  box-shadow:0 28px 90px rgba(0,0,0,.32);
+  backdrop-filter:blur(18px);
+}
+.pay-tab{
+  border:1px solid rgba(255,255,255,.15);
+  background:linear-gradient(145deg,#07102b,#2f7de1);
+  box-shadow:-8px 14px 35px rgba(5,7,15,.3);
+}
+.pay-box{border:1px solid rgba(255,255,255,.7)}
+#toTop{backdrop-filter:blur(12px)}
+
+/* Micro-interaction layer */
+.premium-spot{
+  position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(500px circle at var(--sx,50%) var(--sy,50%),rgba(115,178,255,.13),transparent 42%);
+  transition:opacity .35s ease;z-index:0;
+}
+.ncard,.mc-card,.palm,.dcard,.feat{isolation:isolate}
+.ncard > *, .mc-card > *, .palm > *, .dcard > *, .feat > *{position:relative;z-index:1}
+.ncard:hover .premium-spot,.mc-card:hover .premium-spot,.palm:hover .premium-spot{opacity:1}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#05070f}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),#14284f);border-radius:99px}
+
+/* Responsive */
+@media(max-width:1100px){
+  .nav-links{gap:.9rem}
+  .nav-links a{font-size:.67rem;letter-spacing:1.35px}
+  .nav-links a.cta,.nav-links a.medica{padding:.58rem .85rem}
+}
+@media(max-width:900px){
+  html{scroll-padding-top:75px}
+  .hero .cap{padding-bottom:8vh}
+  .hero h1{font-size:clamp(2.7rem,12vw,5rem)}
+  .feat .ph{min-height:310px}
+  .cinfo{position:static}
+  .stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .stat:last-child{border-bottom:0}
+}
+@media(max-width:560px){
+  .wrap{padding-inline:1rem}
+  section{padding:4rem 0}
+  .sec-head{margin-bottom:2.5rem}
+  .hero-ball{width:132px;height:132px}
+  .hero p{font-size:.94rem}
+  .btn-row{width:100%}
+  .btn{width:100%;justify-content:center}
+  .feat{border-radius:22px}
+  .feat .ph{min-height:250px}
+  .feat .body{padding:1.35rem}
+  .ncard .ph{height:205px}
+  .dcard{height:320px}
+  .form-card{padding:1.2rem}
+  .ai-floating{right:14px;bottom:16px}
+  .pay-tab{bottom:92px}
+  #toTop{left:14px;bottom:16px;width:44px;height:44px}
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    scroll-behavior:auto!important;
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+}
+
+
+/* Premium active navigation state */
+.nav-links a.active{color:#fff!important}
+.nav-links a.active:not(.cta):not(.medica)::after{width:100%!important}
+
+/* End premium override */
+
+/* =========================================================
+   APD ISOLA — BRAND IDENTITY UPGRADE
+   Il logo non è più un'icona dentro un cerchio:
+   diventa il vero marchio visivo del sito.
+   ========================================================= */
+
+/* Header: logo protagonista, pulito e riconoscibile */
+.logo{
+  gap:1rem;
+  min-height:64px;
+  padding:.35rem .7rem .35rem .45rem;
+  border-left:3px solid var(--blue);
+  background:linear-gradient(90deg,rgba(47,125,225,.10),rgba(47,125,225,0));
+  border-radius:0 14px 14px 0;
+  transition:transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+}
+.logo:hover{
+  transform:translateX(2px);
+  background:linear-gradient(90deg,rgba(47,125,225,.17),rgba(47,125,225,0));
+}
+.logo img{
+  width:auto !important;
+  height:68px !important;
+  max-width:105px;
+  object-fit:contain;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  filter:drop-shadow(0 7px 18px rgba(0,0,0,.30));
+}
+header.scrolled .logo{
+  min-height:56px;
+}
+header.scrolled .logo img{
+  width:auto !important;
+  height:58px !important;
+  max-width:90px;
+}
+.logo .t{
+  position:relative;
+  font-size:1.22rem;
+  font-weight:900;
+  letter-spacing:1.8px;
+  line-height:.95;
+  white-space:nowrap;
+  text-shadow:0 3px 18px rgba(0,0,0,.35);
+}
+.logo .t::after{
+  content:"";
+  display:block;
+  width:34px;
+  height:2px;
+  margin-top:8px;
+  background:linear-gradient(90deg,var(--blue),var(--gold));
+  border-radius:2px;
+}
+.logo .t small{
+  margin-top:6px;
+  color:rgba(255,255,255,.66);
+  font-size:.54rem;
+  letter-spacing:3.4px;
+}
+
+/* La barra non deve rubare spazio al marchio */
+header .bar{
+  padding-top:.55rem !important;
+  padding-bottom:.55rem !important;
+}
+
+/* Hero: il marchio diventa una vera firma visiva */
+.hero .hero-ball{
+  width:auto !important;
+  height:clamp(86px,9vw,128px) !important;
+  max-width:190px;
+  object-fit:contain;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:0 18px 55px rgba(0,0,0,.34) !important;
+  filter:drop-shadow(0 10px 24px rgba(47,125,225,.20));
+  transform-origin:left center;
+}
+.hero .cap > div:first-child{
+  display:flex;
+  align-items:center;
+  margin-bottom:1rem;
+  position:relative;
+}
+.hero .cap > div:first-child::after{
+  content:"A.P.D. ISOLA  •  DAL 1985";
+  margin-left:1.2rem;
+  padding-left:1.2rem;
+  border-left:1px solid rgba(255,255,255,.20);
+  color:rgba(255,255,255,.62);
+  font:700 .62rem/1 var(--font-b);
+  letter-spacing:3px;
+}
+
+/* Piccola firma del club sotto il titolo */
+.hero .cap h1{
+  max-width:900px;
+}
+.hero .cap p{
+  max-width:720px;
+}
+
+/* Responsive: preserviamo presenza del logo anche su mobile */
+@media (max-width:900px){
+  .logo{min-height:54px;padding-left:.35rem}
+  .logo img{height:56px !important;max-width:82px}
+  header.scrolled .logo img{height:50px !important}
+  .logo .t{font-size:1rem;letter-spacing:1.2px}
+  .logo .t small{font-size:.46rem;letter-spacing:2.5px}
+  .hero .hero-ball{height:82px !important;max-width:125px}
+  .hero .cap > div:first-child::after{font-size:.52rem;letter-spacing:2px}
+}
+@media (max-width:560px){
+  .logo{gap:.65rem;border-left-width:2px;padding-right:.25rem}
+  .logo img{height:50px !important;max-width:70px}
+  .logo .t{font-size:.88rem;letter-spacing:1px}
+  .logo .t small{font-size:.40rem;letter-spacing:2px}
+  .logo .t::after{margin-top:5px;width:26px}
+  .hero .cap > div:first-child::after{
+    display:none;
+  }
+  .hero .hero-ball{height:72px !important;max-width:105px}
+}
+
 </style>
 <base target="_blank">
 </head>
@@ -972,6 +1532,75 @@ if(matchMedia('(pointer:fine)').matches){
 let lp=0; const li=setInterval(()=>{lp=Math.min(100,lp+Math.random()*22); $('#loadBar').style.width=lp+'%';
   if(lp>=100){clearInterval(li); setTimeout(()=>$('#loader').classList.add('done'),250);}},160);
 addEventListener('load',()=>{setTimeout(()=>{clearInterval(li); $('#loadBar').style.width='100%'; $('#loader').classList.add('done');},900);});
+
+/* ═══════════════════════════════════════════════════════════════
+   PREMIUM INTERACTION LAYER
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Add a subtle cursor-following spotlight to elevated cards.
+  document.querySelectorAll('.ncard,.mc-card,.palm').forEach(card=>{
+    const spot=document.createElement('span');
+    spot.className='premium-spot';
+    card.prepend(spot);
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--sx',((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--sy',((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+
+  // Staggered reveal for repeated components.
+  document.querySelectorAll('.cards,.dgrid,.stats-grid,.palm-grid,.bacheca-grid').forEach(group=>{
+    [...group.children].forEach((item,i)=>{
+      item.style.transitionDelay=(Math.min(i,7)*55)+'ms';
+      item.classList.add('rv');
+    });
+  });
+
+  // Active section in the navigation.
+  const nav=document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections=[...document.querySelectorAll('section[id],.hero[id]')];
+  const activeObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));
+    });
+  },{rootMargin:'-35% 0px -55% 0px',threshold:0});
+  sections.forEach(s=>activeObserver.observe(s));
+
+  // Magnetic hover for primary CTAs on desktop.
+  if(!reduce && matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.btn-solid,.btn-gold,.nav-links .cta').forEach(btn=>{
+      btn.addEventListener('pointermove',e=>{
+        const r=btn.getBoundingClientRect();
+        const x=(e.clientX-r.left-r.width/2)*.08;
+        const y=(e.clientY-r.top-r.height/2)*.08;
+        btn.style.transform=`translate(${x}px,${y}px)`;
+      });
+      btn.addEventListener('pointerleave',()=>btn.style.transform='');
+    });
+  }
+
+  // Better keyboard behavior for dialogs.
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      const ai=document.querySelector('#aiModal');
+      if(ai?.classList.contains('open')) ai.classList.remove('open');
+    }
+  });
+
+  // Smooth close of mobile menu when clicking outside.
+  const navLinks=document.querySelector('#navLinks');
+  const burger=document.querySelector('#burger');
+  document.addEventListener('click',e=>{
+    if(navLinks?.classList.contains('open') && !navLinks.contains(e.target) && e.target!==burger){
+      navLinks.classList.remove('open');
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
