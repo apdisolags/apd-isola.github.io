@@ -10,638 +10,306 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════════════
-   A.P.D. ISOLA — TEMA PREMIUM "Notte sul Gran Sasso"
-   Palette, motion system e componenti. Modifica solo :root.
+   A.P.D. ISOLA — DESIGN SYSTEM 2.0 (Premium Bento & Glass)
    ═══════════════════════════════════════════════════════════ */
 :root{
-  --blue:#2f7de1;            /* blu elettrico */
-  --blue-soft:#5ea2ff;
-  --navy:#0b1030;            /* blu notte profondo */
-  --ink:#05070f;             /* nero inchiostro */
-  --paper:#f6f8fc;           /* bianco ghiaccio */
-  --gold:#d9b25f;            /* oro vittoria */
-  --txt:#23283a;
-  --mut:#6b7280;
-  --card:#ffffff;
-  --glass:rgba(255,255,255,.06);
-  --line:rgba(255,255,255,.12);
-  --r-lg:22px;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --font-d:'Sora',sans-serif;
-  --font-b:'Space Grotesk',sans-serif;
+  --blue: #2f7de1;
+  --blue-soft: #5ea2ff;
+  --navy: #090c22;
+  --ink: #05060f;
+  --paper: #f2f5fa;
+  --gold: #d9b25f;
+  --txt: #1c2135;
+  --mut: #636b82;
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-dark: rgba(20, 24, 44, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 24px 48px -12px rgba(11, 16, 48, 0.08);
+  
+  --r-lg: 28px;
+  --r-md: 18px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --font-d: 'Sora', sans-serif;
+  --font-b: 'Space Grotesk', sans-serif;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-b);color:var(--txt);background:var(--paper);line-height:1.6;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 ::selection{background:var(--blue);color:#fff}
-::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar{width:8px}
 ::-webkit-scrollbar-track{background:var(--ink)}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--navy));border-radius:8px}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px}
 
-/* ── Grain cinematografico ── */
-body::after{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.05;
+/* Grain & Base Setup */
+body::after{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.04;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
 
-/* ── Cursore premium (solo desktop) ── */
-.cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;display:none}
-@media(pointer:fine){
-  .cur-dot{display:block;width:7px;height:7px;background:var(--blue);transform:translate(-50%,-50%)}
-  .cur-ring{display:block;width:38px;height:38px;border:1.5px solid rgba(47,125,225,.65);transform:translate(-50%,-50%);
-    transition:width .3s var(--ease),height .3s var(--ease),border-color .3s,background .3s}
-  .cur-ring.big{width:64px;height:64px;background:rgba(47,125,225,.08);border-color:var(--blue)}
-}
-
-/* ── Preloader ── */
-#loader{position:fixed;inset:0;z-index:10000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;transition:opacity .7s var(--ease),visibility .7s}
-#loader.done{opacity:0;visibility:hidden}
-#loader .ball{width:90px;height:90px;border-radius:50%;border:3px solid var(--blue);object-fit:cover;background:var(--ink);
-  animation:ballIn 1.6s var(--ease) infinite alternate}
-@keyframes ballIn{from{transform:translateY(-26px) rotate(-8deg)}to{transform:translateY(10px) rotate(8deg)}}
-#loader .bar{width:200px;height:3px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
-#loader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--blue-soft));transition:width .3s}
-
-.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
-
-/* ── Header ── */
+/* ── HEADER ── */
 header{position:fixed;top:0;left:0;right:0;z-index:900;transition:.4s var(--ease)}
-header .bar{display:flex;align-items:center;justify-content:space-between;padding:.9rem clamp(1.2rem,4vw,2.5rem);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(5,7,15,.35);border-bottom:1px solid transparent;transition:.4s}
-header.scrolled .bar{background:rgba(5,7,15,.86);border-bottom-color:var(--line)}
-#progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--gold))}
-.logo{display:flex;align-items:center;gap:.75rem;position:relative;z-index:950}
-.logo img{width:52px;height:52px;border-radius:50%;border:2px solid var(--blue);background:var(--ink);transition:.35s var(--ease)}
-header.scrolled .logo img{width:42px;height:42px}
-.logo .t{color:#fff;font-family:var(--font-d);font-weight:800;font-size:1.15rem;letter-spacing:.5px;line-height:1}
-.logo .t small{display:block;font-family:var(--font-b);font-weight:500;font-size:.58rem;letter-spacing:3px;color:var(--blue-soft);margin-top:3px;text-transform:uppercase}
-.nav-links{display:flex;list-style:none;align-items:center;gap:1.6rem}
-.nav-links a{color:#c7cede;font-size:.82rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;position:relative;padding:.3rem 0;transition:color .25s}
-.nav-links a:not(.cta):not(.medica)::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--blue);transition:width .3s var(--ease)}
-.nav-links a:not(.cta):not(.medica):hover{color:#fff}
-.nav-links a:not(.cta):not(.medica):hover::after{width:100%}
-.nav-links a.cta{background:var(--blue);color:#fff;padding:.6rem 1.25rem;border-radius:100px;font-weight:700;letter-spacing:1px;box-shadow:0 6px 22px rgba(47,125,225,.45);transition:.3s}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1.2rem,4vw,2.5rem);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(5,6,15,.4);border-bottom:1px solid rgba(255,255,255,.05);transition:.4s}
+header.scrolled .bar{background:rgba(5,6,15,.85);border-bottom-color:rgba(255,255,255,.1)}
+.logo{display:flex;align-items:center;gap:.75rem;z-index:950}
+.logo img{width:48px;height:48px;border-radius:50%;border:2px solid var(--blue);transition:.3s}
+.logo .t{color:#fff;font-family:var(--font-d);font-weight:800;font-size:1.1rem;line-height:1}
+.logo .t small{display:block;font-family:var(--font-b);font-weight:500;font-size:.6rem;letter-spacing:2px;color:var(--blue-soft);margin-top:2px;text-transform:uppercase}
+.nav-links{display:flex;list-style:none;gap:1.8rem;align-items:center}
+.nav-links a{color:#c7cede;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;transition:.3s}
+.nav-links a:hover{color:#fff}
+.nav-links a.cta{background:var(--blue);color:#fff;padding:.6rem 1.4rem;border-radius:100px;box-shadow:0 8px 24px rgba(47,125,225,.4)}
 .nav-links a.cta:hover{background:#fff;color:var(--navy);transform:translateY(-2px)}
-.nav-links a.medica{border:1.5px solid var(--blue);color:#fff;padding:.5rem 1rem;border-radius:100px;transition:.3s}
-.nav-links a.medica:hover{background:var(--blue)}
-.burger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;z-index:960}
+.burger{display:none;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;z-index:960}
 
-/* ── Hero ── */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
-.hero-bg{position:absolute;inset:-12% 0;background:url('Copertina-sito.jpg') center 32%/cover no-repeat;will-change:transform;transform:scale(1.08)}
-.hero-veil{position:absolute;inset:0;background:
-  radial-gradient(ellipse 80% 55% at 50% 108%,rgba(47,125,225,.28),transparent 60%),
-  linear-gradient(180deg,rgba(5,7,15,.72) 0%,rgba(5,7,15,.35) 45%,rgba(5,7,15,.96) 100%)}
-.hero .cap{position:relative;z-index:3;width:100%;padding-bottom:7vh;text-align:center;color:#fff}
-.hero-ball{width:clamp(150px,19vw,230px);height:clamp(150px,19vw,230px);border-radius:50%;border:5px solid var(--blue);
-  background:var(--ink);margin:0 auto 1.6rem;box-shadow:0 18px 60px rgba(47,125,225,.55),0 0 44px rgba(255,255,255,.18);
-  opacity:0;animation:parabola 2.2s cubic-bezier(.22,1,.36,1) .25s forwards,breath 5s ease-in-out 2.6s infinite}
-@keyframes parabola{0%{opacity:0;transform:translate(-240px,-340px) rotate(-420deg) scale(.2)}45%{opacity:1;transform:translate(16px,-70px) rotate(-60deg) scale(1.09)}68%{transform:translate(-5px,12px) rotate(14deg) scale(.97)}85%{transform:translate(3px,-3px) rotate(-4deg) scale(1.01)}100%{opacity:1;transform:none}}
-@keyframes breath{0%,100%{box-shadow:0 18px 60px rgba(47,125,225,.55),0 0 44px rgba(255,255,255,.18)}50%{box-shadow:0 18px 74px rgba(47,125,225,.8),0 0 60px rgba(255,255,255,.3)}}
-.kicker{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-size:.78rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;
-  color:#fff;background:rgba(47,125,225,.9);padding:.45rem 1.4rem;border-radius:100px;box-shadow:0 8px 26px rgba(0,0,0,.35)}
-.hero h1{font-family:var(--font-d);font-weight:800;font-size:clamp(2.6rem,8vw,5.6rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;margin:1rem 0 .6rem}
-.hero h1 .w{display:inline-block;opacity:0;transform:translateY(60px) rotate(3deg);animation:wordUp .9s var(--ease) forwards}
-@keyframes wordUp{to{opacity:1;transform:none}}
-.hero h1 .accent{background:linear-gradient(100deg,var(--blue-soft),#9fd0ff 55%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:560px;margin:0 auto 2rem;color:#d9dfec;font-size:clamp(1rem,2vw,1.2rem)}
-.btn-row{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
-.btn{position:relative;display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-d);font-weight:700;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
-  padding:1rem 2.1rem;border-radius:100px;border:none;cursor:pointer;transition:.35s var(--ease);overflow:hidden;text-align:center}
-.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
-.btn:hover::before{transform:translateX(120%)}
-.btn-solid{background:var(--blue);color:#fff;box-shadow:0 10px 34px rgba(47,125,225,.5)}
-.btn-solid:hover{background:var(--navy);transform:translateY(-3px)}
-.btn-line{background:transparent;border:2px solid rgba(255,255,255,.75);color:#fff}
-.btn-line:hover{background:#fff;color:var(--navy);transform:translateY(-3px)}
-.btn-gold{background:linear-gradient(120deg,var(--gold),#b98f3a);color:var(--ink);box-shadow:0 10px 34px rgba(217,178,95,.4)}
-.btn-gold:hover{transform:translateY(-3px)}
-.scroll-hint{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);color:#8fa3c8;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;z-index:3;animation:hint 2s ease-in-out infinite}
-@keyframes hint{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+/* ── HERO ── */
+.hero{position:relative;min-height:90svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--ink);padding-top:8vh}
+.hero-bg{position:absolute;inset:-10% 0;background:url('Copertina-sito.jpg') center 40%/cover no-repeat;transform:scale(1.05);filter:saturate(1.2)}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg, rgba(5,6,15,.8) 0%, rgba(5,6,15,.4) 50%, var(--ink) 100%)}
+.hero .cap{position:relative;z-index:3;text-align:center;color:#fff;width:100%}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-d);font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue-soft);background:rgba(47,125,225,.15);border:1px solid rgba(47,125,225,.3);padding:.5rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
+.hero h1{font-family:var(--font-d);font-weight:800;font-size:clamp(3rem,8vw,6.5rem);text-transform:uppercase;line-height:1;margin-bottom:1rem;letter-spacing:-.02em}
+.hero h1 .accent{background:linear-gradient(100deg, #fff, var(--blue-soft));-webkit-background-clip:text;color:transparent}
+.hero p{max-width:600px;margin:0 auto 2.5rem;color:#b4c0d8;font-size:clamp(1.1rem,2vw,1.3rem)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:700;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;padding:1.1rem 2.4rem;border-radius:100px;cursor:pointer;transition:.3s var(--ease);border:none}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 12px 30px rgba(47,125,225,.4)}
+.btn-solid:hover{background:#fff;color:var(--navy);transform:translateY(-3px)}
 
-/* ── Marquee ribbon ── */
-.ribbon{background:linear-gradient(90deg,var(--navy),var(--blue),var(--navy));color:#fff;overflow:hidden;padding:.85rem 0;border-block:1px solid rgba(255,255,255,.15)}
-.ribbon .track{display:flex;gap:3rem;width:max-content;animation:mq 26s linear infinite;white-space:nowrap}
-.ribbon span{font-family:var(--font-d);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;font-size:.85rem;display:flex;align-items:center;gap:3rem}
-.ribbon i{color:var(--gold);font-style:normal}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* ── Sezioni ── */
-section{padding:clamp(3.5rem,8vw,6rem) 0}
-.sec-head{max-width:720px;margin:0 auto 3.2rem;text-align:center}
-.sec-head .kicker{background:transparent;color:var(--blue);border:1.5px solid var(--blue);box-shadow:none}
-.sec-head h2{font-family:var(--font-d);font-weight:800;font-size:clamp(1.9rem,4.6vw,3rem);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);margin-top:1rem;line-height:1.1}
-.sec-head .sub{color:var(--mut);margin-top:.8rem;font-size:1rem}
-.on-dark .sec-head h2{color:#fff}
-
-/* Reveal on scroll */
-.rv{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv,.hero h1 .w,.hero-ball{opacity:1!important;transform:none!important;animation:none!important}}
-
-/* ── Match Center ── */
-#matchcenter{background:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(47,125,225,.22),transparent 60%),var(--ink);color:#fff}
-.mc-tabs{display:flex;justify-content:center;gap:.5rem;margin-bottom:2.2rem;flex-wrap:wrap}
-.mc-tab{background:var(--glass);border:1px solid var(--line);color:#aab4ca;font-family:var(--font-d);font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;
-  padding:.65rem 1.5rem;border-radius:100px;cursor:pointer;transition:.3s}
-.mc-tab.on{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 8px 26px rgba(47,125,225,.5)}
-.mc-panel{display:none;animation:fadeUp .5s var(--ease)}
-.mc-panel.on{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
-.mc-card{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--r-lg);padding:1.8rem;position:relative;overflow:hidden;transition:.35s var(--ease)}
-.mc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),transparent)}
-.mc-card:hover{transform:translateY(-6px);border-color:rgba(47,125,225,.5);box-shadow:0 20px 50px rgba(0,0,0,.45)}
-.mc-lab{font-family:var(--font-d);font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue-soft);margin-bottom:1.2rem}
-.mc-vs{display:flex;align-items:center;text-align:center;gap:.6rem}
-.mc-vs .team{flex:1;font-family:var(--font-d);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.5px;line-height:1.25}
-.mc-vs .team small{display:block;font-family:var(--font-b);font-weight:400;font-size:.66rem;color:#8fa3c8;text-transform:none;letter-spacing:1px;margin-top:.3rem}
-.mc-vs .mid{font-family:var(--font-d);font-size:1.5rem;font-weight:800;color:var(--blue);flex-shrink:0;padding:0 .4rem}
-.countdown{display:flex;gap:.6rem;justify-content:center;margin:1.3rem 0 .5rem;flex-wrap:wrap}
-.countdown div{background:rgba(47,125,225,.14);border:1px solid rgba(47,125,225,.45);border-radius:14px;padding:.65rem .3rem;min-width:66px;text-align:center;backdrop-filter:blur(4px)}
-.countdown b{display:block;font-family:var(--font-d);font-size:1.6rem;line-height:1}
-.countdown span{font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;color:#9fc6ee}
-.mc-meta{font-size:.85rem;color:#9aa7c2;text-align:center;border-top:1px solid var(--line);padding-top:1rem;margin-top:1rem}
-.sets .row{display:flex;justify-content:space-between;padding:.5rem .2rem;border-bottom:1px dashed rgba(255,255,255,.14);font-size:.9rem}
-.sets .row:last-child{border:none}
-.sets .win{color:#5fd68b;font-weight:700}
-.mtable{width:100%;border-collapse:collapse;font-size:.88rem}
-.mtable th{color:#8fa3c8;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;text-align:left;padding:.5rem .4rem;border-bottom:1px solid var(--line)}
-.mtable td{padding:.6rem .4rem;border-bottom:1px solid rgba(255,255,255,.06);color:#d6dae3}
-.mtable tr.me td{color:#fff;font-weight:700;background:rgba(47,125,225,.16)}
-.mtable tr.me td:first-child{box-shadow:inset 3px 0 0 var(--blue)}
-
-/* ── Evento in evidenza ── */
-.feat{display:grid;grid-template-columns:1.05fr 1fr;border-radius:calc(var(--r-lg) + 6px);overflow:hidden;background:#fff;box-shadow:0 24px 70px rgba(11,16,48,.16);border:1px solid #e7ebf4}
-.feat .ph{position:relative;min-height:380px;background:linear-gradient(135deg,var(--navy),var(--blue))}
-.feat .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.feat .badge-date{position:absolute;top:18px;left:18px;background:var(--ink);color:#fff;border:2px solid var(--gold);border-radius:16px;padding:.6rem .95rem;text-align:center;font-family:var(--font-d);line-height:1.05;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.feat .badge-date b{font-size:1.6rem;display:block;color:var(--gold)}
-.feat .badge-date span{font-size:.6rem;letter-spacing:2px;text-transform:uppercase}
-.feat .body{padding:clamp(1.6rem,3.5vw,2.8rem);display:flex;flex-direction:column;justify-content:center}
-.feat .tag{font-family:var(--font-d);font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue)}
-.feat h3{font-family:var(--font-d);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);text-transform:uppercase;margin:.4rem 0 .8rem;color:var(--ink)}
-.feat .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 1.1rem}
-.chip{background:#eef3fb;border:1px solid #dbe6f7;border-radius:100px;padding:.38rem .85rem;font-size:.78rem;font-weight:500;color:#2c3e5e}
-.chip b{color:var(--navy)}
-.feat p{color:var(--mut);font-size:.95rem}
-.feat .btn-row{justify-content:flex-start;margin-top:1.4rem}
-.feat .btn-row .btn-line{border-color:var(--blue);color:var(--blue)}
-.feat .btn-row .btn-line:hover{background:var(--blue);color:#fff}
-
-/* ── Cards generiche (news, eventi, squadre) ── */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem}
-.ncard{background:var(--card);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 10px 34px rgba(11,16,48,.09);transition:.4s var(--ease);display:flex;flex-direction:column;border:1px solid #e9edf5}
-.ncard:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(11,16,48,.18)}
-.ncard .ph{height:215px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--navy),var(--blue))}
-.ncard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-.ncard:hover .ph img{transform:scale(1.07)}
-.ncard .date{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;border:2px solid var(--blue);border-radius:12px;padding:.4rem .7rem;text-align:center;font-family:var(--font-d);line-height:1.05}
-.ncard .date b{display:block;font-size:1.2rem}
-.ncard .date span{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase}
-.ncard .body{padding:1.4rem;display:flex;flex-direction:column;flex:1}
-.ncard .cat{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue)}
-.ncard h3{font-family:var(--font-d);font-weight:700;font-size:1.12rem;margin:.35rem 0 .5rem;color:var(--ink)}
-.ncard p{font-size:.88rem;color:var(--mut);flex:1}
-.more{font-family:var(--font-d);font-weight:700;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;font-size:.76rem;margin-top:1rem;display:inline-flex;align-items:center;gap:.35rem}
-.more::after{content:'→';transition:transform .3s var(--ease)}
-.more:hover::after{transform:translateX(5px)}
-
-/* ── Squadre ── */
-.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
-.dcard{position:relative;border-radius:var(--r-lg);overflow:hidden;height:330px;box-shadow:0 14px 40px rgba(11,16,48,.18);cursor:pointer;transform-style:preserve-3d;transition:transform .15s ease-out}
-.dcard img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.dcard:hover img{transform:scale(1.09)}
-.dcard .ov{position:absolute;inset:0;background:linear-gradient(185deg,transparent 30%,rgba(5,7,15,.94) 85%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;transition:.4s}
-.dcard .ov h3{color:#fff;font-family:var(--font-d);font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.5px}
-.dcard .ov .lv{color:var(--gold);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;margin-bottom:.35rem}
-.dcard .ov p{color:#c4cde0;font-size:.8rem;max-height:0;opacity:0;overflow:hidden;transition:.5s var(--ease)}
-.dcard:hover .ov p{max-height:90px;opacity:1;margin-top:.5rem}
-
-/* ── Stats & Palmares ── */
-.stats-band{background:var(--ink);color:#fff;position:relative;overflow:hidden}
-.stats-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(47,125,225,.25),transparent 45%),radial-gradient(circle at 80% 80%,rgba(217,178,95,.12),transparent 45%)}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;position:relative}
-.stat{text-align:center;padding:1rem}
-.stat .num{font-family:var(--font-d);font-weight:800;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1;background:linear-gradient(180deg,#fff,#8fb6ea);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat .num::after{content:attr(data-suf);color:var(--gold);-webkit-text-fill-color:var(--gold)}
-.stat .lbl{font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:#8fa3c8;margin-top:.6rem;font-weight:500}
-.palm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.2rem}
-.palm{background:linear-gradient(160deg,#0b1030,var(--ink));color:#fff;text-align:center;border:1px solid var(--line);border-radius:var(--r-lg);padding:1.8rem 1rem;transition:.35s var(--ease)}
-.palm:hover{transform:translateY(-6px);border-color:rgba(217,178,95,.5);box-shadow:0 18px 44px rgba(0,0,0,.4)}
-.palm .ic{font-size:1.6rem;margin-bottom:.4rem}
-.palm .n{font-family:var(--font-d);font-weight:800;font-size:2.5rem;color:var(--gold);line-height:1}
-.palm .t{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:#8fa3c8;margin-top:.55rem}
-
-/* ── Iscrizioni CTA band ── */
-.cta-band{background:linear-gradient(120deg,var(--navy) 0%,var(--blue) 60%,#4a9bff 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
-.cta-band::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.22),transparent 40%)}
-.cta-band .wrap{position:relative;z-index:2}
-.cta-band h2{font-family:var(--font-d);font-weight:800;font-size:clamp(1.8rem,4.4vw,2.9rem);text-transform:uppercase;margin:.6rem 0 1rem}
-.cta-band p{color:#dbeafe;max-width:560px;margin:0 auto 2rem}
-
-/* ── Calendario ── */
-.cal-shell{background:#fff;border-radius:var(--r-lg);box-shadow:0 14px 44px rgba(11,16,48,.1);overflow:hidden;border:1px solid #e9edf5}
-.cal-shell iframe{width:100%;height:620px;border:0;display:block}
-
-/* ── Bacheca ── */
-.bacheca-grid{columns:3 280px;column-gap:1.3rem}
-.bacheca-grid figure{break-inside:avoid;margin-bottom:1.3rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(11,16,48,.12);position:relative;cursor:zoom-in;background:#fff}
-.bacheca-grid img{width:100%;transition:transform .6s var(--ease)}
-.bacheca-grid figure:hover img{transform:scale(1.05)}
-.bacheca-grid figcaption{padding:.75rem 1rem;font-size:.8rem;color:var(--mut);display:flex;justify-content:space-between;align-items:center;gap:.5rem}
-.bacheca-grid figcaption b{font-family:var(--font-d);letter-spacing:.5px;color:var(--ink);text-transform:uppercase;font-size:.76rem}
-.upload-box{margin-top:2.6rem;background:linear-gradient(120deg,var(--navy),var(--blue));border-radius:var(--r-lg);color:#fff;padding:2.4rem;text-align:center;position:relative;overflow:hidden}
-.upload-box::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(255,255,255,.2),transparent 45%)}
-.upload-box h3{font-family:var(--font-d);text-transform:uppercase;letter-spacing:1px;font-size:1.35rem;margin-bottom:.5rem;position:relative;z-index:2}
-.upload-box p{color:#d6e6f7;max-width:560px;margin:0 auto 1.4rem;font-size:.94rem;position:relative;z-index:2}
-.upload-box .btn{background:#fff;color:var(--navy);position:relative;z-index:2}
-.upload-box .btn:hover{background:var(--ink);color:#fff}
-.steps{display:flex;justify-content:center;gap:2.2rem;flex-wrap:wrap;margin-top:1.5rem;font-size:.84rem;color:#bcd8f5;position:relative;z-index:2}
-/* Lightbox */
-#lightbox{position:fixed;inset:0;z-index:9500;background:rgba(5,7,15,.92);display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(6px)}
-#lightbox.open{display:flex;animation:fadeUp .3s var(--ease)}
-#lightbox img{max-width:min(92vw,1000px);max-height:86vh;border-radius:16px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
-#lightbox .x{position:absolute;top:1.4rem;right:1.8rem;background:rgba(255,255,255,.12);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer}
-
-/* ── Contatti ── */
-.cgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:2.6rem;align-items:start}
-.cinfo h3{font-family:var(--font-d);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.1rem;color:var(--ink)}
-.cinfo p{margin-bottom:.85rem;display:flex;gap:.7rem;align-items:flex-start}
-.cinfo .ic{color:var(--blue);flex-shrink:0}
-.form-card{background:#fff;border-radius:var(--r-lg);box-shadow:0 14px 44px rgba(11,16,48,.1);padding:2rem;border:1px solid #e9edf5}
-form{display:grid;gap:.9rem}
-.field{position:relative}
-input,select,textarea{padding:.95rem 1.1rem;border:1.5px solid #dfe5ef;border-radius:12px;font:inherit;width:100%;background:#fbfcfe;transition:.25s;color:var(--txt)}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(47,125,225,.14);background:#fff}
-textarea{resize:vertical;min-height:110px}
-.sent-msg{display:none;background:#e8f8ee;border:1.5px solid #5fd68b;color:#1e6b3a;border-radius:12px;padding:1rem;text-align:center;font-weight:600}
-.sent-msg.show{display:block;animation:fadeUp .4s var(--ease)}
-
-/* ── Footer ── */
-footer{background:var(--ink);color:#8b93a5;padding:3.8rem 0 2rem;font-size:.88rem}
-.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
-footer h4{font-family:var(--font-d);color:#fff;text-transform:uppercase;letter-spacing:2px;font-size:.92rem;margin-bottom:1rem}
-footer a{color:#b9c0cf;display:inline-block;margin:0 .9rem .5rem 0;transition:color .2s}
-footer a:hover{color:var(--blue-soft)}
-.fbot{border-top:1px solid #1c2030;padding-top:1.5rem;text-align:center;font-size:.78rem;color:#5b6379}
-.fbot .soc{margin-bottom:.8rem}
-.fbot .soc a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;margin:0 .3rem;transition:.3s}
-.fbot .soc a:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-3px)}
-
-/* ── Widget moduli (AI) ── */
-.ai-floating{position:fixed;bottom:24px;right:24px;z-index:9800;display:flex;flex-direction:column;align-items:flex-end}
-.ai-trigger{width:66px;height:66px;border-radius:50%;background:var(--ink);border:3px solid var(--blue);box-shadow:0 10px 30px rgba(47,125,225,.5);cursor:pointer;position:relative;animation:pulse 2.6s infinite;transition:transform .25s}
-.ai-trigger:hover{transform:scale(1.1)}
-.ai-trigger img{width:100%;height:100%;border-radius:50%;object-fit:cover}
-.ai-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:var(--ink);font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:10px;border:1.5px solid #fff}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,125,225,.6)}70%{box-shadow:0 0 0 16px rgba(47,125,225,0)}100%{box-shadow:0 0 0 0 rgba(47,125,225,0)}}
-.ai-modal{display:none;width:min(340px,calc(100vw - 48px));background:#fff;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);border:2px solid var(--blue);margin-bottom:12px;overflow:hidden}
-.ai-modal.open{display:block;animation:fadeUp .3s var(--ease)}
-.ai-modal-h{background:var(--navy);color:#fff;padding:.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between}
-.ai-modal-h h4{font-family:var(--font-d);font-size:1rem}
-.ai-modal-h button{background:none;border:none;color:#fff;font-size:1.1rem;cursor:pointer}
-.ai-modal-b{padding:1rem;max-height:400px;overflow-y:auto}
-.ai-msg{background:var(--paper);border-radius:12px;padding:.85rem;font-size:.87rem;margin-bottom:.8rem;line-height:1.55}
-.ai-msg a{color:var(--blue);font-weight:700;text-decoration:underline}
-.ai-opt{background:#fff;border:1.5px solid #d7e3f5;color:var(--navy);padding:.6rem .9rem;border-radius:10px;font-size:.82rem;font-weight:600;cursor:pointer;margin:.25rem .2rem 0 0;display:block;width:100%;text-align:left;transition:.25s;font-family:var(--font-b)}
-.ai-opt:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-
-/* ── Paga quota tab + modal ── */
-.pay-tab{position:fixed;right:0;top:55%;z-index:9700;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;font-family:var(--font-d);font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;font-size:.75rem;padding:1rem .7rem 1rem .9rem;border:none;border-radius:14px 0 0 14px;cursor:pointer;
-  box-shadow:-4px 6px 24px rgba(5,7,15,.4);display:flex;flex-direction:column;align-items:center;gap:.4rem;transition:.3s var(--ease)}
-.pay-tab:hover{transform:translateX(-5px)}
-.pay-tab .vt{writing-mode:vertical-rl;transform:rotate(180deg)}
-.pay-modal{display:none;position:fixed;inset:0;z-index:9900;background:rgba(5,7,15,.75);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:1.2rem}
-.pay-modal.open{display:flex}
-.pay-box{background:#fff;border-radius:20px;max-width:480px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:fadeUp .35s var(--ease);max-height:90vh;overflow-y:auto}
-.pay-head{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:1.4rem 1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.pay-head h3{font-family:var(--font-d);font-size:1.15rem;text-transform:uppercase;letter-spacing:1px}
-.pay-head small{display:block;font-family:var(--font-b);text-transform:none;letter-spacing:0;color:#cfe3f8;font-weight:400;font-size:.8rem;margin-top:.2rem}
-.pay-close{background:rgba(255,255,255,.16);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.05rem;cursor:pointer;flex-shrink:0}
-.pay-body{padding:1.6rem}
-.pay-opt{border:1.5px solid #e5eaf3;border-radius:14px;padding:1.2rem;margin-bottom:1.1rem;transition:.25s}
-.pay-opt:hover{border-color:var(--blue)}
-.pay-opt .lbl{font-family:var(--font-d);letter-spacing:1px;text-transform:uppercase;font-size:.72rem;color:var(--blue);font-weight:700;margin-bottom:.6rem}
-.iban-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-.iban{font-family:'Courier New',monospace;font-weight:700;font-size:.98rem;letter-spacing:.5px;background:#f2f6fb;border:1.5px dashed var(--blue);border-radius:10px;padding:.6rem .85rem;user-select:all;flex:1;min-width:200px}
-.copy-btn{background:var(--blue);color:#fff;border:none;font-family:var(--font-d);letter-spacing:1px;text-transform:uppercase;font-size:.7rem;font-weight:700;padding:.65rem 1rem;border-radius:8px;cursor:pointer;transition:.25s}
-.copy-btn:hover{background:var(--navy)}
-.pay-info{font-size:.83rem;color:var(--mut);margin-top:.7rem;line-height:1.55}
-.pay-info b{color:var(--ink)}
-.pay-note{background:#fdf3d7;border-left:4px solid var(--gold);border-radius:8px;padding:.75rem .95rem;font-size:.8rem;color:#6b5a12;margin-top:.5rem}
-.pay-modal .btn{width:100%;justify-content:center}
-
-/* ── Back to top ── */
-#toTop{position:fixed;bottom:24px;left:24px;z-index:9600;width:48px;height:48px;border-radius:50%;background:var(--ink);border:2px solid var(--blue);color:#fff;font-size:1.1rem;cursor:pointer;opacity:0;pointer-events:none;transition:.35s var(--ease);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-#toTop.show{opacity:1;pointer-events:auto}
-#toTop:hover{background:var(--blue);transform:translateY(-4px)}
-
-/* ── Responsive ── */
-@media(max-width:900px){
-  .nav-links{display:none;position:fixed;inset:0;background:rgba(5,7,15,.97);flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;z-index:940}
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:1.05rem}
-  .burger{display:block}
-  .feat{grid-template-columns:1fr}
-  .feat .ph{min-height:250px}
-  .cgrid{grid-template-columns:1fr}
-  .fgrid{grid-template-columns:1fr}
-  .cal-shell iframe{height:440px}
-  .pay-tab{top:auto;bottom:110px}
-  .hero-ball{width:150px;height:150px;border-width:4px}
+/* ── BENTO GRID SYSTEM ── */
+.bento-section { padding: 4rem 0; background: var(--ink); margin-top: -2px; position:relative; z-index:5; }
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1320px;
+  margin: 0 auto;
 }
+.bento-card {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border-dark);
+  border-radius: var(--r-lg);
+  padding: 2.2rem;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.4s var(--ease), border-color 0.4s;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.bento-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(47, 125, 225, 0.4);
+}
+.bento-card.light {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  color: var(--txt);
+}
+.bento-card.light:hover { border-color: var(--blue); }
+
+/* Bento Sizing */
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.row-2  { grid-row: span 2; }
+
+/* Match Center (Bento) */
+.mc-header { font-family: var(--font-d); font-size: .8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue-soft); margin-bottom: 1.5rem; }
+.mc-teams { display: flex; align-items: center; justify-content: space-between; text-align: center; margin-bottom: 2rem; }
+.mc-teams .team { flex: 1; font-family: var(--font-d); font-weight: 800; font-size: 1.4rem; line-height: 1.2; text-transform: uppercase; }
+.mc-teams .team small { display: block; font-family: var(--font-b); font-size: .75rem; color: #8fa3c8; margin-top: 5px; font-weight: 400; text-transform: none; }
+.mc-teams .vs { font-size: 1.2rem; font-weight: 800; color: var(--blue); padding: 0 1rem; }
+.countdown { display: flex; gap: .8rem; justify-content: center; }
+.countdown div { background: rgba(47, 125, 225, 0.15); border: 1px solid rgba(47, 125, 225, 0.3); border-radius: 16px; padding: 1rem .5rem; min-width: 80px; text-align: center; }
+.countdown b { display: block; font-family: var(--font-d); font-size: 2rem; line-height: 1; }
+.countdown span { font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; color: #a1c6ed; margin-top: 5px; display: block; }
+.mc-meta { margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: .9rem; color: #aab4ca; text-align: center; }
+
+/* Eventi (Bento) */
+.bento-event { padding: 0; display: flex; flex-direction: row; }
+.bento-event .ph { width: 40%; background: url('corsa-san-gabriele.jpg') center/cover; position: relative; }
+.bento-event .body { width: 60%; padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; }
+.bento-event .date-badge { position: absolute; top: 20px; left: 20px; background: var(--ink); color: #fff; padding: .6rem 1rem; border-radius: 14px; text-align: center; border: 1px solid var(--gold); }
+.bento-event .date-badge b { display: block; font-family: var(--font-d); font-size: 1.4rem; color: var(--gold); line-height: 1; }
+.bento-event h3 { font-family: var(--font-d); font-weight: 800; font-size: 1.6rem; text-transform: uppercase; margin: .5rem 0 1rem; }
+.bento-event p { color: #b4c0d8; font-size: .95rem; margin-bottom: 1.5rem; }
+
+/* ── STANDARD SECTIONS ── */
+section.standard { padding: 6rem 0; }
+.sec-head { max-width: 700px; margin: 0 auto 3.5rem; text-align: center; }
+.sec-head h2 { font-family: var(--font-d); font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); text-transform: uppercase; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
+.sec-head p { font-size: 1.1rem; color: var(--mut); }
+
+/* News & Squadre Cards */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.ncard { background: #fff; border-radius: var(--r-md); overflow: hidden; box-shadow: 0 12px 34px rgba(11, 16, 48, 0.06); border: 1px solid #e9edf5; transition: .4s var(--ease); display: flex; flex-direction: column; }
+.ncard:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(11, 16, 48, 0.12); }
+.ncard .ph { height: 220px; overflow: hidden; position: relative; }
+.ncard .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.ncard:hover .ph img { transform: scale(1.08); }
+.ncard .body { padding: 1.8rem; display: flex; flex-direction: column; flex: 1; }
+.ncard .cat { font-family: var(--font-d); font-size: .75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: .5rem; }
+.ncard h3 { font-family: var(--font-d); font-weight: 700; font-size: 1.2rem; color: var(--ink); margin-bottom: .8rem; }
+.ncard p { color: var(--mut); font-size: .95rem; margin-bottom: 1.5rem; flex: 1; }
+.more-link { font-family: var(--font-d); font-weight: 700; font-size: .85rem; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: .5rem; }
+.more-link::after { content: '→'; transition: transform .3s; }
+.more-link:hover::after { transform: translateX(5px); }
+
+/* Team 3D Tilt Cards */
+.dcard { position: relative; border-radius: var(--r-md); overflow: hidden; height: 380px; box-shadow: 0 14px 40px rgba(11, 16, 48, 0.15); transform-style: preserve-3d; }
+.dcard img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.dcard:hover img { transform: scale(1.1); }
+.dcard .ov { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 20%, rgba(5,6,15,.95) 90%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; color: #fff; }
+.dcard .ov h3 { font-family: var(--font-d); font-weight: 800; font-size: 1.4rem; text-transform: uppercase; }
+.dcard .ov .lv { color: var(--gold); font-size: .75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: .5rem; }
+
+/* Responsive */
+@media(max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .span-2, .span-3, .span-4 { grid-column: span 2; }
+  .bento-event { flex-direction: column; }
+  .bento-event .ph, .bento-event .body { width: 100%; }
+  .bento-event .ph { height: 200px; }
+  .nav-links { display: none; }
+  .burger { display: block; }
+}
+@media(max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .span-2, .span-3, .span-4 { grid-column: span 1; }
+  .mc-teams { flex-direction: column; gap: 1rem; }
+}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:#8b93a5;padding:4rem 0 2rem;font-size:.9rem; border-top: 1px solid rgba(255,255,255,0.1);}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+footer h4{font-family:var(--font-d);color:#fff;text-transform:uppercase;letter-spacing:1px;font-size:1rem;margin-bottom:1.2rem}
+footer a{color:#b9c0cf;display:block;margin-bottom:.8rem;transition:.2s}
+footer a:hover{color:var(--blue-soft)}
+.fbot{border-top:1px solid rgba(255,255,255,0.05);padding-top:2rem;text-align:center;font-size:.8rem}
 </style>
-<base target="_blank">
 </head>
 <body>
 
-<div id="loader"><img src="logo.png" class="ball" alt="APD Isola"><div class="bar"><i id="loadBar"></i></div></div>
-<div class="cur-dot" id="curDot"></div><div class="cur-ring" id="curRing"></div>
-
 <header id="siteHeader">
   <div class="bar">
-    <a class="logo" href="#hero"><img src="logo.png" alt="Logo APD Isola"><span class="t">A.P.D. ISOLA<small>Isola del Gran Sasso</small></span></a>
+    <a class="logo" href="#hero"><img src="logo.png" alt="APD Isola"><span class="t">A.P.D. ISOLA<small>Isola del Gran Sasso</small></span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#matchcenter">Partite</a></li>
       <li><a href="#eventi">Eventi</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#squadre">Squadre</a></li>
-      <li><a href="#calendario">Calendario</a></li>
-      <li><a href="#bacheca">Bacheca</a></li>
       <li><a href="#contatti">Contatti</a></li>
-      <li><a class="medica" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank" rel="noopener">Visita Medica</a></li>
-      <li><a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" rel="noopener">Iscriviti</a></li>
-      <li><a href="direttivo.html">🔒 Area riservata</a></li>
+      <li><a class="cta" href="#">Iscriviti 26/27</a></li>
     </ul>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <button class="burger" id="burger">☰</button>
   </div>
-  <div id="progress"></div>
 </header>
 
 <!-- HERO -->
 <div class="hero" id="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg"></div>
   <div class="hero-veil"></div>
   <div class="cap wrap">
-    <div><img src="logo.png" alt="Logo APD Isola Volley" class="hero-ball"></div>
-    <div><span class="kicker">⛰ Polisportiva Isola del Gran Sasso</span></div>
-    <h1><span class="w" style="animation-delay:.9s">UNITI</span> <span class="w" style="animation-delay:1s">DALLO</span> <span class="w accent" style="animation-delay:1.1s">SPORT</span></h1>
+    <div class="kicker">Polisportiva Isola del Gran Sasso</div>
+    <h1>Uniti dallo <span class="accent">Sport</span></h1>
     <p>Una grande famiglia ai piedi del Gran Sasso — dal 1985. Pallavolo, basket, calcio a 5, tennis e benessere per tutte le età.</p>
-    <div class="btn-row">
-      <a class="btn btn-solid" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" rel="noopener">Iscriviti ora</a>
-      <a class="btn btn-line" href="#squadre">Le squadre</a>
-      <a class="btn btn-line" href="#eventi">Eventi & Tornei</a>
-    </div>
+    <a class="btn btn-solid" href="#dashboard">Entra in campo</a>
   </div>
-  <div class="scroll-hint">Scorri ↓</div>
 </div>
 
-<!-- RIBBON -->
-<div class="ribbon"><div class="track" id="ribbonTrack"></div></div>
-
-<!-- MATCH CENTER -->
-<section id="matchcenter" class="on-dark">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Match Center</div>
-      <h2>Il cuore della settimana</h2>
-      <p class="sub" style="color:#8fa3c8">Prossima sfida, ultimo risultato e classifica — sempre aggiornati.</p>
+<!-- DASHBOARD (BENTO GRID) -->
+<section id="dashboard" class="bento-section">
+  <div class="wrap bento-grid">
+    
+    <!-- Box 1: Match Center -->
+    <div class="bento-card span-2 row-2" id="mc-box">
+      <div class="mc-header" id="mc-label">Caricamento Partita...</div>
+      <div class="mc-teams">
+        <div class="team" id="mc-home">-<small>Casa</small></div>
+        <div class="vs">VS</div>
+        <div class="team" id="mc-away">-<small>Trasferta</small></div>
+      </div>
+      <div class="countdown">
+        <div><b id="cd-d">--</b><span>Giorni</span></div>
+        <div><b id="cd-h">--</b><span>Ore</span></div>
+        <div><b id="cd-m">--</b><span>Min</span></div>
+        <div><b id="cd-s">--</b><span>Sec</span></div>
+      </div>
+      <div class="mc-meta" id="mc-meta">In attesa di dettagli...</div>
     </div>
-    <div class="mc-tabs rv">
-      <button class="mc-tab on" data-tab="next">🗓 Prossima partita</button>
-      <button class="mc-tab" data-tab="last">✅ Ultima giocata</button>
-      <button class="mc-tab" data-tab="table">📊 Classifica</button>
+
+    <!-- Box 2: Evento in evidenza -->
+    <div class="bento-card bento-event span-2" id="feat-box">
+      <!-- Inserito via JS -->
     </div>
 
-    <div class="mc-panel on" id="tab-next"><div class="mc-grid" id="mcNext"></div></div>
-    <div class="mc-panel" id="tab-last"><div class="mc-grid" id="mcLast"></div></div>
-    <div class="mc-panel" id="tab-table"><div class="mc-grid" id="mcTable"></div></div>
-  </div>
-</section>
-
-<!-- EVENTI -->
-<section id="eventi">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Manifestazioni in programma</div>
-      <h2>Eventi & Tornei</h2>
-      <p class="sub">Le grandi occasioni dell'anno sportivo isolano.</p>
+    <!-- Box 3: Quick Action / Moduli -->
+    <div class="bento-card light span-1" style="display:flex; justify-content:center; text-align:center;">
+      <h3 style="font-family:var(--font-d); margin-bottom:1rem; color:var(--ink);">Tesseramenti</h3>
+      <p style="font-size:.85rem; color:var(--mut); margin-bottom:1.5rem;">Scarica la documentazione medica o iscriviti online.</p>
+      <a href="#" class="btn btn-solid" style="padding:.8rem 1.2rem; font-size:.8rem; width:100%;">Moduli PDF</a>
     </div>
-    <div class="rv" id="featEvent"></div>
-    <div class="cards rv" style="margin-top:1.8rem" id="eventsGrid"></div>
+
+    <!-- Box 4: Statistica Veloce -->
+    <div class="bento-card span-1" style="text-align:center; display:flex; justify-content:center; background:var(--blue);">
+      <div style="font-family:var(--font-d); font-size:3.5rem; font-weight:800; line-height:1; margin-bottom:.5rem;">1985</div>
+      <div style="font-size:.8rem; text-transform:uppercase; letter-spacing:2px; font-weight:600;">Anno di fondazione</div>
+    </div>
+
   </div>
 </section>
 
 <!-- NEWS -->
-<section id="news" style="background:#eef2f9">
+<section id="news" class="standard" style="background:var(--paper);">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Resta aggiornato</div>
-      <h2>News dai campi</h2>
-      <p class="sub">Storie, risultati e momenti della nostra famiglia sportiva.</p>
+    <div class="sec-head">
+      <h2>News dai Campi</h2>
+      <p>Storie, risultati e momenti della nostra famiglia sportiva.</p>
     </div>
-    <div class="cards rv" id="newsGrid"></div>
+    <div class="grid-3" id="newsGrid"></div>
   </div>
 </section>
 
 <!-- SQUADRE -->
-<section id="squadre">
+<section id="squadre" class="standard" style="background:#fff;">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Volti e colori</div>
-      <h2>La famiglia APD Isola</h2>
-      <p class="sub">Ogni sezione, una storia. Ogni atleta, una stella.</p>
+    <div class="sec-head">
+      <h2>La Famiglia APD Isola</h2>
+      <p>Ogni sezione, una storia. Ogni atleta, una stella.</p>
     </div>
-    <div class="dgrid rv" id="teamsGrid"></div>
+    <div class="grid-3" id="teamsGrid"></div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats-band">
-  <div class="wrap">
-    <div class="stats-grid" id="statsGrid"></div>
-  </div>
-</section>
-
-<!-- PALMARES -->
-<section class="on-dark" style="background:var(--ink);color:#fff">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">La nostra storia parla da sola</div>
-      <h2 style="color:#fff">Il Palmares</h2>
-      <p class="sub" style="color:#8fa3c8">Trofei, edizioni e promozioni: il frutto di generazioni di passione.</p>
-    </div>
-    <div class="palm-grid rv" id="palmGrid"></div>
-  </div>
-</section>
-
-<!-- CTA ISCRIZIONI -->
-<section class="cta-band" id="iscrizioni">
-  <div class="wrap rv">
-    <div class="kicker" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff">Tesseramenti 2026/27</div>
-    <h2>Entra nella famiglia APD Isola</h2>
-    <p>Prima lezione di prova gratuita per tutte le discipline. Compila il modulo online e scarica la richiesta per la visita medica sportiva.</p>
-    <div class="btn-row" style="justify-content:center">
-      <a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" rel="noopener">Modulo iscrizione online</a>
-      <a class="btn btn-line" href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank" rel="noopener">Richiedi visita medica (PDF)</a>
-    </div>
-  </div>
-</section>
-
-<!-- CALENDARIO -->
-<section id="calendario" style="background:#fff">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Eventi e partite</div>
-      <h2>Calendario ufficiale</h2>
-      <p class="sub">Allenamenti, gare e appuntamenti della polisportiva.</p>
-    </div>
-    <div class="cal-shell rv">
-      <iframe src="https://calendar.google.com/calendar/embed?src=apd.isolags%40gmail.com&ctz=Europe%2FRome" style="border:0" frameborder="0" scrolling="no" title="Calendario APD Isola" loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- BACHECA -->
-<section id="bacheca" style="background:#eef2f9">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">La nostra community</div>
-      <h2>La bacheca delle ragazze</h2>
-      <p class="sub">Uno spazio di tutte e per tutte: allenamenti, partite, feste e momenti di squadra. Clicca una foto per ingrandirla.</p>
-    </div>
-    <div class="bacheca-grid rv" id="galleryGrid"></div>
-    <div class="upload-box rv">
-      <h3>📸 Vuoi caricare le tue foto?</h3>
-      <p>Niente app, niente account: si apre Google Drive, scegli le foto dal telefono e carica. Il direttivo le approva e le pubblica qui.</p>
-      <a class="btn" href="https://drive.google.com/drive/folders/INSERISCI-LINK-BACHECA" target="_blank" rel="noopener">Carica le tue foto</a>
-      <div class="steps"><span>1️⃣ Tocca il pulsante</span><span>2️⃣ Scegli le foto</span><span>3️⃣ Carica: fatto!</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATTI -->
-<section id="contatti">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="kicker">Restiamo in contatto</div>
-      <h2>Contatti</h2>
-      <p class="sub">Palestra, segreteria e social: siamo sempre a un messaggio di distanza.</p>
-    </div>
-    <div class="cgrid rv">
-      <div class="cinfo">
-        <h3>Sede & palestra</h3>
-        <p><span class="ic">📍</span> Via San Gabriele 100 — Isola del Gran Sasso d'Italia (TE), Abruzzo</p>
-        <p><span class="ic">📞</span> +39 351 76 09 481</p>
-        <p><span class="ic">✉️</span> apd.isolags@gmail.com</p>
-        <h3 style="margin-top:1.6rem">Seguici</h3>
-        <p><span class="ic">📸</span> Instagram / Facebook — <em>@apdisola</em></p>
-        <p><span class="ic">▶️</span> YouTube — <em>APD Isola</em></p>
-        <h3 style="margin-top:1.6rem">Direttivo</h3>
-        <p><span class="ic">👤</span> Presidente &amp; Tesoriere — <strong>Betti M.</strong></p>
-        <p><span class="ic">👤</span> Vice Presidente &amp; Segretaria — <strong>De Prophetis</strong></p>
-      </div>
-      <div class="form-card">
-        <div class="sent-msg" id="sentMsg">✅ Messaggio inviato! Ti risponderemo presto.</div>
-        <form id="contactForm">
-          <input type="text" placeholder="Nome e cognome" required>
-          <input type="email" placeholder="Email" required>
-          <select required>
-            <option value="" disabled selected>Sono interessato a…</option>
-            <option>Corsa di San Gabriele</option>
-            <option>Pallavolo / Isola Volley</option>
-            <option>Minivolley</option>
-            <option>Basket / Blue Basket</option>
-            <option>Calcio a 5</option>
-            <option>Tennis</option>
-            <option>Camminata nordica / Benessere</option>
-            <option>Richiesta Visita Medica</option>
-            <option>Altro</option>
-          </select>
-          <textarea rows="4" placeholder="Messaggio" required></textarea>
-          <button class="btn btn-solid" type="submit" style="justify-content:center">Invia messaggio</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WIDGET MODULI -->
-<div class="ai-floating">
-  <div class="ai-modal" id="aiModal">
-    <div class="ai-modal-h"><h4>📄 Moduli Rapidi</h4><button onclick="toggleAI()" aria-label="Chiudi">✕</button></div>
-    <div class="ai-modal-b">
-      <div class="ai-msg" id="aiMsg"><strong>Moduli Rapidi:</strong> Ciao! Di quale documento o modulo hai bisogno oggi?</div>
-      <button class="ai-opt" data-ai="visita">🩺 Richiesta Visita Medica</button>
-      <button class="ai-opt" data-ai="iscrizione">📝 Modulo Tesseramento / Iscrizione</button>
-      <button class="ai-opt" data-ai="corsa">🏃‍♂️ Corsa di San Gabriele</button>
-      <button class="ai-opt" data-ai="altro">❓ Altro / Segreteria</button>
-    </div>
-  </div>
-  <div class="ai-trigger" onclick="toggleAI()" role="button" aria-label="Moduli rapidi">
-    <span class="ai-badge">📄</span><img src="logo.png" alt="Moduli rapidi APD Isola">
-  </div>
-</div>
-
-<!-- PAGA QUOTA -->
-<button class="pay-tab" onclick="openPay()" aria-label="Paga la tua quota"><span style="font-size:1.2rem">💳</span><span class="vt">Paga la quota</span></button>
-<div class="pay-modal" id="payModal" onclick="if(event.target===this)closePay()">
-  <div class="pay-box" role="dialog" aria-modal="true" aria-label="Pagamento quote">
-    <div class="pay-head">
-      <div><h3>💳 Pagamento quote</h3><small>Scegli il metodo che preferisci — riceverai conferma via email/WhatsApp</small></div>
-      <button class="pay-close" onclick="closePay()" aria-label="Chiudi">✕</button>
-    </div>
-    <div class="pay-body">
-      <div class="pay-opt">
-        <div class="lbl">🏦 Bonifico bancario</div>
-        <div class="iban-row">
-          <span class="iban" id="ibanCode">IT00 A000 0000 0000 0000 0000 000</span>
-          <button class="copy-btn" onclick="copyIban(this)">📋 Copia IBAN</button>
-        </div>
-        <div class="pay-info"><b>Intestato a:</b> A.P.D. Isola — Isola del Gran Sasso d'Italia<br><b>Causale obbligatoria:</b> <em>Quota socio 2026/27 — Nome e Cognome</em></div>
-        <div class="pay-note">⚠️ Senza causale corretta non possiamo associare il pagamento! Invia poi la ricevuta su WhatsApp <b>351 76 09 481</b>.</div>
-      </div>
-      <div class="pay-opt">
-        <div class="lbl">💳 Carta di credito / debito</div>
-        <p style="font-size:.88rem;color:var(--mut);margin-bottom:.9rem">Pagamento rapido e sicuro con <b>SumUp</b> — nessuna registrazione richiesta.</p>
-        <a class="btn btn-solid" href="https://pay.sumup.com/b2c/INSERISCI-TUO-LINK-SUMUP" target="_blank" rel="noopener">Paga con carta → SumUp</a>
-        <div class="pay-info" style="text-align:center;margin-top:.6rem">Apple Pay e Google Pay supportati ✓</div>
-      </div>
-      <p style="font-size:.75rem;color:#8b93a5;text-align:center">Problemi? Scrivi a <b>apd.isolags@gmail.com</b> o chiama il <b>351 76 09 481</b></p>
-    </div>
-  </div>
-</div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="this.classList.remove('open')"><button class="x" aria-label="Chiudi">✕</button><img id="lbImg" src="" alt="Foto ingrandita"></div>
-
-<button id="toTop" aria-label="Torna su">↑</button>
-
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="fgrid">
       <div>
         <h4>A.P.D. Isola</h4>
-        <p>Associazione Polisportiva Dilettantistica di Isola del Gran Sasso d'Italia. Dal 1985 promuoviamo lo sport come strumento di crescita, socializzazione e benessere per tutte le età.</p>
+        <p>Associazione Polisportiva Dilettantistica di Isola del Gran Sasso d'Italia. Promuoviamo lo sport come strumento di crescita e benessere.</p>
       </div>
       <div>
-        <h4>Sezioni</h4>
-        <a href="#eventi">Eventi</a><a href="#news">News</a><a href="#squadre">Squadre</a><a href="#calendario">Calendario</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" rel="noopener">Iscrizioni</a>
+        <h4>Esplora</h4>
+        <a href="#eventi">Eventi</a>
+        <a href="#news">News</a>
+        <a href="#squadre">Squadre</a>
       </div>
       <div>
-        <h4>Società</h4>
-        <a href="#contatti">Contatti</a><a href="direttivo.html">🔒 Area riservata</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a>
+        <h4>Contatti</h4>
+        <a href="mailto:apd.isolags@gmail.com">apd.isolags@gmail.com</a>
+        <a href="tel:+393517609481">+39 351 76 09 481</a>
+        <p style="margin-top:1rem; font-size:.85rem; color:var(--mut);">Via San Gabriele 100<br>Isola del Gran Sasso (TE)</p>
       </div>
     </div>
     <div class="fbot">
-      <div class="soc">
-        <a href="https://www.instagram.com/apdisola/" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
-        <a href="https://www.youtube.com/@apdisola" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
-        <a href="https://www.facebook.com/apdisola" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-      </div>
       © 2026 A.P.D. Isola — Isola del Gran Sasso d'Italia · Uniti dallo sport, per crescere insieme
     </div>
   </div>
@@ -649,329 +317,120 @@ footer a:hover{color:var(--blue-soft)}
 
 <script>
 /* ═══════════════════════════════════════════════════════════════
-   ★★★  PANNELLO DI CONTROLLO — GESTIONE FACILE ★★★
-   Modifica SOLO i contenuti qui sotto: il sito si aggiorna da solo.
-   Per ogni news/evento/squadra basta copiare un blocco e cambiare
-   i valori tra virgolette. Non serve toccare il resto della pagina.
+   CONFIGURAZIONE DATI (Modifica questi campi per aggiornare il sito)
    ═══════════════════════════════════════════════════════════════ */
 const CONFIG = {
-
-  /* ── Nastro scorrevole sotto l'hero ── */
-  ribbon: ["Pallavolo","Basket","Calcio a 5","Tennis","Minivolley","Camminata Nordica","Zumba","Pilates","Spirit Walking","eSports","Dal 1985"],
-
-  /* ── Prossima partita (countdown automatico) ── */
+  /* -- Partita nel Match Center -- */
   nextMatch: {
     label: "🏐 Prossima partita · Pallavolo femminile",
     home: "APD ISOLA", away: "ATLETICO<br>GRAN SASSO",
-    homeTag: "Casa", awayTag: "Trasferta",
-    dateISO: "2026-09-21T17:00:00+02:00",   /* ← data/ora della sfida */
-    meta: "📅 Domenica 21 settembre · ore 17:00<br>📍 Palestra Via San Gabriele — Isola del Gran Sasso"
+    dateISO: "2026-09-27T17:00:00+02:00", 
+    meta: "📅 Domenica 27 settembre · ore 17:00<br>📍 Palestra Via San Gabriele"
   },
-
-  /* ── Ultima partita giocata ── */
-  lastMatch: {
-    label: "✅ Ultima partita giocata · Under 18",
-    home: "APD ISOLA", away: "PALLAVOLO<br>TERAMO", score: "3 – 1",
-    homeTag: "Casa", awayTag: "Trasferta",
-    sets: [["1° Set","25 – 21",1],["2° Set","22 – 25",0],["3° Set","25 – 19",1],["4° Set","25 – 23",1]],
-    meta: "🏆 Vittoria! · 07/09/2026"
-  },
-
-  /* ── Classifica (0 = squadra APD Isola, evidenziata) ── */
-  table: {
-    label: "📊 Classifica · Girone A — Provinciale",
-    rows: [
-      {pos:1, team:"Pallavolo Teramo", pts:9, me:false},
-      {pos:2, team:"APD ISOLA",        pts:7, me:true },
-      {pos:3, team:"Atletico Gran Sasso", pts:6, me:false},
-      {pos:4, team:"Volley Val Vibrata",  pts:4, me:false},
-      {pos:5, team:"Torricella Volley",   pts:3, me:false},
-      {pos:6, team:"Sporting Colonnella", pts:1, me:false}
-    ],
-    updated: "Aggiornata al 10/09/2026"
-  },
-
-  /* ── EVENTO IN EVIDENZA (il più grande, in alto) ── */
+  
+  /* -- Evento in Evidenza (Bento Box 2) -- */
   featured: {
     img: "corsa-san-gabriele.jpg",
-    dateB: "19", dateS: "SET 2026",
-    tag: "Circuito UISP · Corrilabruzzo (Punti 150)",
+    dateB: "19", dateS: "SET",
     title: "3ª Corsa di San Gabriele",
-    desc: "Gara podistica su anello panoramico di 9,9 KM (3 giri) con passaggio davanti al Santuario di San Gabriele e salita a Cesa di Francia. Ritrovo ore 14:00 presso la Palestra APD Isola, partenza ore 16:00.",
-    chips: ["🏃‍♂️ Competitiva: <b>€10</b> (2 panini + 2 birre)","🚶‍♀️ Non competitiva: <b>€5</b> (1 panino + 1 birra)","👦 Ragazzi 6-15 anni: <b>Gratis</b> (medaglia + snack)","📲 Iscrizioni su <b>timingrun.it</b>","📲 Info WhatsApp: <b>371 5735977</b>"],
-    btn1: {txt:"Info su WhatsApp", href:"https://wa.me/393715735977"},
-    btn2: {txt:"Iscriviti su TimingRun", href:"https://www.timingrun.it"}
+    desc: "Gara podistica su anello panoramico di 9,9 KM. Ritrovo ore 14:00 presso la Palestra APD Isola.",
+    link: "https://www.timingrun.it"
   },
 
-  /* ── Altri eventi (cards) ── */
-  events: [
-    {img:"isola4volley.jpg", dateB:"AGO", dateS:"Estate", cat:"Torneo Estivo", title:"Torneo Isola4Volley",
-     desc:"Il grande classico della pallavolo estiva: squadre, musica e sfide ai piedi del Gran Sasso.", link:"#contatti", linkTxt:"Scopri i dettagli"},
-    {img:"blue-basket.jpg", dateB:"LUG", dateS:"Estate", cat:"Torneo Outdoor", title:"Torneo Calcio a 5",
-     desc:"Torneo amatoriale ed agonistico per rianimare le serate estive, aperto a tutte le categorie.", link:"#contatti", linkTxt:"Iscrivi la tua squadra"},
-    {img:"basket-giovanili.jpg", dateB:"20", dateS:"SET 2026", cat:"Open Day", title:"Porte aperte giovanili",
-     desc:"Sabato 20 settembre, dalle 16:00: prova gratuita di minivolley e minibasket per i più piccoli.", link:"#contatti", linkTxt:"Prenota il tuo posto"}
-  ],
-
-  /* ── NEWS (le 3 più recenti) ── */
+  /* -- Ultime News -- */
   news: [
-    {img:"isola4volley.jpg", dateB:"30", dateS:"AGO", cat:"Tornei",
-     title:"«Campioni dentro e fuori dal campo: l'VIII Isola4Volley è nostro!»",
-     desc:"I ragazzi del 2000 conquistano l'edizione del torneo estivo: cuore, grinta e gioco di squadra.", link:"#", linkTxt:"Leggi il racconto"},
-    {img:"pallavolo-femminile.jpg", dateB:"07", dateS:"SET", cat:"Società",
-     title:"Al via gli allenamenti della stagione 2026/27",
-     desc:"Tutte le squadre tornano in palestra da lunedì 15 settembre. Il calendario completo è in segreteria.", link:"#", linkTxt:"Scopri di più"},
-    {img:"basket-giovanili.jpg", dateB:"15", dateS:"SET", cat:"Giovanili",
-     title:"Open Day: minivolley e scuola basket",
-     desc:"Porte aperte in palestra per i più piccoli: prova gratuita e iscrizioni per tutte le attività giovanili.", link:"#", linkTxt:"Scopri di più"}
+    {img: "isola4volley.jpg", cat: "Tornei", title: "L'VIII Isola4Volley è nostro!", desc: "I ragazzi del 2000 conquistano l'edizione del torneo estivo.", link: "#"},
+    {img: "pallavolo-femminile.jpg", cat: "Società", title: "Al via gli allenamenti 26/27", desc: "Tutte le squadre tornano in palestra. Il calendario completo è in segreteria.", link: "#"},
+    {img: "basket-giovanili.jpg", cat: "Giovanili", title: "Open Day Basket & Volley", desc: "Porte aperte in palestra per i più piccoli: prova gratuita e iscrizioni.", link: "#"}
   ],
 
-  /* ── SQUADRE / SEZIONI ── */
+  /* -- Squadre -- */
   teams: [
-    {img:"pallavolo-femminile.jpg", lv:"2ª Divisione Federale", name:"Isola Volley",
-     desc:"Dal minivolley ai campionati giovanili e alla Seconda Divisione: talenti che crescono insieme."},
-    {img:"basket-giovanili.jpg", lv:"Divisione Regionale", name:"Blue Basket Isola",
-     desc:"Dal minibasket alla Divisione Regionale: fair play, rispetto e passione per il gioco di squadra."},
-    {img:"blue-basket.jpg", lv:"Campionati giovanili", name:"Calcio a 5",
-     desc:"Tecnica e divertimento: i campionati giovanili di calcio a 5 della nostra polisportiva."},
-    {img:"pallavolo-2.jpg", lv:"Tennis & Benessere", name:"Tennis · Nordic Walking · Zumba",
-     desc:"Camminata nordica, spirit walking, pilates e zumba: benessere per corpo e mente, a ogni età."}
-  ],
-
-  /* ── NUMERI DELLA POLISPORTIVA ── */
-  stats: [
-    {n:176, suf:"",  lbl:"Atleti agonisti"},
-    {n:17,  suf:"",  lbl:"Squadre attive"},
-    {n:6,   suf:"",  lbl:"Discipline"},
-    {n:9,   suf:"",  lbl:"Allenatori federali"},
-    {n:64,  suf:"",  lbl:"Soci sostenitori"},
-    {n:8,   suf:"",  lbl:"Dirigenti"}
-  ],
-
-  /* ── PALMARES ── */
-  palmares: [
-    {ic:"🏐", n:8,   t:"Edizioni Isola4Volley"},
-    {ic:"🏆", n:12,  t:"Trofei estivi"},
-    {ic:"🥇", n:5,   t:"Titoli giovanili"},
-    {ic:"⬆️", n:3,   t:"Promozioni in Serie D"},
-    {ic:"🎽", n:176, t:"Atleti in gioco"},
-    {ic:"⛰️", n:40,  t:"Anni di storia"}
-  ],
-
-  /* ── BACHECA FOTO ── */
-  gallery: [
-    {img:"pallavolo-femminile.jpg", b:"Isola Volley",    s:"📸 Squadra"},
-    {img:"pallavolo-2.jpg",         b:"Under",           s:"📸 Allenamento"},
-    {img:"isola4volley.jpg",        b:"Isola4Volley",    s:"📸 Torneo"},
-    {img:"blue-basket.jpg",         b:"Amiche di squadra", s:"📸 Festa"},
-    {img:"basket-giovanili.jpg",    b:"Giovanili",       s:"📸 Evento"},
-    {img:"pallavolo-femminile.jpg", b:"Post partita",    s:"📸 Vittoria"}
+    {img: "pallavolo-femminile.jpg", lv: "2ª Divisione", name: "Isola Volley"},
+    {img: "basket-giovanili.jpg", lv: "Regionale", name: "Blue Basket"},
+    {img: "blue-basket.jpg", lv: "Giovanili", name: "Calcio a 5"}
   ]
 };
-/* ═══════════ FINE PANNELLO DI CONTROLLO ═══════════ */
 
-
+/* ═══════════════════════════════════════════════════════════════
+   LOGICA DEL SITO (Non modificare)
+   ═══════════════════════════════════════════════════════════════ */
 const $ = s => document.querySelector(s);
-const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!==undefined)e.innerHTML=h; return e;};
 
-/* ── RENDER: ribbon ── */
-$('#ribbonTrack').innerHTML = [0,1].map(()=>`<span>${CONFIG.ribbon.map(r=>`${r} <i>✦</i>`).join(' ')}</span>`).join('');
+// Scroll Header
+window.addEventListener('scroll', () => {
+  $('#siteHeader').classList.toggle('scrolled', window.scrollY > 50);
+});
 
-/* ── RENDER: match center ── */
-$('#mcNext').innerHTML = `
-  <div class="mc-card">
-    <div class="mc-lab">${CONFIG.nextMatch.label}</div>
-    <div class="mc-vs">
-      <div class="team">${CONFIG.nextMatch.home}<small>${CONFIG.nextMatch.homeTag}</small></div>
-      <div class="mid">VS</div>
-      <div class="team">${CONFIG.nextMatch.away}<small>${CONFIG.nextMatch.awayTag}</small></div>
-    </div>
-    <div class="countdown">
-      <div><b id="cd-d">--</b><span>Giorni</span></div><div><b id="cd-h">--</b><span>Ore</span></div>
-      <div><b id="cd-m">--</b><span>Min</span></div><div><b id="cd-s">--</b><span>Sec</span></div>
-    </div>
-    <div class="mc-meta">${CONFIG.nextMatch.meta}</div>
-  </div>`;
+// Popola Match Center
+$('#mc-label').innerHTML = CONFIG.nextMatch.label;
+$('#mc-home').innerHTML = `${CONFIG.nextMatch.home}<small>Casa</small>`;
+$('#mc-away').innerHTML = `${CONFIG.nextMatch.away}<small>Trasferta</small>`;
+$('#mc-meta').innerHTML = CONFIG.nextMatch.meta;
 
-$('#mcLast').innerHTML = `
-  <div class="mc-card">
-    <div class="mc-lab">${CONFIG.lastMatch.label}</div>
-    <div class="mc-vs" style="margin-bottom:.8rem">
-      <div class="team">${CONFIG.lastMatch.home}<small>${CONFIG.lastMatch.homeTag}</small></div>
-      <div class="mid" style="font-size:1.2rem">${CONFIG.lastMatch.score}</div>
-      <div class="team">${CONFIG.lastMatch.away}<small>${CONFIG.lastMatch.awayTag}</small></div>
-    </div>
-    <div class="sets">${CONFIG.lastMatch.sets.map(([l,s,w])=>`<div class="row"><span>${l}</span><b class="${w?'win':''}">${s}</b></div>`).join('')}</div>
-    <div class="mc-meta">${CONFIG.lastMatch.meta}</div>
-  </div>`;
-
-$('#mcTable').innerHTML = `
-  <div class="mc-card">
-    <div class="mc-lab">${CONFIG.table.label}</div>
-    <table class="mtable"><tr><th>#</th><th>Squadra</th><th>PT</th></tr>
-    ${CONFIG.table.rows.map(r=>`<tr class="${r.me?'me':''}"><td>${r.pos}</td><td>${r.team}</td><td>${r.pts}</td></tr>`).join('')}
-    </table>
-    <div class="mc-meta">${CONFIG.table.updated}</div>
-  </div>`;
-
-/* Tabs */
-document.querySelectorAll('.mc-tab').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.mc-tab').forEach(x=>x.classList.remove('on'));
-  document.querySelectorAll('.mc-panel').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');
-  $('#tab-'+b.dataset.tab).classList.add('on');
-}));
-
-/* Countdown */
+// Countdown
 const cdT = new Date(CONFIG.nextMatch.dateISO).getTime();
-function tick(){
+setInterval(() => {
   const d = cdT - Date.now();
-  const set=(id,v)=>{const n=document.getElementById(id); if(n)n.textContent=v;};
-  if(d<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>set(id,'00')); return;}
-  set('cd-d',Math.floor(d/864e5));
-  set('cd-h',String(Math.floor(d%864e5/36e5)).padStart(2,'0'));
-  set('cd-m',String(Math.floor(d%36e5/6e4)).padStart(2,'0'));
-  set('cd-s',String(Math.floor(d%6e4/1e3)).padStart(2,'0'));
-}
-tick(); setInterval(tick,1000);
+  if(d <= 0) return;
+  $('#cd-d').textContent = Math.floor(d / 864e5);
+  $('#cd-h').textContent = String(Math.floor(d % 864e5 / 36e5)).padStart(2, '0');
+  $('#cd-m').textContent = String(Math.floor(d % 36e5 / 6e4)).padStart(2, '0');
+  $('#cd-s').textContent = String(Math.floor(d % 6e4 / 1e3)).padStart(2, '0');
+}, 1000);
 
-/* ── RENDER: evento in evidenza ── */
-const F = CONFIG.featured;
-$('#featEvent').innerHTML = `
-  <div class="feat">
-    <div class="ph"><img loading="lazy" src="${F.img}" alt="${F.title}"><div class="badge-date"><b>${F.dateB}</b><span>${F.dateS}</span></div></div>
-    <div class="body">
-      <div class="tag">${F.tag}</div><h3>${F.title}</h3>
-      <div class="chips">${F.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
-      <p>${F.desc}</p>
-      <div class="btn-row">
-        <a class="btn btn-solid" href="${F.btn1.href}" target="_blank" rel="noopener">${F.btn1.txt}</a>
-        <a class="btn btn-line" href="${F.btn2.href}" target="_blank" rel="noopener">${F.btn2.txt}</a>
-      </div>
-    </div>
-  </div>`;
+// Popola Evento Evidenza
+const feat = CONFIG.featured;
+$('#feat-box').innerHTML = `
+  <div class="ph" style="background-image:url('${feat.img}')">
+    <div class="date-badge"><b>${feat.dateB}</b><span style="font-size:.65rem;letter-spacing:1px">${feat.dateS}</span></div>
+  </div>
+  <div class="body">
+    <h3>${feat.title}</h3>
+    <p>${feat.desc}</p>
+    <a href="${feat.link}" target="_blank" class="btn btn-solid" style="padding:.8rem 1.4rem; font-size:.8rem; align-self:flex-start;">Scopri di più</a>
+  </div>
+`;
 
-/* ── RENDER: cards (eventi, news) ── */
-const card = c=>`
+// Popola News
+$('#newsGrid').innerHTML = CONFIG.news.map(n => `
   <article class="ncard">
-    <div class="ph"><img loading="lazy" src="${c.img}" alt="${c.title}"><div class="date"><b>${c.dateB}</b><span>${c.dateS}</span></div></div>
-    <div class="body"><div class="cat">${c.cat}</div><h3>${c.title}</h3><p>${c.desc}</p>
-    <a class="more" href="${c.link}">${c.linkTxt}</a></div>
-  </article>`;
-$('#eventsGrid').innerHTML = CONFIG.events.map(card).join('');
-$('#newsGrid').innerHTML   = CONFIG.news.map(card).join('');
+    <div class="ph"><img src="${n.img}" alt="${n.title}"></div>
+    <div class="body">
+      <div class="cat">${n.cat}</div>
+      <h3>${n.title}</h3>
+      <p>${n.desc}</p>
+      <a href="${n.link}" class="more-link">Leggi</a>
+    </div>
+  </article>
+`).join('');
 
-/* ── RENDER: squadre con tilt 3D ── */
-$('#teamsGrid').innerHTML = CONFIG.teams.map(t=>`
-  <div class="dcard tilt"><img loading="lazy" src="${t.img}" alt="${t.name}">
-    <div class="ov"><div class="lv">${t.lv}</div><h3>${t.name}</h3><p>${t.desc}</p></div>
-  </div>`).join('');
-document.querySelectorAll('.tilt').forEach(c=>{
-  c.addEventListener('mousemove',e=>{
-    const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    c.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
-  });
-  c.addEventListener('mouseleave',()=>c.style.transform='');
+// Popola Squadre
+$('#teamsGrid').innerHTML = CONFIG.teams.map(t => `
+  <div class="dcard">
+    <img src="${t.img}" alt="${t.name}">
+    <div class="ov">
+      <div class="lv">${t.lv}</div>
+      <h3>${t.name}</h3>
+    </div>
+  </div>
+`).join('');
+
+// Menu Mobile
+$('#burger').addEventListener('click', () => {
+  const nav = $('#navLinks');
+  if(nav.style.display === 'flex') nav.style.display = 'none';
+  else {
+    nav.style.display = 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.position = 'absolute';
+    nav.style.top = '100%';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.background = 'rgba(5,6,15,0.95)';
+    nav.style.padding = '2rem';
+  }
 });
-
-/* ── RENDER: stats + palmares ── */
-$('#statsGrid').innerHTML = CONFIG.stats.map(s=>`<div class="stat rv"><div class="num" data-n="${s.n}" data-suf="${s.suf}">0</div><div class="lbl">${s.lbl}</div></div>`).join('');
-$('#palmGrid').innerHTML = CONFIG.palmares.map(p=>`<div class="palm"><div class="ic">${p.ic}</div><div class="n" data-p="${p.n}">0</div><div class="t">${p.t}</div></div>`).join('');
-
-/* ── RENDER: bacheca + lightbox ── */
-$('#galleryGrid').innerHTML = CONFIG.gallery.map(g=>`
-  <figure data-full="${g.img}"><img loading="lazy" src="${g.img}" alt="${g.b}"><figcaption><b>${g.b}</b><span>${g.s}</span></figcaption></figure>`).join('');
-document.querySelectorAll('#galleryGrid figure').forEach(f=>f.addEventListener('click',()=>{
-  $('#lbImg').src=f.dataset.full; $('#lightbox').classList.add('open');
-}));
-document.querySelector('#lightbox .x').addEventListener('click',e=>{e.stopPropagation();$('#lightbox').classList.remove('open');});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#lightbox').classList.remove('open');closePay();}});
-
-/* ── Contatori animati ── */
-function countUp(elm,target,suffix=''){
-  let v=0; const step=()=>{v+=Math.max(1,Math.ceil(target/55)); if(v>=target)v=target; elm.textContent=v+suffix; if(v<target)requestAnimationFrame(step);};
-  step();
-}
-const ioCnt = new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  countUp(e.target, +e.target.dataset.n, e.target.dataset.suf||'');
-  ioCnt.unobserve(e.target);
-}),{threshold:.5});
-document.querySelectorAll('.num').forEach(n=>ioCnt.observe(n));
-const ioPalm = new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  countUp(e.target, +e.target.dataset.p);
-  ioPalm.unobserve(e.target);
-}),{threshold:.5});
-document.querySelectorAll('.palm .n').forEach(n=>ioPalm.observe(n));
-
-/* ── Reveal on scroll ── */
-const ioRv = new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('in'); ioRv.unobserve(e.target);}
-}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(x=>ioRv.observe(x));
-
-/* ── Header, progress, parallax, toTop ── */
-const header=$('#siteHeader'), prog=$('#progress'), heroBg=$('#heroBg'), toTop=$('#toTop');
-function onScroll(){
-  const y=window.scrollY;
-  header.classList.toggle('scrolled', y>60);
-  const h=document.documentElement.scrollHeight-innerHeight;
-  prog.style.width=(h>0? y/h*100:0)+'%';
-  toTop.classList.toggle('show', y>700);
-  if(y<innerHeight) heroBg.style.transform=`scale(1.08) translateY(${y*.28}px)`;
-}
-addEventListener('scroll',onScroll,{passive:true}); onScroll();
-toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-
-/* ── Mobile menu ── */
-const navLinks=$('#navLinks');
-$('#burger').addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-
-/* ── Moduli rapidi (widget) ── */
-function toggleAI(){$('#aiModal').classList.toggle('open');}
-document.querySelectorAll('.ai-opt').forEach(b=>b.addEventListener('click',()=>{
-  const m=$('#aiMsg'), t=b.dataset.ai;
-  if(t==='visita') m.innerHTML='<strong>Moduli Rapidi:</strong> Scarica il modello per la visita medica:<br><br>👉 <a href="https://drive.google.com/file/d/0B7mxtPZwiNFPU1RRVzZob0FYY1U/view?usp=sharing&resourcekey=0-uYEC-wMwmtL1dHxFr5RtxA" target="_blank" rel="noopener">Scarica Visita Medica (PDF)</a>';
-  else if(t==='iscrizione') m.innerHTML='<strong>Moduli Rapidi:</strong> Compila online il modulo d\'iscrizione:<br><br>👉 <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1_Lz_k67oTQ-UIg9c8fV7OxfSn_EtEZwte1I3ruWYs3JsCQ/viewform?usp=sharing&ouid=104286087522201529049" target="_blank" rel="noopener">Apri Modulo Iscrizione</a>';
-  else if(t==='corsa') m.innerHTML='<strong>Moduli Rapidi:</strong> Iscriviti alla 3ª Corsa di San Gabriele:<br><br>👉 <a href="https://www.timingrun.it" target="_blank" rel="noopener">Iscriviti su TimingRun.it</a><br>📲 Info WhatsApp: <strong>371 5735977</strong>';
-  else m.innerHTML='<strong>Moduli Rapidi:</strong> Scrivi alla segreteria dal modulo contatti in fondo alla pagina o a <strong>apd.isolags@gmail.com</strong>.';
-}));
-
-/* ── Pagamento quote ── */
-function openPay(){$('#payModal').classList.add('open'); document.body.style.overflow='hidden';}
-function closePay(){$('#payModal').classList.remove('open'); document.body.style.overflow='';}
-function copyIban(btn){
-  const iban=$('#ibanCode').textContent.replace(/\s/g,'');
-  const done=()=>{const t=btn.textContent; btn.textContent='✓ Copiato!'; setTimeout(()=>btn.textContent=t,2000);};
-  if(navigator.clipboard) navigator.clipboard.writeText(iban).then(done).catch(()=>fb(iban,done)); else fb(iban,done);
-}
-function fb(t,d){const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); d();}catch(e){} ta.remove();}
-
-/* ── Form contatti ── */
-$('#contactForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  $('#sentMsg').classList.add('show');
-  e.target.reset();
-  setTimeout(()=>$('#sentMsg').classList.remove('show'),5000);
-});
-
-/* ── Cursore premium ── */
-if(matchMedia('(pointer:fine)').matches){
-  const dot=$('#curDot'), ring=$('#curRing'); let mx=0,my=0,rx=0,ry=0;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.16; ry+=(my-ry)*.16; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop);})();
-  document.querySelectorAll('a,button,.dcard,figure,.mc-tab,input,select,textarea').forEach(x=>{
-    x.addEventListener('mouseenter',()=>ring.classList.add('big'));
-    x.addEventListener('mouseleave',()=>ring.classList.remove('big'));
-  });
-}
-
-/* ── Preloader ── */
-let lp=0; const li=setInterval(()=>{lp=Math.min(100,lp+Math.random()*22); $('#loadBar').style.width=lp+'%';
-  if(lp>=100){clearInterval(li); setTimeout(()=>$('#loader').classList.add('done'),250);}},160);
-addEventListener('load',()=>{setTimeout(()=>{clearInterval(li); $('#loadBar').style.width='100%'; $('#loader').classList.add('done');},900);});
 </script>
 </body>
 </html>
