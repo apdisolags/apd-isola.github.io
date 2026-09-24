@@ -124,6 +124,179 @@ body{font-family:Inter,sans-serif}
 .team-actions .team-action.secondary:hover{background:#d0005b;}
 
 
+
+/* ===== APD ISOLA REDESIGN v13 ===== */
+.hero-apd{min-height:clamp(650px,88vh,900px);background-image:url("./sfondo.png");background-position:center center;background-size:cover;background-repeat:no-repeat;isolation:isolate}
+.hero-apd-overlay{background:linear-gradient(90deg,rgba(5,18,47,.92) 0%,rgba(7,27,73,.78) 42%,rgba(7,27,73,.36) 72%,rgba(165,0,68,.18) 100%);z-index:-1}
+.hero-apd:after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(0deg,rgba(4,13,32,.72),transparent);z-index:-1}
+.hero-apd-shape{z-index:-1;opacity:.65}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;color:#fff;font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+.hero-kicker span{display:block;width:9px;height:9px;border-radius:50%;background:#d0005b;box-shadow:0 0 0 5px rgba(208,0,91,.15)}
+.hero-title{font-family:"Barlow Condensed",sans-serif;font-size:clamp(72px,10vw,154px);line-height:.78;font-weight:900;letter-spacing:-.045em;text-transform:uppercase;margin:0;max-width:760px;text-shadow:0 10px 40px rgba(0,0,0,.2)}
+.hero-title span{background:linear-gradient(90deg,#bcd8ff 0%,#fff 48%,#f3a6ca 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-lead{font-size:clamp(17px,1.6vw,22px);line-height:1.35;color:rgba(255,255,255,.82);margin:30px 0 0;max-width:620px}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.hero-btn{display:inline-flex;align-items:center;gap:16px;min-height:52px;padding:0 22px;border-radius:5px;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.hero-btn span{font-size:18px;line-height:1}
+.hero-btn-main{background:#fff;color:#071b49}.hero-btn-main:hover{background:#f3a6ca;transform:translateY(-2px)}
+.hero-btn-outline{border:1px solid rgba(255,255,255,.45);color:#fff;background:rgba(7,27,73,.18)}.hero-btn-outline:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
+.hero-feature{width:100%;border:1px solid rgba(255,255,255,.22);background:rgba(5,17,42,.58);backdrop-filter:blur(14px);box-shadow:0 25px 70px rgba(0,0,0,.28);border-radius:10px;overflow:hidden}
+.hero-feature-top{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid rgba(255,255,255,.12);font-size:10px;font-weight:900;letter-spacing:.2em;color:#bcd8ff}
+.hero-feature-main{display:flex;justify-content:space-between;gap:25px;padding:25px 24px 22px;align-items:flex-end}
+.hero-feature-label{font-size:10px;letter-spacing:.18em;font-weight:900;color:#f3a6ca;margin-bottom:8px}
+.hero-feature h2{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:.86;font-weight:900;margin:0}.hero-feature h2 strong{color:#f3a6ca}
+.hero-feature-stats{display:flex;gap:22px;flex-shrink:0}.hero-feature-stats div{padding-left:16px;border-left:1px solid rgba(255,255,255,.18)}.hero-feature-stats strong{display:block;font-family:"Barlow Condensed",sans-serif;font-size:42px;line-height:.8}.hero-feature-stats small{display:block;margin-top:8px;font-size:8px;font-weight:900;letter-spacing:.12em;color:rgba(255,255,255,.6)}
+.hero-memory{display:flex;align-items:center;gap:20px;padding:16px 22px;background:linear-gradient(90deg,rgba(20,62,145,.85),rgba(165,0,68,.86));color:#fff;text-decoration:none;transition:filter .2s ease}.hero-memory:hover{filter:brightness(1.12)}.hero-memory span{font-size:9px;font-weight:900;letter-spacing:.16em;color:#c7ddff}.hero-memory strong{font-family:"Barlow Condensed",sans-serif;font-size:23px;line-height:1;text-transform:uppercase}.hero-memory i{margin-left:auto;font-style:normal;font-size:11px;color:rgba(255,255,255,.72);white-space:nowrap}
+/* Squadre: immagine a tutta larghezza, nessun bordo/padding bianco esterno */
+.team-logo-card{min-height:0;padding:0;background:#0b214f;border:0;border-radius:8px;box-shadow:0 16px 38px rgba(0,0,0,.2);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.team-logo-card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 24px 50px rgba(0,0,0,.34)}
+.team-logo-wrap{height:300px;min-height:0;background:#07111f;display:block;overflow:hidden;border-radius:0}
+.team-logo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.team-image-button{display:block;margin:0;padding:0;border:0;background:transparent;color:inherit;cursor:pointer}
+.team-card-footer{padding:18px 20px 16px;background:#0b214f}
+.team-card-footer .team-tag,.basket-team-card .team-tag{font-size:10px;letter-spacing:.18em;margin:0 0 7px;color:#f3a6ca}
+.team-card-footer h3,.basket-team-card h3{font-family:"Barlow Condensed",sans-serif;font-size:38px;line-height:.9;font-weight:900;text-transform:uppercase;margin:0;color:#fff;letter-spacing:-.01em}
+.team-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 14px;background:#0b214f}
+.team-action{min-height:46px;padding:0 12px;border:0;border-radius:4px;background:#f7f8fb;color:#071b49;gap:9px;font-size:10px;letter-spacing:.1em;box-shadow:none}
+.team-action span{font-size:15px;line-height:1}.team-action:hover{background:#d8e5ff;color:#071b49;transform:translateY(-2px)}
+.team-actions .team-action.secondary{background:#a50044;color:#fff}.team-actions .team-action.secondary:hover{background:#d0005b;color:#fff}
+.basket-team-card{min-height:0;padding:0;background:linear-gradient(145deg,#102d63,#a50044);border-radius:8px;display:flex;flex-direction:column;justify-content:flex-end}
+.basket-card-visual{height:300px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 75% 25%,rgba(255,255,255,.18),transparent 24%),linear-gradient(145deg,#102d63 0%,#071b49 56%,#a50044 100%);font-family:"Barlow Condensed",sans-serif;font-weight:900;text-transform:uppercase}.basket-card-visual span{font-size:74px;line-height:1}.basket-card-visual div{font-size:28px;line-height:.84;letter-spacing:.02em}.basket-card-visual b{color:#f3a6ca}
+@media(max-width:1023px){.hero-apd{min-height:auto}.hero-feature{margin-top:10px}.hero-feature-main{align-items:flex-start}.hero-memory{flex-wrap:wrap}.hero-memory i{margin-left:0;width:100%}.team-logo-wrap,.basket-card-visual{height:340px}}
+@media(max-width:639px){.hero-title{font-size:74px}.hero-feature-main{display:block}.hero-feature-stats{margin-top:20px}.hero-memory{display:block}.hero-memory strong{display:block;margin-top:5px}.hero-memory i{display:block;margin-top:6px}.team-card-footer h3,.basket-team-card h3{font-size:34px}.team-logo-wrap,.basket-card-visual{height:280px}}
+
+/* ===== APD ISOLA — BLACK / RED SPORT EDITION ===== */
+:root{
+  --apd-black:#070707;
+  --apd-black-2:#0d0d0f;
+  --apd-panel:#111214;
+  --apd-panel-2:#17181b;
+  --apd-red:#e10613;
+  --apd-red-2:#ff2633;
+  --apd-white:#f5f5f5;
+  --apd-muted:#a8aaae;
+}
+html,body{background:var(--apd-black)!important;color:var(--apd-white)!important}
+body{font-family:Inter,sans-serif}
+.topbar{background:#050505!important;border-bottom:1px solid rgba(225,6,19,.45)}
+.mainnav{background:#080808!important;border-bottom:1px solid rgba(225,6,19,.55);box-shadow:0 10px 35px rgba(0,0,0,.45)}
+.mainnav a:hover{color:#fff!important}
+
+/* linee rosse sportive */
+.granata-line{height:4px;background:linear-gradient(90deg,#e10613 0 72%,#fff 72% 73%,#e10613 73% 100%)!important}
+
+/* Hero: sfondo.png resta l'immagine reale */
+.hero,.hero-apd{
+  background-image:url("./sfondo.png")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  position:relative;
+  overflow:hidden;
+}
+.hero-apd-overlay{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.82) 42%,rgba(0,0,0,.48) 70%,rgba(225,6,19,.20) 100%)!important;
+}
+.hero-apd:before{
+  content:"";position:absolute;left:-8%;top:12%;width:64%;height:9px;
+  background:var(--apd-red);transform:skewX(-28deg);opacity:.95;z-index:-1;
+  box-shadow:0 22px 0 rgba(225,6,19,.18),0 44px 0 rgba(225,6,19,.08);
+}
+.hero-apd:after{
+  height:45%!important;
+  background:linear-gradient(0deg,rgba(0,0,0,.94),transparent)!important;
+}
+.hero-kicker{color:#fff!important}
+.hero-kicker span{background:var(--apd-red)!important;box-shadow:0 0 0 5px rgba(225,6,19,.18)!important}
+.hero-title{color:#fff!important;text-shadow:0 12px 45px rgba(0,0,0,.65)!important}
+.hero-title span{
+  background:linear-gradient(90deg,#fff 0%,#fff 45%,#ff2633 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+}
+.hero-lead{color:rgba(255,255,255,.78)!important}
+.hero-btn{border-radius:999px!important;min-height:54px!important;padding:0 25px!important}
+.hero-btn-main{background:var(--apd-red)!important;color:#fff!important;box-shadow:0 10px 30px rgba(225,6,19,.25)}
+.hero-btn-main:hover{background:var(--apd-red-2)!important;color:#fff!important}
+.hero-btn-outline{border:1px solid rgba(255,255,255,.38)!important;background:rgba(0,0,0,.4)!important;color:#fff!important}
+.hero-btn-outline:hover{border-color:var(--apd-red)!important;background:rgba(225,6,19,.13)!important}
+
+/* Pannello hero lungo, nero, non quadrato */
+.hero-feature{
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:linear-gradient(135deg,rgba(10,10,11,.92),rgba(22,22,24,.82))!important;
+  border-radius:18px!important;
+  box-shadow:0 30px 80px rgba(0,0,0,.55)!important;
+  position:relative;
+}
+.hero-feature:after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--apd-red)}
+.hero-feature-top{color:#ff5a63!important;border-bottom-color:rgba(255,255,255,.1)!important}
+.hero-feature-label{color:#ff5a63!important}
+.hero-feature h2 strong{color:#ff2633!important}
+.hero-feature-stats div{border-left-color:rgba(255,255,255,.14)!important}
+.hero-feature-stats small{color:rgba(255,255,255,.55)!important}
+.hero-memory{background:linear-gradient(90deg,#a90410,#e10613)!important}
+.hero-memory span{color:#fff!important}
+
+/* Sezioni */
+section{position:relative}
+section.bg-white, .bg-white{background:#0a0a0b!important}
+.bg-slate-50,.bg-slate-100{background:#0e0f11!important}
+.text-slate-900,.text-gray-900,.text-gray-800{color:#f5f5f5!important}
+.text-slate-600,.text-slate-500,.text-gray-600,.text-gray-500{color:#a8aaae!important}
+.border-slate-200,.border-gray-200{border-color:rgba(255,255,255,.09)!important}
+
+/* titoli sezione */
+section h2, section h3{letter-spacing:-.01em}
+section h2{color:#fff!important}
+section h2:after{content:"";display:block;width:58px;height:4px;background:var(--apd-red);margin-top:12px;transform:skewX(-28deg)}
+
+/* Card generiche */
+.card{background:#111214!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 18px 45px rgba(0,0,0,.32)!important}
+.news-image{background:linear-gradient(135deg,#151515,#e10613)!important}
+.match-strip{background:linear-gradient(90deg,#0b0b0c,#e10613)!important}
+
+/* Squadre: immagini grandi, card nere e bordi rossi */
+.team-logo-card{
+  background:#0b0b0c!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  border-radius:14px!important;
+  box-shadow:0 20px 55px rgba(0,0,0,.45)!important;
+}
+.team-logo-card:hover{border-color:rgba(225,6,19,.85)!important;box-shadow:0 28px 65px rgba(0,0,0,.58)!important}
+.team-logo-wrap{background:#050505!important;height:330px!important}
+.team-logo-wrap img{object-fit:cover!important}
+.team-card-footer{background:#101113!important;padding:21px 21px 17px!important;border-top:2px solid var(--apd-red)}
+.team-card-footer .team-tag{color:#ff4b55!important}
+.team-card-footer h3{font-size:42px!important;color:#fff!important}
+.team-actions{background:#101113!important;padding:0 16px 17px!important}
+.team-action{border:1px solid rgba(255,255,255,.16)!important;background:#1a1b1e!important;color:#fff!important;border-radius:999px!important;min-height:48px!important}
+.team-action:hover{background:#26272b!important;border-color:var(--apd-red)!important;color:#fff!important}
+.team-actions .team-action.secondary{background:var(--apd-red)!important;border-color:var(--apd-red)!important;color:#fff!important}
+.team-actions .team-action.secondary:hover{background:var(--apd-red-2)!important}
+.basket-team-card{background:linear-gradient(145deg,#111214,#050505 58%,#e10613)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:14px!important;box-shadow:0 20px 55px rgba(0,0,0,.45)!important}
+.basket-card-visual{background:linear-gradient(145deg,#191a1d,#070707 58%,#b4000c 100%)!important}
+.basket-card-visual b{color:#ff2633!important}
+
+/* elementi con accenti arancio/pink ereditati */
+.text-pink-300,.text-pink-400,.text-pink-500{color:#ff4b55!important}
+.bg-pink-500,.bg-pink-600{background:var(--apd-red)!important}
+
+/* Form */
+input,select,textarea{background:#121315!important;color:#fff!important;border-color:rgba(255,255,255,.12)!important}
+input::placeholder,textarea::placeholder{color:#777!important}
+button{border-radius:999px}
+
+/* Footer */
+footer{background:#050505!important;border-top:1px solid rgba(225,6,19,.45)!important}
+footer a:hover{color:#ff4b55!important}
+
+@media(max-width:639px){
+  .hero-title{font-size:70px!important}
+  .team-logo-wrap{height:290px!important}
+  .team-card-footer h3{font-size:37px!important}
+}
+
 </style>
 </head>
 <body>
@@ -180,39 +353,50 @@ body{font-family:Inter,sans-serif}
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero hero-grid relative overflow-hidden text-white">
-    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_80%_55%,white,transparent_20%)]"></div>
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 min-h-[inherit] flex items-end relative z-10">
-      <div class="grid lg:grid-cols-12 gap-8 w-full pb-14 lg:pb-20">
-        <div class="lg:col-span-8">
-          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-xs font-bold uppercase tracking-[.18em] mb-6">
-            <span class="w-2 h-2 rounded-full bg-pink-400"></span> Stagione 2026/27
-          </div>
-          <h1 class="font-display font-black uppercase text-6xl sm:text-8xl lg:text-[9rem] leading-[.82] tracking-[-.035em] max-w-5xl">
-            Uniti dallo<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-pink-300">Sport e dalla Passione.</span>
-          </h1>
-          <p class="mt-8 max-w-2xl text-base sm:text-xl text-blue-50/85 leading-relaxed">
-            La grande casa dello sport ai piedi del Gran Sasso. Pallavolo, basket, benessere e podismo per tutte le età.
-          </p>
-          <div class="flex flex-wrap gap-3 mt-8">
-            <a href="#match" class="bg-white text-blau px-7 py-4 rounded-full font-extrabold hover:bg-blue-50 transition">PROSSIMA SFIDA</a>
-            <a href="#discipline" class="border border-white/40 px-7 py-4 rounded-full font-extrabold hover:bg-white/10 transition">SCOPRI GLI SPORT</a>
-          </div>
-        </div>
+  <!-- HERO APD ISOLA -->
+  <section class="hero hero-apd relative overflow-hidden text-white">
+    <div class="hero-apd-overlay absolute inset-0"></div>
+    <div class="hero-apd-shape absolute -right-24 -top-20 w-[520px] h-[520px] rounded-full border border-white/10"></div>
+    <div class="hero-apd-shape absolute -right-10 -bottom-32 w-[420px] h-[420px] rounded-full border border-pink-300/10"></div>
 
-        <div class="lg:col-span-4 flex items-end">
-          <div class="w-full bg-black/25 backdrop-blur-md border border-white/20 p-5 sm:p-7 rounded-3xl">
-            <div class="text-xs uppercase tracking-[.2em] text-blue-200 font-bold">In primo piano</div>
-            <h2 class="font-display font-black uppercase text-3xl sm:text-4xl mt-2">Polisportiva in movimento</h2>
-            <div class="grid grid-cols-2 gap-3 mt-6">
-              <div class="bg-white/10 rounded-2xl p-4"><strong class="font-display text-4xl">4+</strong><div class="text-[10px] uppercase tracking-wider text-blue-100">Settori sportivi</div></div>
-              <div class="bg-white/10 rounded-2xl p-4"><strong class="font-display text-4xl">350+</strong><div class="text-[10px] uppercase tracking-wider text-blue-100">Tesserati attivi</div></div>
+    <div class="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-10 min-h-[inherit] flex items-center relative z-10">
+      <div class="w-full py-20 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+          <div class="lg:col-span-7">
+            <div class="hero-kicker"><span></span> A.P.D. ISOLA · POLISPORTIVA GRAN SASSO</div>
+            <h1 class="hero-title">
+              SPORT.<br>
+              <span>COMUNITÀ.</span><br>
+              PASSIONE.
+            </h1>
+            <p class="hero-lead">Il nostro campo è Isola del Gran Sasso.<br class="hidden sm:block"> La nostra squadra è tutta la comunità.</p>
+            <div class="hero-buttons">
+              <a href="#squadre" class="hero-btn hero-btn-main">LE NOSTRE SQUADRE <span>↗</span></a>
+              <a href="#match" class="hero-btn hero-btn-outline">MATCH CENTER <span>→</span></a>
             </div>
-            <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-blue-700/70 to-pink-700/70">
-              <div class="text-xs uppercase tracking-widest font-bold text-blue-100">Bacheca dei ricordi</div>
-              <div class="font-display font-black text-2xl uppercase mt-1">3ª Gara di San Gabriele</div>
-              <div class="text-sm text-white/80 mt-1">Edizione 2026 · Ricordo dell'evento</div>
+          </div>
+
+          <div class="lg:col-span-5 lg:pb-2">
+            <div class="hero-feature">
+              <div class="hero-feature-top">
+                <span>IN EVIDENZA</span>
+                <span>2026/27</span>
+              </div>
+              <div class="hero-feature-main">
+                <div>
+                  <div class="hero-feature-label">POLISPORTIVA GRAN SASSO</div>
+                  <h2>Una stagione,<br><strong>quattro squadre.</strong></h2>
+                </div>
+                <div class="hero-feature-stats">
+                  <div><strong>4+</strong><small>SETTORI</small></div>
+                  <div><strong>350+</strong><small>TESSERATI</small></div>
+                </div>
+              </div>
+              <a href="#ricordi" class="hero-memory">
+                <span>BACHECA DEI RICORDI</span>
+                <strong>3ª GARA DI SAN GABRIELE</strong>
+                <i>Scopri il ricordo dell'edizione 2026&nbsp; →</i>
+              </a>
             </div>
           </div>
         </div>
@@ -297,48 +481,47 @@ body{font-family:Inter,sans-serif}
   </section>
 
   <!-- TEAMS -->
-  <section id="squadre" class="bg-[#071b49] text-white py-20">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="squadre" class="bg-[#071b49] text-white py-20 lg:py-24">
+    <div class="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-10">
       <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
         <div>
           <div class="text-xs font-extrabold uppercase tracking-[.25em] text-pink-300">ATOTIS ISOLA</div>
-          <h2 class="font-display font-black uppercase text-5xl md:text-6xl mt-2">Le nostre squadre</h2>
+          <h2 class="font-display font-black uppercase text-5xl md:text-7xl mt-2 leading-[.88]">Le nostre squadre</h2>
         </div>
-        <p class="max-w-md text-white/65">Quattro formazioni, un'unica identità sportiva.</p>
+        <p class="max-w-md text-white/60 md:text-right">Quattro formazioni. Una sola identità. Segui calendario e classifica della tua squadra.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <article class="team-card team-logo-card text-left">
-          <button data-team="volley-2div" class="team-logo-click flex-1 w-full text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        <article class="team-logo-card text-left">
+          <button data-team="volley-2div" class="team-logo-click team-image-button w-full text-left">
             <div class="team-logo-wrap"><img src="./Seconda%20divisione.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
             <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA VOLLEY</span><h3>Seconda Divisione</h3></div>
           </button>
-          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+          <div class="team-actions"><a class="team-action" href="#calendario">CALENDARIO <span>→</span></a><a class="team-action secondary" href="#classifica">CLASSIFICA <span>↗</span></a></div>
         </article>
 
-        <article class="team-card team-logo-card text-left">
-          <button data-team="volley-u17" class="team-logo-click flex-1 w-full text-left">
+        <article class="team-logo-card text-left">
+          <button data-team="volley-u17" class="team-logo-click team-image-button w-full text-left">
             <div class="team-logo-wrap"><img src="./Under%2017.png" alt="ATOTIS Isola Volley Under 17"></div>
             <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA VOLLEY</span><h3>Under 17</h3></div>
           </button>
-          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+          <div class="team-actions"><a class="team-action" href="#calendario">CALENDARIO <span>→</span></a><a class="team-action secondary" href="#classifica">CLASSIFICA <span>↗</span></a></div>
         </article>
 
-        <article class="team-card team-logo-card text-left">
-          <button data-team="volley-u15" class="team-logo-click flex-1 w-full text-left">
+        <article class="team-logo-card text-left">
+          <button data-team="volley-u15" class="team-image-button team-logo-click w-full text-left">
             <div class="team-logo-wrap"><img src="./Under%2015.png" alt="ATOTIS Isola Volley Under 15"></div>
             <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA VOLLEY</span><h3>Under 15</h3></div>
           </button>
-          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+          <div class="team-actions"><a class="team-action" href="#calendario">CALENDARIO <span>→</span></a><a class="team-action secondary" href="#classifica">CLASSIFICA <span>↗</span></a></div>
         </article>
 
-        <article class="team-card basket-team-card text-left">
-          <button data-team="basket-lupi" class="team-logo-click flex-1 w-full text-left p-6 text-left">
-            <div class="basket-mark">🏀</div>
-            <span class="team-tag">ATOTIS ISOLA BASKET</span>
-            <h3>I Lupi del Gran Sasso</h3>
+        <article class="team-logo-card basket-team-card text-left">
+          <button data-team="basket-lupi" class="team-image-button team-logo-click w-full text-left">
+            <div class="basket-card-visual"><span>🏀</span><div>ATOTIS<br><b>ISOLA BASKET</b></div></div>
+            <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA BASKET</span><h3>I Lupi del Gran Sasso</h3></div>
           </button>
-          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+          <div class="team-actions"><a class="team-action" href="#calendario">CALENDARIO <span>→</span></a><a class="team-action secondary" href="#classifica">CLASSIFICA <span>↗</span></a></div>
         </article>
       </div>
     </div>
