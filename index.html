@@ -38,7 +38,7 @@ body{font-family:Inter,sans-serif}
 .hero{
   min-height:clamp(620px,86vh,900px);
   background-image:
-    linear-gradient(90deg,rgba(4,15,40,.78) 0%,rgba(7,27,73,.50) 48%,rgba(165,0,68,.18) 100%),
+    linear-gradient(90deg,rgba(4,15,40,.58) 0%,rgba(7,27,73,.30) 52%,rgba(165,0,68,.10) 100%),
     url("hero.png");
   background-position:center center;
   background-size:cover;
@@ -101,6 +101,20 @@ body{font-family:Inter,sans-serif}
 .basket-team-card h3{font-family:"Barlow Condensed",sans-serif;font-size:39px;font-weight:900;text-transform:uppercase;line-height:.9;margin:0}
 .basket-team-card p{font-size:16px;color:rgba(255,255,255,.72);margin-top:10px}
 .basket-team-card .team-arrow{position:absolute;right:25px;bottom:25px;font-size:32px}
+
+.team-logo-card{overflow:hidden;background:#fff;border-radius:4px;box-shadow:0 14px 40px rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.12)}
+.team-logo-wrap{height:290px;background:#090b0f;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.team-logo-wrap img{width:100%;height:100%;object-fit:contain;display:block}
+.team-card-footer{padding:18px 18px 20px;background:#0b214f}
+.team-card-footer h3{margin:5px 0 0;font-family:"Barlow Condensed",sans-serif;font-size:30px;line-height:1;font-weight:900;text-transform:uppercase;color:#fff}
+.basket-team-card{min-height:350px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(145deg,#102d63,#a50044);border-radius:4px}
+.basket-team-card h3{font-family:"Barlow Condensed",sans-serif;font-size:32px;line-height:.95;font-weight:900;text-transform:uppercase;margin-top:7px}
+.basket-team-card p{color:rgba(255,255,255,.72);margin-top:7px}
+
+
+.editor-input{width:100%;margin-top:7px;border:1px solid #d8dce5;border-radius:8px;padding:12px 14px;color:#071b49;background:#fff;outline:none}
+.editor-input:focus{border-color:#a50044;box-shadow:0 0 0 3px rgba(165,0,68,.10)}
+
 </style>
 </head>
 <body>
@@ -468,5 +482,111 @@ document.getElementById('team-modal-backdrop').addEventListener('click',closeMod
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 function handleFormSubmit(e){e.preventDefault();const msg=document.getElementById('form-success-msg');msg.classList.remove('hidden');e.target.reset();setTimeout(()=>msg.classList.add('hidden'),6000);}
 </script>
+
+<!-- QUICK CONTENT EDITOR -->
+<div id="editor-panel" class="fixed inset-0 z-[300] hidden">
+  <div id="editor-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative ml-auto h-full w-full max-w-xl overflow-y-auto bg-white p-6 shadow-2xl">
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <div>
+        <div class="text-xs font-black uppercase tracking-[.2em] text-[#a50044]">Gestione rapida</div>
+        <h2 class="font-display text-4xl font-black uppercase text-[#071b49]">Modifica contenuti</h2>
+      </div>
+      <button id="editor-close" class="w-10 h-10 rounded-full bg-slate-100 text-xl">×</button>
+    </div>
+
+    <p class="text-sm text-slate-500 mb-6">
+      Modifica testi e risultati direttamente dalla pagina. Le modifiche vengono salvate nel browser
+      con <strong>Salva modifiche</strong>.
+    </p>
+
+    <div class="space-y-5">
+      <label class="block">
+        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Titolo hero</span>
+        <input id="edit-hero-title" class="editor-input" value="UNITI DALLO SPORT.">
+      </label>
+
+      <label class="block">
+        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Sottotitolo hero</span>
+        <textarea id="edit-hero-subtitle" class="editor-input" rows="3">La grande casa dello sport ai piedi del Gran Sasso. Pallavolo, basket, benessere e podismo per tutte le età.</textarea>
+      </label>
+
+      <label class="block">
+        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Ultimo risultato</span>
+        <input id="edit-result" class="editor-input" value="78 – 65">
+      </label>
+
+      <label class="block">
+        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Testo risultato</span>
+        <input id="edit-result-text" class="editor-input" value="ATOTIS Isola Basket vs Teramo">
+      </label>
+    </div>
+
+    <div class="flex gap-3 mt-8">
+      <button id="editor-save" class="flex-1 rounded-md bg-[#071b49] text-white px-5 py-3 font-black uppercase tracking-wider">Salva modifiche</button>
+      <button id="editor-reset" class="rounded-md border border-slate-300 px-5 py-3 font-black uppercase tracking-wider text-[#071b49]">Reset</button>
+    </div>
+    <p id="editor-status" class="text-sm text-emerald-600 font-semibold mt-4"></p>
+  </div>
+</div>
+<button id="open-editor" class="fixed bottom-5 right-5 z-[200] rounded-full bg-[#071b49] text-white px-5 py-3 text-xs font-black uppercase tracking-widest shadow-xl hover:scale-105 transition">Gestisci sito</button>
+
+
+<script>
+(function(){
+  const panel=document.getElementById('editor-panel');
+  const open=document.getElementById('open-editor');
+  const close=document.getElementById('editor-close');
+  const backdrop=document.getElementById('editor-backdrop');
+  const save=document.getElementById('editor-save');
+  const reset=document.getElementById('editor-reset');
+  const status=document.getElementById('editor-status');
+  const titleInput=document.getElementById('edit-hero-title');
+  const subtitleInput=document.getElementById('edit-hero-subtitle');
+  const resultInput=document.getElementById('edit-result');
+  const resultTextInput=document.getElementById('edit-result-text');
+
+  function openEditor(){ panel.classList.remove('hidden'); }
+  function closeEditor(){ panel.classList.add('hidden'); }
+  open?.addEventListener('click',openEditor);
+  close?.addEventListener('click',closeEditor);
+  backdrop?.addEventListener('click',closeEditor);
+
+  const heroTitle=document.querySelector('#hero h1') || document.querySelector('h1');
+  const heroSubtitle=document.querySelector('#hero p');
+  const resultNodes=[...document.querySelectorAll('section')].filter(s=>/78\s*[–-]\s*65/.test(s.innerText));
+  const resultNode=resultNodes[0]?.querySelector('*');
+
+  function loadSaved(){
+    const data=JSON.parse(localStorage.getItem('apd_isola_content')||'{}');
+    if(data.title){ titleInput.value=data.title; if(heroTitle) heroTitle.textContent=data.title; }
+    if(data.subtitle){ subtitleInput.value=data.subtitle; if(heroSubtitle) heroSubtitle.textContent=data.subtitle; }
+    if(data.result){ resultInput.value=data.result; }
+    if(data.resultText){ resultTextInput.value=data.resultText; }
+  }
+
+  save?.addEventListener('click',()=>{
+    const data={
+      title:titleInput.value,
+      subtitle:subtitleInput.value,
+      result:resultInput.value,
+      resultText:resultTextInput.value
+    };
+    localStorage.setItem('apd_isola_content',JSON.stringify(data));
+    if(heroTitle) heroTitle.textContent=data.title;
+    if(heroSubtitle) heroSubtitle.textContent=data.subtitle;
+    status.textContent='Modifiche salvate in questo browser.';
+    setTimeout(()=>status.textContent='',2500);
+  });
+
+  reset?.addEventListener('click',()=>{
+    localStorage.removeItem('apd_isola_content');
+    location.reload();
+  });
+
+  loadSaved();
+})();
+</script>
+
 </body>
 </html>
