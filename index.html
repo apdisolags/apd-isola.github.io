@@ -37,9 +37,12 @@ body{font-family:Inter,sans-serif}
 .mainnav{background:linear-gradient(90deg,#071b49 0%,#0c2e73 55%,#a50044 100%)}
 .hero{
   min-height:clamp(620px,86vh,900px);
-  background:
-    linear-gradient(90deg,rgba(4,15,40,.82) 0%,rgba(7,27,73,.56) 48%,rgba(165,0,68,.22) 100%),
-    url('hero.png') center center / cover no-repeat;
+  background-image:
+    linear-gradient(90deg,rgba(4,15,40,.78) 0%,rgba(7,27,73,.50) 48%,rgba(165,0,68,.18) 100%),
+    url("hero.png");
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 .hero-grid{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:42px 42px}
 .diagonal{clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
@@ -76,6 +79,13 @@ body{font-family:Inter,sans-serif}
 .memory-stat strong{font-family:"Barlow Condensed",sans-serif;font-size:34px;font-weight:900;color:#a50044}
 .memory-stat span{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#071b49aa}
 
+
+
+.team-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.team-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 12px;border:1px solid rgba(255,255,255,.28);border-radius:3px;color:#fff;text-decoration:none;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.06);transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.team-action:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+.team-action-primary{background:#e36b21;border-color:#e36b21}
+.team-action-primary:hover{background:#f07a2b;border-color:#f07a2b}
 
 /* Squadre: quattro card ufficiali */
 .team-logo-card{position:relative;display:flex;flex-direction:column;min-height:430px;padding:18px;border-radius:4px;background:#05070b;border:1px solid rgba(255,255,255,.12);overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
@@ -275,29 +285,53 @@ body{font-family:Inter,sans-serif}
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <button data-team="volley-2div" class="team-card team-logo-card text-left">
-          <div class="team-logo-wrap"><img src="Seconda divisione.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
-          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Seconda Divisione</h3></div>
-        </button>
+        <article class="team-logo-card">
+          <div class="team-logo-wrap"><img src="Secondo settore.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
+          <div class="team-card-footer">
+            <span class="team-tag">VOLLEY</span>
+            <h3>Seconda Divisione</h3>
+            <div class="team-actions">
+              <a href="#calendario" class="team-action team-action-primary">Calendario</a>
+              <a href="#classifica" class="team-action">Classifica</a>
+            </div>
+          </div>
+        </article>
 
-        <button data-team="volley-u17" class="team-card team-logo-card text-left">
-          <div class="team-logo-wrap"><img src="Under 17.png" alt="ATOTIS Isola Volley Under 17"></div>
-          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 17</h3></div>
-        </button>
+        <article class="team-logo-card">
+          <div class="team-logo-wrap"><img src="Meno di 17 anni.png" alt="ATOTIS Isola Volley Under 17"></div>
+          <div class="team-card-footer">
+            <span class="team-tag">VOLLEY</span>
+            <h3>Under 17</h3>
+            <div class="team-actions">
+              <a href="#calendario" class="team-action team-action-primary">Calendario</a>
+              <a href="#classifica" class="team-action">Classifica</a>
+            </div>
+          </div>
+        </article>
 
-        <button data-team="volley-u15" class="team-card team-logo-card text-left">
-          <div class="team-logo-wrap"><img src="Under 15.png" alt="ATOTIS Isola Volley Under 15"></div>
-          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 15</h3></div>
-        </button>
+        <article class="team-logo-card">
+          <div class="team-logo-wrap"><img src="Meno di 15.png" alt="ATOTIS Isola Volley Under 15"></div>
+          <div class="team-card-footer">
+            <span class="team-tag">VOLLEY</span>
+            <h3>Under 15</h3>
+            <div class="team-actions">
+              <a href="#calendario" class="team-action team-action-primary">Calendario</a>
+              <a href="#classifica" class="team-action">Classifica</a>
+            </div>
+          </div>
+        </article>
 
-        <button data-team="basket-lupi" class="team-card basket-team-card text-left">
+        <article class="basket-team-card">
           <div class="basket-mark">🏀</div>
           <span class="team-tag">BASKET</span>
           <h3>ATOTIS Isola Basket</h3>
           <p>I Lupi del Gran Sasso</p>
-          <span class="team-arrow">→</span>
-        </button>
-      </div>
+          <div class="team-actions">
+            <a href="#calendario" class="team-action team-action-primary">Calendario</a>
+            <a href="#classifica" class="team-action">Classifica</a>
+          </div>
+        </article>
+      </div>      </div>
     </div>
   </section>
 
