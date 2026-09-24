@@ -112,8 +112,17 @@ body{font-family:Inter,sans-serif}
 .basket-team-card p{color:rgba(255,255,255,.72);margin-top:7px}
 
 
-.editor-input{width:100%;margin-top:7px;border:1px solid #d8dce5;border-radius:8px;padding:12px 14px;color:#071b49;background:#fff;outline:none}
-.editor-input:focus{border-color:#a50044;box-shadow:0 0 0 3px rgba(165,0,68,.10)}
+
+.team-logo-card{display:flex;flex-direction:column;justify-content:flex-end;padding:0;min-height:430px;background:#0b214f;}
+.team-logo-wrap{height:280px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.team-logo-wrap img{width:100%;height:100%;object-fit:contain;display:block;}
+.team-card-footer{padding:18px 18px 10px;background:#0b214f;}
+.team-actions{display:flex;gap:8px;padding:12px 18px 18px;background:#0b214f;}
+.team-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 13px;border-radius:999px;background:#fff;color:#071b49;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;transition:.2s;}
+.team-action:hover{background:#f1b5cd;color:#071b49;transform:translateY(-1px);}
+.team-actions .team-action.secondary{background:#a50044;color:#fff;}
+.team-actions .team-action.secondary:hover{background:#d0005b;}
+
 
 </style>
 </head>
@@ -181,7 +190,7 @@ body{font-family:Inter,sans-serif}
             <span class="w-2 h-2 rounded-full bg-pink-400"></span> Stagione 2026/27
           </div>
           <h1 class="font-display font-black uppercase text-6xl sm:text-8xl lg:text-[9rem] leading-[.82] tracking-[-.035em] max-w-5xl">
-            Uniti dallo<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-pink-300">sport.</span>
+            Uniti dallo<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-pink-300">Sport e dalla Passione.</span>
           </h1>
           <p class="mt-8 max-w-2xl text-base sm:text-xl text-blue-50/85 leading-relaxed">
             La grande casa dello sport ai piedi del Gran Sasso. Pallavolo, basket, benessere e podismo per tutte le età.
@@ -201,9 +210,9 @@ body{font-family:Inter,sans-serif}
               <div class="bg-white/10 rounded-2xl p-4"><strong class="font-display text-4xl">350+</strong><div class="text-[10px] uppercase tracking-wider text-blue-100">Tesserati attivi</div></div>
             </div>
             <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-blue-700/70 to-pink-700/70">
-              <div class="text-xs uppercase tracking-widest font-bold text-blue-100">Dalla bacheca dei ricordi</div>
+              <div class="text-xs uppercase tracking-widest font-bold text-blue-100">Bacheca dei ricordi</div>
               <div class="font-display font-black text-2xl uppercase mt-1">3ª Gara di San Gabriele</div>
-              <div class="text-sm text-white/80 mt-1">Iscrizioni aperte · 3ª edizione</div>
+              <div class="text-sm text-white/80 mt-1">Edizione 2026 · Ricordo dell'evento</div>
             </div>
           </div>
         </div>
@@ -261,12 +270,12 @@ body{font-family:Inter,sans-serif}
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
             <div class="relative z-10 text-white">
               <div class="text-xs uppercase tracking-[.2em] font-bold text-blue-200">Evento · 2026</div>
-              <h3 class="font-display font-black uppercase text-4xl sm:text-6xl leading-[.9] mt-2">3ª 3ª Gara di San Gabriele</h3>
+              <h3 class="font-display font-black uppercase text-4xl sm:text-6xl leading-[.9] mt-2">3ª Gara di San Gabriele</h3>
             </div>
           </div>
           <div class="p-6">
             <p class="text-slate-600 leading-relaxed">Percorso competitivo e non competitivo, pacco gara, premiazioni e ristoro per famiglie.</p>
-            <a href="#eventi" class="inline-block mt-5 font-extrabold text-blau">SCOPRI L'EVENTO →</a>
+            <a href="#ricordi" class="inline-block mt-5 font-extrabold text-blau">VAI ALLA BACHECA →</a>
           </div>
         </article>
 
@@ -274,12 +283,12 @@ body{font-family:Inter,sans-serif}
           <article class="card rounded-3xl p-6 border-l-4 border-granata">
             <div class="text-xs uppercase tracking-[.2em] font-bold text-granata">Basket · Risultato</div>
             <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">APD ISOLA 78 - 65 TERAMO</h3>
-            <p class="text-sm text-slate-500 mt-2">Prestazione maiuscola del roster Isola.</p>
+            <p class="text-sm text-slate-500 mt-2">Risultato registrato nel Match Center.</p>
           </article>
           <article class="card rounded-3xl p-6 border-l-4 border-blau">
             <div class="text-xs uppercase tracking-[.2em] font-bold text-blau">Tesseramento</div>
             <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">Iscrizioni 2026/27</h3>
-            <p class="text-sm text-slate-500 mt-2">Settembre è gratuito. Allenati da ottobre a giugno.</p>
+            <p class="text-sm text-slate-500 mt-2">Scopri le modalità di tesseramento per la stagione 2026/27.</p>
             <a href="#paga-quota" class="inline-block mt-4 font-extrabold text-granata">VEDI LE QUOTE →</a>
           </article>
         </div>
@@ -299,28 +308,38 @@ body{font-family:Inter,sans-serif}
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <button data-team="volley-2div" class="team-card team-logo-card text-left">
-          <div class="team-logo-wrap"><img src="./Secondo%20settore.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
-          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Seconda Divisione</h3></div>
-        </button>
+        <article class="team-card team-logo-card text-left">
+          <button data-team="volley-2div" class="team-logo-click flex-1 w-full text-left">
+            <div class="team-logo-wrap"><img src="./Seconda%20divisione.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
+            <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA VOLLEY</span><h3>Seconda Divisione</h3></div>
+          </button>
+          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+        </article>
 
-        <button data-team="volley-u17" class="team-card team-logo-card text-left">
-          <div class="team-logo-wrap"><img src="./Meno%20di%2017%20anni.png" alt="ATOTIS Isola Volley Under 17"></div>
-          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 17</h3></div>
-        </button>
+        <article class="team-card team-logo-card text-left">
+          <button data-team="volley-u17" class="team-logo-click flex-1 w-full text-left">
+            <div class="team-logo-wrap"><img src="./Under%2017.png" alt="ATOTIS Isola Volley Under 17"></div>
+            <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA VOLLEY</span><h3>Under 17</h3></div>
+          </button>
+          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+        </article>
 
-        <button data-team="volley-u15" class="team-card team-logo-card text-left">
-          <div class="team-logo-wrap"><img src="./Meno%20di%2015.png" alt="ATOTIS Isola Volley Under 15"></div>
-          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 15</h3></div>
-        </button>
+        <article class="team-card team-logo-card text-left">
+          <button data-team="volley-u15" class="team-logo-click flex-1 w-full text-left">
+            <div class="team-logo-wrap"><img src="./Under%2015.png" alt="ATOTIS Isola Volley Under 15"></div>
+            <div class="team-card-footer"><span class="team-tag">ATOTIS ISOLA VOLLEY</span><h3>Under 15</h3></div>
+          </button>
+          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+        </article>
 
-        <button data-team="basket-lupi" class="team-card basket-team-card text-left">
-          <div class="basket-mark">🏀</div>
-          <span class="team-tag">BASKET</span>
-          <h3>ATOTIS Isola Basket</h3>
-          <p>I Lupi del Gran Sasso</p>
-          <span class="team-arrow">→</span>
-        </button>
+        <article class="team-card basket-team-card text-left">
+          <button data-team="basket-lupi" class="team-logo-click flex-1 w-full text-left p-6 text-left">
+            <div class="basket-mark">🏀</div>
+            <span class="team-tag">ATOTIS ISOLA BASKET</span>
+            <h3>I Lupi del Gran Sasso</h3>
+          </button>
+          <div class="team-actions"><a class="team-action" href="#calendario">Calendario</a><a class="team-action secondary" href="#classifica">Classifica</a></div>
+        </article>
       </div>
     </div>
   </section>
@@ -385,7 +404,7 @@ body{font-family:Inter,sans-serif}
       <div class="text-center mb-10">
         <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Tesseramento 2026/27</div>
         <h2 class="font-display font-black uppercase text-6xl text-blau mt-2">Scegli la tua quota</h2>
-        <p class="text-slate-500 mt-3">Settembre è gratuito. Allenati da ottobre a giugno.</p>
+        <p class="text-slate-500 mt-3">Scopri le modalità di tesseramento per la stagione 2026/27.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-5">
         <div class="card rounded-3xl p-7"><div class="text-xs uppercase tracking-widest font-extrabold text-granata">Mensile</div><h3 class="font-display font-black uppercase text-4xl text-blau mt-2">Quota mensile</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b pb-3"><span>1 figlio</span><strong>€45</strong></div><div class="flex justify-between border-b pb-3"><span>2 figli</span><strong>€80</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€105</strong></div></div></div>
@@ -446,7 +465,7 @@ const teamData={
   'basket-lupi':['ATOTIS Isola Basket - I Lupi del Gran Sasso','La squadra di basket che rappresenta Isola del Gran Sasso con il nome dei Lupi.']
 };
 const modal=document.getElementById('team-modal');
-document.querySelectorAll('.team-card').forEach(card=>card.addEventListener('click',()=>{
+document.querySelectorAll('[data-team]').forEach(card=>card.addEventListener('click',()=>{
   const d=teamData[card.dataset.team]; if(!d)return;
   document.getElementById('team-modal-title').textContent=d[0];
   document.getElementById('team-modal-text').textContent=d[1];
@@ -458,111 +477,5 @@ document.getElementById('team-modal-backdrop').addEventListener('click',closeMod
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 function handleFormSubmit(e){e.preventDefault();const msg=document.getElementById('form-success-msg');msg.classList.remove('hidden');e.target.reset();setTimeout(()=>msg.classList.add('hidden'),6000);}
 </script>
-
-<!-- QUICK CONTENT EDITOR -->
-<div id="editor-panel" class="fixed inset-0 z-[300] hidden">
-  <div id="editor-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-  <div class="relative ml-auto h-full w-full max-w-xl overflow-y-auto bg-white p-6 shadow-2xl">
-    <div class="flex items-center justify-between gap-4 mb-6">
-      <div>
-        <div class="text-xs font-black uppercase tracking-[.2em] text-[#a50044]">Gestione rapida</div>
-        <h2 class="font-display text-4xl font-black uppercase text-[#071b49]">Modifica contenuti</h2>
-      </div>
-      <button id="editor-close" class="w-10 h-10 rounded-full bg-slate-100 text-xl">×</button>
-    </div>
-
-    <p class="text-sm text-slate-500 mb-6">
-      Modifica testi e risultati direttamente dalla pagina. Le modifiche vengono salvate nel browser
-      con <strong>Salva modifiche</strong>.
-    </p>
-
-    <div class="space-y-5">
-      <label class="block">
-        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Titolo hero</span>
-        <input id="edit-hero-title" class="editor-input" value="UNITI DALLO SPORT.">
-      </label>
-
-      <label class="block">
-        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Sottotitolo hero</span>
-        <textarea id="edit-hero-subtitle" class="editor-input" rows="3">La grande casa dello sport ai piedi del Gran Sasso. Pallavolo, basket, benessere e podismo per tutte le età.</textarea>
-      </label>
-
-      <label class="block">
-        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Ultimo risultato</span>
-        <input id="edit-result" class="editor-input" value="78 – 65">
-      </label>
-
-      <label class="block">
-        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Testo risultato</span>
-        <input id="edit-result-text" class="editor-input" value="ATOTIS Isola Basket vs Teramo">
-      </label>
-    </div>
-
-    <div class="flex gap-3 mt-8">
-      <button id="editor-save" class="flex-1 rounded-md bg-[#071b49] text-white px-5 py-3 font-black uppercase tracking-wider">Salva modifiche</button>
-      <button id="editor-reset" class="rounded-md border border-slate-300 px-5 py-3 font-black uppercase tracking-wider text-[#071b49]">Reset</button>
-    </div>
-    <p id="editor-status" class="text-sm text-emerald-600 font-semibold mt-4"></p>
-  </div>
-</div>
-<button id="open-editor" class="fixed bottom-5 right-5 z-[200] rounded-full bg-[#071b49] text-white px-5 py-3 text-xs font-black uppercase tracking-widest shadow-xl hover:scale-105 transition">Gestisci sito</button>
-
-
-<script>
-(function(){
-  const panel=document.getElementById('editor-panel');
-  const open=document.getElementById('open-editor');
-  const close=document.getElementById('editor-close');
-  const backdrop=document.getElementById('editor-backdrop');
-  const save=document.getElementById('editor-save');
-  const reset=document.getElementById('editor-reset');
-  const status=document.getElementById('editor-status');
-  const titleInput=document.getElementById('edit-hero-title');
-  const subtitleInput=document.getElementById('edit-hero-subtitle');
-  const resultInput=document.getElementById('edit-result');
-  const resultTextInput=document.getElementById('edit-result-text');
-
-  function openEditor(){ panel.classList.remove('hidden'); }
-  function closeEditor(){ panel.classList.add('hidden'); }
-  open?.addEventListener('click',openEditor);
-  close?.addEventListener('click',closeEditor);
-  backdrop?.addEventListener('click',closeEditor);
-
-  const heroTitle=document.querySelector('#hero h1') || document.querySelector('h1');
-  const heroSubtitle=document.querySelector('#hero p');
-  const resultNodes=[...document.querySelectorAll('section')].filter(s=>/78\s*[–-]\s*65/.test(s.innerText));
-  const resultNode=resultNodes[0]?.querySelector('*');
-
-  function loadSaved(){
-    const data=JSON.parse(localStorage.getItem('apd_isola_content')||'{}');
-    if(data.title){ titleInput.value=data.title; if(heroTitle) heroTitle.textContent=data.title; }
-    if(data.subtitle){ subtitleInput.value=data.subtitle; if(heroSubtitle) heroSubtitle.textContent=data.subtitle; }
-    if(data.result){ resultInput.value=data.result; }
-    if(data.resultText){ resultTextInput.value=data.resultText; }
-  }
-
-  save?.addEventListener('click',()=>{
-    const data={
-      title:titleInput.value,
-      subtitle:subtitleInput.value,
-      result:resultInput.value,
-      resultText:resultTextInput.value
-    };
-    localStorage.setItem('apd_isola_content',JSON.stringify(data));
-    if(heroTitle) heroTitle.textContent=data.title;
-    if(heroSubtitle) heroSubtitle.textContent=data.subtitle;
-    status.textContent='Modifiche salvate in questo browser.';
-    setTimeout(()=>status.textContent='',2500);
-  });
-
-  reset?.addEventListener('click',()=>{
-    localStorage.removeItem('apd_isola_content');
-    location.reload();
-  });
-
-  loadSaved();
-})();
-</script>
-
 </body>
 </html>
