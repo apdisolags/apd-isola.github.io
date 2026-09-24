@@ -1,76 +1,388 @@
 <!DOCTYPE html>
 <html lang="it" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#07111f">
-    <meta name="description" content="A.P.D. Isola – la casa dello sport ai piedi del Gran Sasso.">
-    <title>A.P.D. Isola · La casa dello sport</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        barca: { navy: '#07111f', blue: '#0757b8', cyan: '#20c4f4', red: '#e32635', gold: '#f2c94c', ink: '#0b1524', muted: '#8da2bb' }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Outfit', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif']
-                    },
-                    boxShadow: {
-                        glow: '0 20px 80px rgba(32,196,244,.18)'
-                    }
-                }
-            }
-        };
-    </script>
-    <style>
-        :root { color-scheme: dark; }
-        html, body { margin: 0; min-width: 100%; overflow-x: hidden; background: #07111f; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .display { font-family: 'Outfit', sans-serif; }
-        .topbar { background: rgba(7,17,31,.92); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
-        .hero { isolation: isolate; position: relative; overflow: hidden; background: linear-gradient(90deg,rgba(7,17,31,.97) 0%,rgba(7,17,31,.74) 48%,rgba(7,17,31,.82) 100%), url('hero.png') center/cover no-repeat; }
-        .hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at 52% 40%,rgba(32,196,244,.12),transparent 35%), linear-gradient(180deg,transparent 50%,#07111f 100%); pointer-events: none; }
-        .watermark { position: absolute; width: min(650px,62vw); aspect-ratio: 1; left: 50%; top: 51%; transform: translate(-50%,-50%); z-index: 1; background: url('logo-apd-isola.png') center/contain no-repeat; opacity: .18; filter: grayscale(1) brightness(1.8); mix-blend-mode: screen; animation: pulse 9s ease-in-out infinite; pointer-events: none; }
-        @keyframes pulse { 0%,100% { opacity: .14; transform: translate(-50%,-50%) scale(.98); } 50% { opacity: .23; transform: translate(-50%,-50%) scale(1.02); } }
-        .noise { position: absolute; inset: 0; opacity: .045; z-index: 2; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
-        .card { background: rgba(15,30,50,.76); border: 1px solid rgba(255,255,255,.09); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: .3s ease; }
-        .card:hover { border-color: rgba(32,196,244,.54); box-shadow: 0 22px 60px rgba(0,0,0,.25); transform: translateY(-3px); }
-        .stripe { height: 4px; background: linear-gradient(90deg,#0757b8 0%,#20c4f4 50%,#e32635 100%); }
-        .section-divider { border-top: 1px solid rgba(255,255,255,.08); }
-        .ticker { background: #e32635; color: white; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
-        @media (max-width: 640px) { .watermark { width: 390px; max-width: 92vw; top: 43%; opacity: .15; } }
-        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A.P.D. Isola · Polisportiva Gran Sasso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        blau: '#071b49',
+        blau2: '#0b2d72',
+        blau3: '#153f91',
+        granata: '#a50044',
+        granata2: '#d0005b',
+        crema: '#f4f1ea',
+        ink: '#101318'
+      },
+      fontFamily: {
+        sans: ['Inter','sans-serif'],
+        display: ['Barlow Condensed','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+html,body{margin:0;padding:0;overflow-x:hidden;background:#f4f1ea;color:#101318}
+body{font-family:Inter,sans-serif}
+.font-display{font-family:"Barlow Condensed",sans-serif}
+.topbar{background:#06163b}
+.mainnav{background:linear-gradient(90deg,#071b49 0%,#0c2e73 55%,#a50044 100%)}
+.hero{
+  min-height:clamp(620px,86vh,900px);
+  background:
+    linear-gradient(90deg,rgba(4,15,40,.96) 0%,rgba(7,27,73,.80) 48%,rgba(165,0,68,.28) 100%),
+    radial-gradient(circle at 75% 30%,rgba(208,0,91,.35),transparent 35%),
+    linear-gradient(135deg,#06163b,#123f91 58%,#a50044);
+}
+.hero-grid{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:42px 42px}
+.diagonal{clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
+.card{background:#fff;border:1px solid rgba(7,27,73,.10);box-shadow:0 14px 35px rgba(7,27,73,.08)}
+.news-image{background:linear-gradient(135deg,#0a2866,#a50044)}
+.match-strip{background:linear-gradient(90deg,#071b49,#153f91)}
+.granata-line{height:5px;background:linear-gradient(90deg,#071b49 0 50%,#a50044 50% 100%)}
+.logo-mark{background:linear-gradient(145deg,#071b49 0 50%,#a50044 50%);box-shadow:0 8px 25px rgba(7,27,73,.25)}
+.mobile-panel{background:#071b49}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#153f91;border-radius:10px}
+</style>
 </head>
-<body class="text-white antialiased selection:bg-barca-cyan selection:text-barca-navy">
-    <header class="fixed top-0 left-0 right-0 z-50 topbar border-b border-white/10">
-        <div class="max-w-[1500px] mx-auto px-4 sm:px-8 h-[74px] flex items-center justify-between gap-6">
-            <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="A.P.D. Isola home">
-                <div class="h-11 w-11 rounded-full bg-gradient-to-br from-barca-blue to-barca-cyan p-[2px] shadow-glow"><div class="h-full w-full rounded-full bg-barca-navy flex items-center justify-center display font-black text-barca-cyan">IS</div></div>
-                <div><span class="display font-black tracking-tight text-lg">APD ISOLA</span><span class="block text-[9px] uppercase tracking-[.16em] text-barca-muted">Polisportiva Gran Sasso</span></div>
-            </a>
-            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold" aria-label="Navigazione principale">
-                <a href="#club" class="hover:text-barca-cyan transition-colors">Il Club</a>
-                <a href="#sport" class="hover:text-barca-cyan transition-colors">Sport</a>
-                <a href="#calendar" class="hover:text-barca-cyan transition-colors">Calendario</a>
-                <a href="#news" class="hover:text-barca-cyan transition-colors">News</a>
-                <a href="#eventi" class="hover:text-barca-cyan transition-colors">Eventi</a>
-            </nav>
-            <div class="hidden md:flex items-center gap-3"><a href="#tesseramento" class="px-5 py-2.5 rounded-full bg-barca-cyan text-barca-navy font-extrabold text-sm hover:bg-white transition-colors">Iscriviti</a><a href="#contatti" class="px-5 py-2.5 rounded-full border border-white/20 font-bold text-sm hover:border-barca-cyan hover:text-barca-cyan transition-colors">Contatti</a></div>
-            <button id="menu-button" class="lg:hidden p-2 rounded-xl border border-white/15" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri il menu"><span class="text-xl">☰</span></button>
+<body>
+
+<!-- Utility bar: ispirata alla logica di navigazione del sito Barça, ma con identità APD Isola -->
+<div class="topbar text-white text-xs">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between">
+    <div class="flex gap-5 uppercase tracking-wider font-semibold">
+      <a href="#news" class="hover:text-pink-300">News</a>
+      <a href="#match" class="hover:text-pink-300">Calendario</a>
+      <a href="#tesseramento" class="hover:text-pink-300">Tesseramento</a>
+    </div>
+    <div class="hidden sm:flex gap-4 text-slate-300">
+      <span>APD ISOLA</span><span>•</span><span>GRAN SASSO</span>
+    </div>
+  </div>
+</div>
+
+<header class="mainnav sticky top-0 z-50 text-white shadow-2xl">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-[76px] flex items-center justify-between gap-5">
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <div class="logo-mark w-12 h-12 rounded-full border-2 border-white/80 flex items-center justify-center font-display font-black text-xl">IS</div>
+        <div class="leading-none">
+          <div class="font-display font-black text-2xl uppercase tracking-tight">A.P.D. ISOLA</div>
+          <div class="text-[9px] uppercase tracking-[.22em] text-blue-100 mt-1">Polisportiva Gran Sasso</div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden px-5 py-5 space-y-3 border-t border-white/10 bg-barca-navy/95 backdrop-blur-xl"><a href="#club" class="block py-2">Il Club</a><a href="#sport" class="block py-2">Sport</a><a href="#calendar" class="block py-2">Calendario</a><a href="#news" class="block py-2">News</a><a href="#eventi" class="block py-2">Eventi</a><a href="#tesseramento" class="block py-3 text-center rounded-full bg-barca-cyan text-barca-navy font-extrabold">Iscriviti</a></div>
-    </header>
+      </a>
 
-    <div class="ticker fixed top-[74px] left-0 right-0 z-40 h-8 flex items-center overflow-hidden text-xs font-bold uppercase tracking-wide"><div class="max-w-[1500px] mx-auto px-4 sm:px-8 w-full flex items-center justify-between gap-4"><span>Stagione 2026/2027</span><span class="hidden sm:inline">La tua casa dello sport ai piedi del Gran Sasso</span><span>Iscrizioni aperte →</span></div></div>
+      <nav class="hidden lg:flex items-center gap-7 font-semibold text-sm">
+        <a href="#squadre" class="hover:text-pink-200 transition">Squadre</a>
+        <a href="#match" class="hover:text-pink-200 transition">Match Center</a>
+        <a href="#news" class="hover:text-pink-200 transition">News</a>
+        <a href="#discipline" class="hover:text-pink-200 transition">Sport</a>
+        <a href="#eventi" class="hover:text-pink-200 transition">Eventi</a>
+      </nav>
 
-    <main id="home">
-        <section class="hero min-h-[min(850px,100svh)] pt-36 pb-20 flex items-center"><div class="watermark" aria-hidden="true"></div><div class="noise" aria-hidden="true"></div><div class="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-8 w-full"><div class="grid lg:grid-cols-12 gap-12 items-center"><div class="lg:col-span-7"><div class="inline-flex items-center gap-2 text-barca-cyan border border-barca-cyan/40 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[.16em] mb-6"><span class="w-2 h-2 rounded-full bg-barca-cyan animate-pulse"></span> A.P.D. ISOLA</div><h1 class="display font-black text-5xl sm:text-7xl lg:text-[86px] leading-[.94] tracking-[-.04em] max-w-4xl">La casa dello <span class="text-barca-cyan">sport.</span></h1><p class="mt-7 text-lg text-barca-muted leading-relaxed max-w-2xl">Una comunità, tante discipline, un’unica maglia. Pallavolo, basket, minibasket, podismo e fitness: cresciamo insieme ai piedi del Gran Sasso.</p><div class="flex flex-col sm:flex-row gap-3 mt-9"><a href="#sport" class="rounded-full px-7 py-4 bg-barca-cyan text-barca-navy font-extrabold text-center hover:bg-white transition-colors">Scopri le discipline</a><a href="#calendar" class="rounded-full px-7 py-4 border border-white/20 font-extrabold text-center hover:border-barca-cyan hover:text-barca-cyan transition-colors">Prossimi appuntamenti</a></div><div class="flex flex-wrap gap-8 mt-12 text-sm"><div><span class="display text-3xl font-black text-white">5</span><span class="block text-barca-muted uppercase tracking-wider text-[10px]">Discipline</span></div><div><span class="display text-3xl font-black text-white">350+</span><span class="block text-barca-muted uppercase tracking-wider text-[10px]">Tesserati</span></div><div><span class="display text-3xl font-black text-white">1</span><span class="block text-barca-muted uppercase tracking-wider text-[10px]">Grande famiglia</span></div></div></div><div class="lg:col-span-5"><div class="card rounded-3xl overflow-hidden shadow-glow"><div class="stripe"></div><div class="p-6 sm:p-8"><div class="flex justify-between items-start gap-4"><div><span class="text-[10px] uppercase tracking-[.2em] text-barca-cyan font-extrabold">Prossimo appuntamento</span><h2 class="display font-black text-2xl mt-2">Match Center</h2></div><span class="px-3 py-1 rounded-full bg-barca-cyan/10 text-barca-cyan text-xs font-extrabold">LIVE SOON</span></div><div class="mt-8 flex items-center justify-between gap-4 text-center"><div class="flex-1"><div class="text-3xl">🏐</div><strong class="display block mt-2">APD ISOLA</strong><span class="text-xs text-barca-muted">Casa</span></div><div class="text-barca-cyan font-black text-sm">VS</div><div class="flex-1"><div class="text-3xl">🏐</div><strong class="display block mt-2">ATLETICO GS</strong><span class="text-xs text-barca-muted">Ospite</span></div></div><div class="mt-8 pt-6 border-t border-white/10 space-y-2 text-sm text-barca-muted"><p>📅 <span class="text-white font-semibold">Domenica 27 settembre · 17:00</span></p><p>📍 <span class="text-white font-
+      <div class="flex items-center gap-2">
+        <a href="#tesseramento" class="hidden sm:inline-flex bg-white text-blau px-5 py-3 rounded-full font-extrabold text-sm hover:bg-pink-50 transition">ISCRIVITI</a>
+        <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full border border-white/30 flex items-center justify-center" aria-label="Apri menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden mobile-panel pb-5 space-y-3">
+      <a href="#squadre" class="block py-2 font-bold">Squadre</a>
+      <a href="#match" class="block py-2 font-bold">Match Center</a>
+      <a href="#news" class="block py-2 font-bold">News</a>
+      <a href="#discipline" class="block py-2 font-bold">Sport</a>
+      <a href="#eventi" class="block py-2 font-bold">Eventi</a>
+      <a href="#tesseramento" class="block bg-white text-blau text-center py-3 rounded-full font-extrabold">ISCRIVITI</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero hero-grid relative overflow-hidden text-white">
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_80%_55%,white,transparent_20%)]"></div>
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 min-h-[inherit] flex items-end relative z-10">
+      <div class="grid lg:grid-cols-12 gap-8 w-full pb-14 lg:pb-20">
+        <div class="lg:col-span-8">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-xs font-bold uppercase tracking-[.18em] mb-6">
+            <span class="w-2 h-2 rounded-full bg-pink-400"></span> Stagione 2026/27
+          </div>
+          <h1 class="font-display font-black uppercase text-6xl sm:text-8xl lg:text-[9rem] leading-[.82] tracking-[-.035em] max-w-5xl">
+            Uniti dallo<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-white to-pink-300">sport.</span>
+          </h1>
+          <p class="mt-8 max-w-2xl text-base sm:text-xl text-blue-50/85 leading-relaxed">
+            La grande casa dello sport ai piedi del Gran Sasso. Pallavolo, basket, benessere e podismo per tutte le età.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-8">
+            <a href="#match" class="bg-white text-blau px-7 py-4 rounded-full font-extrabold hover:bg-blue-50 transition">PROSSIMA SFIDA</a>
+            <a href="#discipline" class="border border-white/40 px-7 py-4 rounded-full font-extrabold hover:bg-white/10 transition">SCOPRI GLI SPORT</a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 flex items-end">
+          <div class="w-full bg-black/25 backdrop-blur-md border border-white/20 p-5 sm:p-7 rounded-3xl">
+            <div class="text-xs uppercase tracking-[.2em] text-blue-200 font-bold">In primo piano</div>
+            <h2 class="font-display font-black uppercase text-3xl sm:text-4xl mt-2">Polisportiva in movimento</h2>
+            <div class="grid grid-cols-2 gap-3 mt-6">
+              <div class="bg-white/10 rounded-2xl p-4"><strong class="font-display text-4xl">4+</strong><div class="text-[10px] uppercase tracking-wider text-blue-100">Settori sportivi</div></div>
+              <div class="bg-white/10 rounded-2xl p-4"><strong class="font-display text-4xl">350+</strong><div class="text-[10px] uppercase tracking-wider text-blue-100">Tesserati attivi</div></div>
+            </div>
+            <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-blue-700/70 to-pink-700/70">
+              <div class="text-xs uppercase tracking-widest font-bold text-blue-100">Prossimo evento</div>
+              <div class="font-display font-black text-2xl uppercase mt-1">Gara di San Gabriele</div>
+              <div class="text-sm text-white/80 mt-1">Iscrizioni aperte · 3ª edizione</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATCH CENTER -->
+  <section id="match" class="bg-white">
+    <div class="granata-line"></div>
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
+        <div>
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Match Center</div>
+          <h2 class="font-display font-black uppercase text-5xl text-blau leading-none mt-2">Prossima sfida</h2>
+        </div>
+        <a href="#squadre" class="text-sm font-bold text-blau hover:text-granata">Vedi tutte le squadre →</a>
+      </div>
+
+      <div class="match-strip rounded-3xl text-white overflow-hidden">
+        <div class="grid lg:grid-cols-[1fr_auto_1fr] items-center">
+          <div class="p-7 lg:p-10 text-center lg:text-right">
+            <div class="text-xs uppercase tracking-[.2em] text-blue-200">Casa</div>
+            <div class="font-display font-black uppercase text-4xl sm:text-5xl mt-2">APD ISOLA</div>
+            <div class="text-sm text-blue-100 mt-2">Pallavolo · 2ª Divisione</div>
+          </div>
+          <div class="px-8 py-6 lg:py-10 text-center border-y lg:border-y-0 lg:border-x border-white/15">
+            <div class="font-display font-black text-5xl">VS</div>
+            <div class="mt-3 text-xs uppercase tracking-widest text-blue-200">27 settembre · 17:00</div>
+          </div>
+          <div class="p-7 lg:p-10 text-center lg:text-left">
+            <div class="text-xs uppercase tracking-[.2em] text-blue-200">Ospite</div>
+            <div class="font-display font-black uppercase text-4xl sm:text-5xl mt-2">ATLETICO GS</div>
+            <div class="text-sm text-blue-100 mt-2">Palestra Comunale · Isola del Gran Sasso</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section id="news" class="bg-[#f4f1ea] py-16">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Ultime notizie</div>
+          <h2 class="font-display font-black uppercase text-5xl text-blau mt-2">APD Isola oggi</h2>
+        </div>
+        <span class="hidden sm:block text-sm font-semibold text-slate-500">News · Risultati · Eventi</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-5">
+        <article class="lg:col-span-7 card rounded-3xl overflow-hidden group">
+          <div class="news-image h-72 sm:h-96 relative p-7 flex items-end">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+            <div class="relative z-10 text-white">
+              <div class="text-xs uppercase tracking-[.2em] font-bold text-blue-200">Evento · 2026</div>
+              <h3 class="font-display font-black uppercase text-4xl sm:text-6xl leading-[.9] mt-2">3ª Gara di San Gabriele</h3>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-slate-600 leading-relaxed">Percorso competitivo e non competitivo, pacco gara, premiazioni e ristoro per famiglie.</p>
+            <a href="#eventi" class="inline-block mt-5 font-extrabold text-blau">SCOPRI L'EVENTO →</a>
+          </div>
+        </article>
+
+        <div class="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
+          <article class="card rounded-3xl p-6 border-l-4 border-granata">
+            <div class="text-xs uppercase tracking-[.2em] font-bold text-granata">Basket · Risultato</div>
+            <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">APD ISOLA 78 - 65 TERAMO</h3>
+            <p class="text-sm text-slate-500 mt-2">Prestazione maiuscola del roster Isola.</p>
+          </article>
+          <article class="card rounded-3xl p-6 border-l-4 border-blau">
+            <div class="text-xs uppercase tracking-[.2em] font-bold text-blau">Tesseramento</div>
+            <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">Iscrizioni 2026/27</h3>
+            <p class="text-sm text-slate-500 mt-2">Settembre è gratuito. Allenati da ottobre a giugno.</p>
+            <a href="#paga-quota" class="inline-block mt-4 font-extrabold text-granata">VEDI LE QUOTE →</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAMS -->
+  <section id="squadre" class="bg-white py-16">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-9">
+        <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Le nostre squadre</div>
+        <h2 class="font-display font-black uppercase text-5xl text-blau mt-2">Una polisportiva, tante sfide</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <button data-team="volley-2div" class="team-card text-left rounded-3xl p-6 bg-blau text-white hover:-translate-y-1 transition shadow-xl">
+          <div class="text-4xl">🏐</div><h3 class="font-display font-black uppercase text-3xl mt-7">Pallavolo</h3><p class="text-sm text-blue-100 mt-1">Seconda divisione</p>
+        </button>
+        <button data-team="basket-lupi" class="team-card text-left rounded-3xl p-6 bg-granata text-white hover:-translate-y-1 transition shadow-xl">
+          <div class="text-4xl">🏀</div><h3 class="font-display font-black uppercase text-3xl mt-7">Basket</h3><p class="text-sm text-pink-100 mt-1">I Lupi del Gran Sasso</p>
+        </button>
+        <button data-team="minibasket" class="team-card text-left rounded-3xl p-6 bg-blue-700 text-white hover:-translate-y-1 transition shadow-xl">
+          <div class="text-4xl">🏀</div><h3 class="font-display font-black uppercase text-3xl mt-7">Minibasket</h3><p class="text-sm text-blue-100 mt-1">Settore giovanile</p>
+        </button>
+        <button data-team="podismo" class="team-card text-left rounded-3xl p-6 bg-slate-900 text-white hover:-translate-y-1 transition shadow-xl">
+          <div class="text-4xl">🏃</div><h3 class="font-display font-black uppercase text-3xl mt-7">Podismo</h3><p class="text-sm text-slate-300 mt-1">Gare ed eventi</p>
+        </button>
+        <button data-team="fitness" class="team-card text-left rounded-3xl p-6 bg-gradient-to-br from-blau to-granata text-white hover:-translate-y-1 transition shadow-xl">
+          <div class="text-4xl">💪</div><h3 class="font-display font-black uppercase text-3xl mt-7">Fitness</h3><p class="text-sm text-blue-100 mt-1">Benessere e movimento</p>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div id="team-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <div id="team-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative bg-white max-w-lg w-full rounded-3xl p-8 shadow-2xl">
+      <button id="team-modal-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 text-xl">×</button>
+      <div class="text-xs uppercase tracking-[.25em] text-granata font-extrabold">Squadra</div>
+      <h3 id="team-modal-title" class="font-display font-black uppercase text-4xl text-blau mt-2"></h3>
+      <p id="team-modal-text" class="text-slate-600 leading-relaxed mt-4"></p>
+      <a href="#tesseramento" class="inline-flex mt-6 bg-blau text-white px-6 py-3 rounded-full font-bold">Richiedi informazioni</a>
+    </div>
+  </div>
+
+  <!-- SPORTS -->
+  <section id="discipline" class="bg-blau text-white py-16">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-4">
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-blue-200">Sport & attività</div>
+          <h2 class="font-display font-black uppercase text-6xl leading-[.85] mt-3">Scendi in campo.</h2>
+          <p class="text-blue-100/80 mt-6 leading-relaxed">Corsi, squadre e attività per tutte le età. Scegli la disciplina e vieni a conoscere la nostra comunità.</p>
+        </div>
+        <div class="lg:col-span-8 grid sm:grid-cols-2 gap-4">
+          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🏐</span><h3 class="font-display font-black uppercase text-3xl mt-5">Pallavolo</h3><p class="text-blue-100/70 text-sm mt-2">Corsi giovanili, Under e squadre di seconda divisione maschile e femminile.</p></div>
+          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🏀</span><h3 class="font-display font-black uppercase text-3xl mt-5">Basket</h3><p class="text-blue-100/70 text-sm mt-2">Attività agonistica e minibasket per coltivare talento e spirito di squadra.</p></div>
+          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🧘</span><h3 class="font-display font-black uppercase text-3xl mt-5">Benessere</h3><p class="text-blue-100/70 text-sm mt-2">Ginnastica dolce, fitness funzionale e corsi dedicati al benessere psico-fisico.</p></div>
+          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🏃</span><h3 class="font-display font-black uppercase text-3xl mt-5">Podismo</h3><p class="text-blue-100/70 text-sm mt-2">Gruppo podistico e organizzazione di eventi come la Gara di San Gabriele.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT -->
+  <section id="eventi" class="py-16 bg-[#f4f1ea]">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] overflow-hidden bg-granata text-white">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 sm:p-12 lg:p-16">
+            <div class="text-xs uppercase tracking-[.25em] font-extrabold text-pink-200">Eventi & manifestazioni</div>
+            <h2 class="font-display font-black uppercase text-6xl leading-[.85] mt-4">3ª Gara di<br>San Gabriele</h2>
+            <p class="text-pink-50/85 mt-7 leading-relaxed">Uno degli appuntamenti podistici più attesi d'Abruzzo: sport, natura e comunità ai piedi del Santuario.</p>
+            <ul class="mt-6 space-y-2 text-sm"><li>✓ Percorso competitivo e non competitivo</li><li>✓ Pacco gara ufficiale</li><li>✓ Premiazioni e ristoro per famiglie</li></ul>
+            <a href="#tesseramento" class="inline-flex mt-8 bg-white text-granata px-7 py-4 rounded-full font-extrabold">ISCRIVITI ALLA GARA</a>
+          </div>
+          <div class="min-h-[360px] bg-gradient-to-br from-[#071b49] to-[#153f91] p-8 sm:p-12 flex items-end">
+            <div>
+              <div class="text-xs uppercase tracking-[.25em] text-blue-200 font-bold">Edizione 2026</div>
+              <div class="font-display font-black uppercase text-5xl mt-2">500+ partecipanti</div>
+              <div class="text-blue-100 mt-2">10 km · tracciato principale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section id="paga-quota" class="bg-white py-16">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Tesseramento 2026/27</div>
+        <h2 class="font-display font-black uppercase text-6xl text-blau mt-2">Scegli la tua quota</h2>
+        <p class="text-slate-500 mt-3">Settembre è gratuito. Allenati da ottobre a giugno.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card rounded-3xl p-7"><div class="text-xs uppercase tracking-widest font-extrabold text-granata">Mensile</div><h3 class="font-display font-black uppercase text-4xl text-blau mt-2">Quota mensile</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b pb-3"><span>1 figlio</span><strong>€45</strong></div><div class="flex justify-between border-b pb-3"><span>2 figli</span><strong>€80</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€105</strong></div></div></div>
+        <div class="rounded-3xl p-7 bg-blau text-white shadow-xl"><div class="text-xs uppercase tracking-widest font-extrabold text-blue-200">Trimestrale</div><h3 class="font-display font-black uppercase text-4xl mt-2">3 mesi</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b border-white/15 pb-3"><span>1 figlio</span><strong>€120</strong></div><div class="flex justify-between border-b border-white/15 pb-3"><span>2 figli</span><strong>€210</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€270</strong></div></div></div>
+        <div class="rounded-3xl p-7 bg-granata text-white shadow-xl"><div class="text-xs uppercase tracking-widest font-extrabold text-pink-200">Full</div><h3 class="font-display font-black uppercase text-4xl mt-2">9 mesi</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b border-white/15 pb-3"><span>1 figlio</span><strong>€315</strong></div><div class="flex justify-between border-b border-white/15 pb-3"><span>2 figli</span><strong>€540</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€675</strong></div></div></div>
+      </div>
+      <div class="mt-5 rounded-3xl bg-[#f4f1ea] p-6 flex flex-col sm:flex-row justify-between items-center gap-3"><span class="font-display font-black uppercase text-2xl text-blau">Tesseramento + Kit sportivo</span><strong class="font-display text-4xl text-granata">€80</strong></div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="tesseramento" class="bg-[#f4f1ea] py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-[2rem] p-7 sm:p-12 shadow-xl">
+        <div class="text-center mb-9">
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Join the team</div>
+          <h2 class="font-display font-black uppercase text-6xl text-blau mt-2">Tesseramento 2026/27</h2>
+          <p class="text-slate-500 mt-3">Compila il modulo per informazioni o preiscrizione.</p>
+        </div>
+        <form id="reg-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <input name="nome_cognome" required class="w-full border border-slate-200 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blau" placeholder="Nome e Cognome">
+            <input name="email" type="email" required class="w-full border border-slate-200 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blau" placeholder="Email di contatto">
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <input name="telefono" type="tel" required class="w-full border border-slate-200 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blau" placeholder="+39 333 1234567">
+            <select name="disciplina" class="w-full border border-slate-200 rounded-xl px-4 py-4 bg-white"><option>Pallavolo</option><option>Basket</option><option>Benessere & Fitness</option><option>Podismo / Gara di San Gabriele</option></select>
+          </div>
+          <button class="w-full bg-blau hover:bg-granata text-white rounded-full py-4 font-extrabold transition">INVIA RICHIESTA</button>
+          <p id="form-success-msg" class="hidden text-center text-green-600 font-bold">Richiesta inviata con successo!</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contatti" class="bg-[#06163b] text-white">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div><div class="font-display font-black text-3xl">A.P.D. ISOLA</div><p class="text-blue-100/70 text-sm leading-relaxed mt-4">Lo sport come strumento di crescita, aggregazione e benessere ai piedi del Gran Sasso.</p></div>
+      <div><div class="text-xs uppercase tracking-[.25em] font-extrabold text-blue-200">Navigazione</div><div class="grid grid-cols-2 gap-3 mt-5 text-sm text-blue-100"><a href="#match">Match Center</a><a href="#news">News</a><a href="#discipline">Sport</a><a href="#eventi">Eventi</a><a href="#paga-quota">Quote</a><a href="#tesseramento">Iscrizioni</a></div></div>
+      <div><div class="text-xs uppercase tracking-[.25em] font-extrabold text-blue-200">Contatti</div><div class="mt-5 space-y-2 text-sm text-blue-100"><a href="mailto:apd.isolags@gmail.com">apd.isolags@gmail.com</a><div>+39 351 76 09 481</div><div>Via San Gabriele 100, Isola del Gran Sasso (TE)</div></div></div>
+    </div>
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-blue-200/60"><span>© 2026 A.P.D. Isola Polisportiva</span><span>Sport · Comunità · Gran Sasso</span></div>
+  </div>
+</footer>
+
+<script>
+const mobileBtn=document.getElementById('mobile-menu-btn');
+const mobileMenu=document.getElementById('mobile-menu');
+mobileBtn.addEventListener('click',()=>{const hidden=mobileMenu.classList.toggle('hidden');mobileBtn.setAttribute('aria-expanded',String(!hidden));});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.add('hidden');mobileBtn.setAttribute('aria-expanded','false');}));
+
+const teamData={
+  'volley-2div':['Atotis Isola Volley - Seconda Divisione','La nostra prima squadra di pallavolo impegnata nel campionato di Seconda Divisione. Passione, agonismo e attaccamento alla maglia.'],
+  'basket-lupi':['Atotis Isola Basket - I Lupi del Gran Sasso','I Lupi del Gran Sasso: la nostra grintosa squadra di basket pronta a scendere in campo e difendere i colori del territorio.'],
+  'minibasket':['Minibasket','Attività dedicata ai più giovani per imparare i fondamentali, giocare e crescere insieme.'],
+  'podismo':['Podismo','Gruppo podistico e organizzazione di eventi come la Gara di San Gabriele.'],
+  'fitness':['Benessere & Fitness','Ginnastica, fitness funzionale e attività dedicate al benessere psico-fisico.']
+};
+const modal=document.getElementById('team-modal');
+document.querySelectorAll('.team-card').forEach(card=>card.addEventListener('click',()=>{
+  const d=teamData[card.dataset.team]; if(!d)return;
+  document.getElementById('team-modal-title').textContent=d[0];
+  document.getElementById('team-modal-text').textContent=d[1];
+  modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('overflow-hidden');
+}));
+function closeModal(){modal.classList.add('hidden');modal.classList.remove('flex');document.body.classList.remove('overflow-hidden')}
+document.getElementById('team-modal-close').addEventListener('click',closeModal);
+document.getElementById('team-modal-backdrop').addEventListener('click',closeModal);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function handleFormSubmit(e){e.preventDefault();const msg=document.getElementById('form-success-msg');msg.classList.remove('hidden');e.target.reset();setTimeout(()=>msg.classList.add('hidden'),6000);}
+</script>
+</body>
+</html>
