@@ -1,260 +1,76 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0d14">
-    <meta name="description" content="A.P.D. Isola Polisportiva Gran Sasso: pallavolo, basket, fitness e podismo.">
-    <title>A.P.D. Isola · Polisportiva Gran Sasso</title>
-
+    <meta name="theme-color" content="#07111f">
+    <meta name="description" content="A.P.D. Isola – la casa dello sport ai piedi del Gran Sasso.">
+    <title>A.P.D. Isola · La casa dello sport</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        sport: {
-                            dark: '#0a0d14',
-                            card: '#121722',
-                            cardHover: '#1a2233',
-                            blue: '#0284c7',
-                            cyan: '#38bdf8',
-                            accent: '#f43f5e',
-                            success: '#10b981',
-                            muted: '#94a3b8'
-                        }
+                        barca: { navy: '#07111f', blue: '#0757b8', cyan: '#20c4f4', red: '#e32635', gold: '#f2c94c', ink: '#0b1524', muted: '#8da2bb' }
                     },
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'Outfit', 'sans-serif'],
                         display: ['Outfit', 'sans-serif']
+                    },
+                    boxShadow: {
+                        glow: '0 20px 80px rgba(32,196,244,.18)'
                     }
                 }
             }
         };
     </script>
-
     <style>
-        :root {
-            color-scheme: dark;
-        }
-
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background: #0a0d14;
-        }
-
-        body {
-            min-width: 100%;
-        }
-
-        main,
-        section,
-        footer {
-            width: 100%;
-        }
-
-        .full-bleed {
-            width: 100%;
-        }
-
-        .hero-section {
-            isolation: isolate;
-            position: relative;
-            overflow: hidden;
-            background:
-                linear-gradient(90deg, rgba(10, 13, 20, .90), rgba(10, 13, 20, .72) 52%, rgba(10, 13, 20, .90)),
-                url('hero.png') center / cover no-repeat;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at 50% 45%, transparent 7%, rgba(10, 13, 20, .12) 43%, rgba(10, 13, 20, .65) 100%),
-                linear-gradient(180deg, rgba(10, 13, 20, .12), rgba(10, 13, 20, .36));
-        }
-
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            pointer-events: none;
-            background: linear-gradient(90deg, rgba(10, 13, 20, .18), transparent 46%, rgba(10, 13, 20, .38));
-        }
-
-        /* Logo istituzionale visibile dietro al contenuto Hero. */
-        .hero-watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: min(620px, 62vw);
-            aspect-ratio: 1 / 1;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            pointer-events: none;
-            background: url('logo-apd-isola.png') center / contain no-repeat;
-            opacity: .21;
-            filter: grayscale(1) brightness(1.85) contrast(.92);
-            mix-blend-mode: screen;
-            animation: watermarkPulse 8s ease-in-out infinite;
-        }
-
-        .hero-watermark::after {
-            content: '';
-            position: absolute;
-            inset: 8%;
-            z-index: -1;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(56, 189, 248, .20), rgba(2, 132, 199, .08) 42%, transparent 72%);
-            filter: blur(18px);
-        }
-
-        @keyframes watermarkPulse {
-            0%, 100% {
-                opacity: .17;
-                transform: translate(-50%, -50%) scale(.985);
-            }
-            50% {
-                opacity: .25;
-                transform: translate(-50%, -50%) scale(1.02);
-            }
-        }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.03); }
-        }
-
-        .animate-float {
-            animation: floatSlow 6s ease-in-out infinite;
-        }
-
-        .glass-header {
-            background: rgba(10, 13, 20, .86);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .glass-card {
-            background: rgba(18, 23, 34, .72);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, .08);
-            transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(56, 189, 248, .40);
-            box-shadow: 0 20px 40px -15px rgba(2, 132, 199, .20);
-        }
-
-        #paga-quota .quota-card {
-            min-height: 360px;
-            padding: 2rem;
-        }
-
-        #paga-quota .quota-card h3 {
-            font-size: 1.7rem;
-        }
-
-        #paga-quota .kit-card {
-            margin-top: 2.5rem;
-            padding: 1.5rem 2rem;
-            border-radius: 1.5rem;
-            background: linear-gradient(135deg, rgba(2, 132, 199, .16), rgba(56, 189, 248, .08));
-            border: 1px solid rgba(56, 189, 248, .35);
-            box-shadow: 0 18px 45px -25px rgba(2, 132, 199, .45);
-        }
-
-        #paga-quota .kit-card .kit-title {
-            font-size: 1.1rem;
-        }
-
-        #paga-quota .kit-card .kit-price {
-            font-size: 1.75rem;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        @media (max-width: 1023px) {
-            .hero-watermark {
-                width: min(560px, 78vw);
-                opacity: .19;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-watermark {
-                width: 390px;
-                max-width: 92vw;
-                top: 43%;
-                opacity: .16;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-            }
-        }
+        :root { color-scheme: dark; }
+        html, body { margin: 0; min-width: 100%; overflow-x: hidden; background: #07111f; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .display { font-family: 'Outfit', sans-serif; }
+        .topbar { background: rgba(7,17,31,.92); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .hero { isolation: isolate; position: relative; overflow: hidden; background: linear-gradient(90deg,rgba(7,17,31,.97) 0%,rgba(7,17,31,.74) 48%,rgba(7,17,31,.82) 100%), url('hero.png') center/cover no-repeat; }
+        .hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at 52% 40%,rgba(32,196,244,.12),transparent 35%), linear-gradient(180deg,transparent 50%,#07111f 100%); pointer-events: none; }
+        .watermark { position: absolute; width: min(650px,62vw); aspect-ratio: 1; left: 50%; top: 51%; transform: translate(-50%,-50%); z-index: 1; background: url('logo-apd-isola.png') center/contain no-repeat; opacity: .18; filter: grayscale(1) brightness(1.8); mix-blend-mode: screen; animation: pulse 9s ease-in-out infinite; pointer-events: none; }
+        @keyframes pulse { 0%,100% { opacity: .14; transform: translate(-50%,-50%) scale(.98); } 50% { opacity: .23; transform: translate(-50%,-50%) scale(1.02); } }
+        .noise { position: absolute; inset: 0; opacity: .045; z-index: 2; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
+        .card { background: rgba(15,30,50,.76); border: 1px solid rgba(255,255,255,.09); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: .3s ease; }
+        .card:hover { border-color: rgba(32,196,244,.54); box-shadow: 0 22px 60px rgba(0,0,0,.25); transform: translateY(-3px); }
+        .stripe { height: 4px; background: linear-gradient(90deg,#0757b8 0%,#20c4f4 50%,#e32635 100%); }
+        .section-divider { border-top: 1px solid rgba(255,255,255,.08); }
+        .ticker { background: #e32635; color: white; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+        @media (max-width: 640px) { .watermark { width: 390px; max-width: 92vw; top: 43%; opacity: .15; } }
+        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; } }
     </style>
 </head>
-<body class="bg-sport-dark text-slate-100 font-sans antialiased selection:bg-sport-blue selection:text-white">
-
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10" aria-hidden="true">
-        <div class="absolute -top-40 -left-40 w-96 h-96 bg-sport-blue/15 rounded-full blur-[120px] animate-float"></div>
-        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-sport-accent/10 rounded-full blur-[140px] animate-float" style="animation-delay: -3s"></div>
-        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-sport-cyan/10 rounded-full blur-[130px] animate-float" style="animation-delay: -1.5s"></div>
-    </div>
-
-    <header class="fixed top-0 left-0 w-full z-50 glass-header border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#top" class="flex items-center gap-3.5 group" aria-label="Torna alla home">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-sport-blue to-sport-cyan p-0.5 shadow-lg shadow-sport-blue/20 group-hover:scale-105 transition-transform duration-300">
-                    <div class="w-full h-full bg-sport-dark rounded-[10px] flex items-center justify-center font-bold text-sport-cyan text-lg font-display">IS</div>
-                </div>
-                <div>
-                    <span class="font-display font-extrabold text-lg tracking-tight block text-white group-hover:text-sport-cyan transition-colors">APD ISOLA</span>
-                    <span class="text-[10px] tracking-widest uppercase text-sport-muted font-medium block">Associazione Polisportiva Dilettantistica</span>
-                </div>
+<body class="text-white antialiased selection:bg-barca-cyan selection:text-barca-navy">
+    <header class="fixed top-0 left-0 right-0 z-50 topbar border-b border-white/10">
+        <div class="max-w-[1500px] mx-auto px-4 sm:px-8 h-[74px] flex items-center justify-between gap-6">
+            <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="A.P.D. Isola home">
+                <div class="h-11 w-11 rounded-full bg-gradient-to-br from-barca-blue to-barca-cyan p-[2px] shadow-glow"><div class="h-full w-full rounded-full bg-barca-navy flex items-center justify-center display font-black text-barca-cyan">IS</div></div>
+                <div><span class="display font-black tracking-tight text-lg">APD ISOLA</span><span class="block text-[9px] uppercase tracking-[.16em] text-barca-muted">Polisportiva Gran Sasso</span></div>
             </a>
-
-            <nav class="hidden md:flex items-center gap-8" aria-label="Navigazione principale">
-                <a href="#squadre" class="text-sm font-semibold text-slate-300 hover:text-sport-cyan transition-colors">Squadre</a>
-                <a href="#match" class="text-sm font-semibold text-slate-300 hover:text-sport-cyan transition-colors">Match Center</a>
-                <a href="#discipline" class="text-sm font-semibold text-slate-300 hover:text-sport-cyan transition-colors">Discipline</a>
-                <a href="#eventi" class="text-sm font-semibold text-slate-300 hover:text-sport-cyan transition-colors">Eventi</a>
-                <a href="#news" class="text-sm font-semibold text-slate-300 hover:text-sport-cyan transition-colors">News</a>
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold" aria-label="Navigazione principale">
+                <a href="#club" class="hover:text-barca-cyan transition-colors">Il Club</a>
+                <a href="#sport" class="hover:text-barca-cyan transition-colors">Sport</a>
+                <a href="#calendar" class="hover:text-barca-cyan transition-colors">Calendario</a>
+                <a href="#news" class="hover:text-barca-cyan transition-colors">News</a>
+                <a href="#eventi" class="hover:text-barca-cyan transition-colors">Eventi</a>
             </nav>
+            <div class="hidden md:flex items-center gap-3"><a href="#tesseramento" class="px-5 py-2.5 rounded-full bg-barca-cyan text-barca-navy font-extrabold text-sm hover:bg-white transition-colors">Iscriviti</a><a href="#contatti" class="px-5 py-2.5 rounded-full border border-white/20 font-bold text-sm hover:border-barca-cyan hover:text-barca-cyan transition-colors">Contatti</a></div>
+            <button id="menu-button" class="lg:hidden p-2 rounded-xl border border-white/15" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri il menu"><span class="text-xl">☰</span></button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden px-5 py-5 space-y-3 border-t border-white/10 bg-barca-navy/95 backdrop-blur-xl"><a href="#club" class="block py-2">Il Club</a><a href="#sport" class="block py-2">Sport</a><a href="#calendar" class="block py-2">Calendario</a><a href="#news" class="block py-2">News</a><a href="#eventi" class="block py-2">Eventi</a><a href="#tesseramento" class="block py-3 text-center rounded-full bg-barca-cyan text-barca-navy font-extrabold">Iscriviti</a></div>
+    </header>
 
-            <div class="hidden md:flex items-center gap-4">
-                <a href="#tesseramento" class="relative group overflow-hidden rounded-xl p-px focus:outline-none focus:ring-2 focus:ring-sport-cyan">
-                    <span class="absolute inset-0 bg-gradient-to-r from-sport-blue to-sport-cyan rounded-xl"></span>
-                    <span class="relative px-5 py-2.5 bg-sport-dark rounded-[11px] flex items-center gap-2 text-sm font-bold text-white transition-colors duration-300 group-hover:bg-transparent">
-                        <span>Iscrizioni 2026/27</span>
-                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-       
+    <div class="ticker fixed top-[74px] left-0 right-0 z-40 h-8 flex items-center overflow-hidden text-xs font-bold uppercase tracking-wide"><div class="max-w-[1500px] mx-auto px-4 sm:px-8 w-full flex items-center justify-between gap-4"><span>Stagione 2026/2027</span><span class="hidden sm:inline">La tua casa dello sport ai piedi del Gran Sasso</span><span>Iscrizioni aperte →</span></div></div>
+
+    <main id="home">
+        <section class="hero min-h-[min(850px,100svh)] pt-36 pb-20 flex items-center"><div class="watermark" aria-hidden="true"></div><div class="noise" aria-hidden="true"></div><div class="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-8 w-full"><div class="grid lg:grid-cols-12 gap-12 items-center"><div class="lg:col-span-7"><div class="inline-flex items-center gap-2 text-barca-cyan border border-barca-cyan/40 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[.16em] mb-6"><span class="w-2 h-2 rounded-full bg-barca-cyan animate-pulse"></span> A.P.D. ISOLA</div><h1 class="display font-black text-5xl sm:text-7xl lg:text-[86px] leading-[.94] tracking-[-.04em] max-w-4xl">La casa dello <span class="text-barca-cyan">sport.</span></h1><p class="mt-7 text-lg text-barca-muted leading-relaxed max-w-2xl">Una comunità, tante discipline, un’unica maglia. Pallavolo, basket, minibasket, podismo e fitness: cresciamo insieme ai piedi del Gran Sasso.</p><div class="flex flex-col sm:flex-row gap-3 mt-9"><a href="#sport" class="rounded-full px-7 py-4 bg-barca-cyan text-barca-navy font-extrabold text-center hover:bg-white transition-colors">Scopri le discipline</a><a href="#calendar" class="rounded-full px-7 py-4 border border-white/20 font-extrabold text-center hover:border-barca-cyan hover:text-barca-cyan transition-colors">Prossimi appuntamenti</a></div><div class="flex flex-wrap gap-8 mt-12 text-sm"><div><span class="display text-3xl font-black text-white">5</span><span class="block text-barca-muted uppercase tracking-wider text-[10px]">Discipline</span></div><div><span class="display text-3xl font-black text-white">350+</span><span class="block text-barca-muted uppercase tracking-wider text-[10px]">Tesserati</span></div><div><span class="display text-3xl font-black text-white">1</span><span class="block text-barca-muted uppercase tracking-wider text-[10px]">Grande famiglia</span></div></div></div><div class="lg:col-span-5"><div class="card rounded-3xl overflow-hidden shadow-glow"><div class="stripe"></div><div class="p-6 sm:p-8"><div class="flex justify-between items-start gap-4"><div><span class="text-[10px] uppercase tracking-[.2em] text-barca-cyan font-extrabold">Prossimo appuntamento</span><h2 class="display font-black text-2xl mt-2">Match Center</h2></div><span class="px-3 py-1 rounded-full bg-barca-cyan/10 text-barca-cyan text-xs font-extrabold">LIVE SOON</span></div><div class="mt-8 flex items-center justify-between gap-4 text-center"><div class="flex-1"><div class="text-3xl">🏐</div><strong class="display block mt-2">APD ISOLA</strong><span class="text-xs text-barca-muted">Casa</span></div><div class="text-barca-cyan font-black text-sm">VS</div><div class="flex-1"><div class="text-3xl">🏐</div><strong class="display block mt-2">ATLETICO GS</strong><span class="text-xs text-barca-muted">Ospite</span></div></div><div class="mt-8 pt-6 border-t border-white/10 space-y-2 text-sm text-barca-muted"><p>📅 <span class="text-white font-semibold">Domenica 27 settembre · 17:00</span></p><p>📍 <span class="text-white font-
