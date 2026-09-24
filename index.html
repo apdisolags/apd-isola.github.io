@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A.P.D. Isola · Polisportiva Gran Sasso</title>
+<title>A.P.D. Isola · Polisportiva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -297,6 +297,29 @@ footer a:hover{color:#ff4b55!important}
   .team-card-footer h3{font-size:37px!important}
 }
 
+
+/* ===== APD ISOLA v15 — accorgimenti richiesti ===== */
+.hero-apd-overlay{background:linear-gradient(90deg,rgba(0,0,0,.76) 0%,rgba(0,0,0,.60) 42%,rgba(0,0,0,.28) 72%,rgba(225,6,19,.10) 100%)!important}
+.hero-apd{min-height:clamp(620px,82vh,820px)!important}
+.hero-feature{max-width:none!important;border-radius:16px!important;background:linear-gradient(135deg,rgba(8,8,9,.72),rgba(20,20,22,.58))!important;backdrop-filter:blur(8px)!important}
+.hero-feature-top{padding:10px 20px!important}
+.hero-feature-main{padding:18px 20px 16px!important;gap:18px!important}
+.hero-feature h2{font-size:clamp(30px,3vw,43px)!important}
+.hero-feature-stats strong{font-size:34px!important}
+.hero-memory{padding:12px 20px!important}
+.hero-memory strong{font-size:20px!important}
+.match-card{background:#111214;border:1px solid rgba(255,255,255,.08);box-shadow:0 15px 35px rgba(0,0,0,.25);transition:.2s;}
+.match-card:hover{transform:translateY(-4px);border-color:rgba(225,6,19,.65)}
+.match-card-head{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:9px;font-weight:900;letter-spacing:.1em;color:#ff4b55}
+.match-card-head b{font-size:8px;color:#999;white-space:nowrap}
+.match-card-body{padding:18px 15px 16px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;text-align:center;min-height:130px}
+.match-card-body strong{font-family:"Barlow Condensed",sans-serif;font-size:24px;line-height:.9;text-transform:uppercase;color:#fff}
+.match-card-body span{font-family:"Barlow Condensed",sans-serif;font-weight:900;color:#e10613;font-size:20px}
+.match-card-body small{grid-column:1/-1;color:#777;font-size:9px;margin-top:4px}
+.match-card-body.compact{min-height:130px}
+.sport-mini{border:1px solid rgba(255,255,255,.09);background:#17181b;border-radius:12px;padding:13px;display:flex;align-items:center;gap:10px}.sport-mini span{font-size:23px}.sport-mini strong{font-family:"Barlow Condensed",sans-serif;font-size:22px;text-transform:uppercase}
+.quote-card{background:#17181b;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:15px}.quote-card.active{border-color:#e10613;box-shadow:inset 0 2px 0 #e10613}.quote-card>span{display:block;color:#ff4b55;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}.quote-card div{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-top:1px solid rgba(255,255,255,.07)}.quote-card b{font-family:"Barlow Condensed",sans-serif;font-size:27px}.quote-card small{font-size:9px;color:#888;text-transform:uppercase}.kit-row{margin-top:12px;padding:13px 16px;border-radius:12px;background:#e10613;display:flex;justify-content:space-between;align-items:center;font-family:"Barlow Condensed",sans-serif;font-size:22px;text-transform:uppercase}.kit-row strong{font-size:30px}
+@media(max-width:639px){.hero-feature-main{display:block!important}.hero-feature-stats{margin-top:16px}.hero-memory i{display:block;margin-left:0;margin-top:5px}.match-card-body strong{font-size:21px}.hero-title{font-size:66px!important}}
 </style>
 </head>
 <body>
@@ -310,7 +333,7 @@ footer a:hover{color:#ff4b55!important}
       <a href="#tesseramento" class="hover:text-pink-300">Tesseramento</a>
     </div>
     <div class="hidden sm:flex gap-4 text-slate-300">
-      <span>APD ISOLA</span><span>•</span><span>GRAN SASSO</span>
+      <span>APD ISOLA</span><span>•</span><span>POLISPORTIVA</span>
     </div>
   </div>
 </div>
@@ -322,7 +345,7 @@ footer a:hover{color:#ff4b55!important}
         <img src="logo.png" alt="A.P.D. Isola" class="w-14 h-14 object-contain shrink-0">
         <div class="leading-none">
           <div class="font-display font-black text-2xl uppercase tracking-tight">A.P.D. ISOLA</div>
-          <div class="text-[9px] uppercase tracking-[.22em] text-blue-100 mt-1">Polisportiva Gran Sasso</div>
+          <div class="text-[9px] uppercase tracking-[.22em] text-blue-100 mt-1">Polisportiva</div>
         </div>
       </a>
 
@@ -363,7 +386,7 @@ footer a:hover{color:#ff4b55!important}
       <div class="w-full py-20 lg:py-24">
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end">
           <div class="lg:col-span-7">
-            <div class="hero-kicker"><span></span> A.P.D. ISOLA · POLISPORTIVA GRAN SASSO</div>
+            <div class="hero-kicker"><span></span> A.P.D. ISOLA · POLISPORTIVA</div>
             <h1 class="hero-title">
               SPORT.<br>
               <span>COMUNITÀ.</span><br>
@@ -384,7 +407,7 @@ footer a:hover{color:#ff4b55!important}
               </div>
               <div class="hero-feature-main">
                 <div>
-                  <div class="hero-feature-label">POLISPORTIVA GRAN SASSO</div>
+                  <div class="hero-feature-label">POLISPORTIVA</div>
                   <h2>Una stagione,<br><strong>quattro squadre.</strong></h2>
                 </div>
                 <div class="hero-feature-stats">
@@ -404,78 +427,35 @@ footer a:hover{color:#ff4b55!important}
     </div>
   </section>
 
-  <!-- MATCH CENTER -->
+  <!-- MATCH CENTER / PROSSIME SFIDE -->
   <section id="match" class="bg-white">
     <div class="granata-line"></div>
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
         <div>
           <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Match Center</div>
-          <h2 class="font-display font-black uppercase text-5xl text-blau leading-none mt-2">Prossima sfida</h2>
+          <h2 class="font-display font-black uppercase text-5xl text-blau leading-none mt-2">Prossime sfide</h2>
         </div>
-        <a href="#squadre" class="text-sm font-bold text-blau hover:text-granata">Vedi tutte le squadre →</a>
+        <a href="#squadre" class="text-sm font-bold text-blau hover:text-granata">Vedi le squadre →</a>
       </div>
 
-      <div class="match-strip rounded-3xl text-white overflow-hidden">
-        <div class="grid lg:grid-cols-[1fr_auto_1fr] items-center">
-          <div class="p-7 lg:p-10 text-center lg:text-right">
-            <div class="text-xs uppercase tracking-[.2em] text-blue-200">Casa</div>
-            <div class="font-display font-black uppercase text-4xl sm:text-5xl mt-2">APD ISOLA</div>
-            <div class="text-sm text-blue-100 mt-2">Pallavolo · 2ª Divisione</div>
-          </div>
-          <div class="px-8 py-6 lg:py-10 text-center border-y lg:border-y-0 lg:border-x border-white/15">
-            <div class="font-display font-black text-5xl">VS</div>
-            <div class="mt-3 text-xs uppercase tracking-widest text-blue-200">27 settembre · 17:00</div>
-          </div>
-          <div class="p-7 lg:p-10 text-center lg:text-left">
-            <div class="text-xs uppercase tracking-[.2em] text-blue-200">Ospite</div>
-            <div class="font-display font-black uppercase text-4xl sm:text-5xl mt-2">ATLETICO GS</div>
-            <div class="text-sm text-blue-100 mt-2">Palestra Comunale · Isola del Gran Sasso</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWS -->
-  <section id="news" class="bg-[#f4f1ea] py-16">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between mb-8">
-        <div>
-          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Ultime notizie</div>
-          <h2 class="font-display font-black uppercase text-5xl text-blau mt-2">APD Isola oggi</h2>
-        </div>
-        <span class="hidden sm:block text-sm font-semibold text-slate-500">News · Risultati · Eventi</span>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-5">
-        <article class="lg:col-span-7 card rounded-3xl overflow-hidden group">
-          <div class="news-image h-72 sm:h-96 relative p-7 flex items-end">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-            <div class="relative z-10 text-white">
-              <div class="text-xs uppercase tracking-[.2em] font-bold text-blue-200">Evento · 2026</div>
-              <h3 class="font-display font-black uppercase text-4xl sm:text-6xl leading-[.9] mt-2">3ª Gara di San Gabriele</h3>
-            </div>
-          </div>
-          <div class="p-6">
-            <p class="text-slate-600 leading-relaxed">Percorso competitivo e non competitivo, pacco gara, premiazioni e ristoro per famiglie.</p>
-            <a href="#ricordi" class="inline-block mt-5 font-extrabold text-blau">VAI ALLA BACHECA →</a>
-          </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <article class="match-card rounded-2xl overflow-hidden">
+          <div class="match-card-head"><span>VOLLEY · 2ª DIVISIONE</span><b>27 SET · 17:00</b></div>
+          <div class="match-card-body"><strong>APD ISOLA</strong><span>VS</span><strong>ATLETICO GS</strong><small>Palestra Comunale · Isola del Gran Sasso</small></div>
         </article>
-
-        <div class="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
-          <article class="card rounded-3xl p-6 border-l-4 border-granata">
-            <div class="text-xs uppercase tracking-[.2em] font-bold text-granata">Basket · Risultato</div>
-            <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">APD ISOLA 78 - 65 TERAMO</h3>
-            <p class="text-sm text-slate-500 mt-2">Risultato registrato nel Match Center.</p>
-          </article>
-          <article class="card rounded-3xl p-6 border-l-4 border-blau">
-            <div class="text-xs uppercase tracking-[.2em] font-bold text-blau">Tesseramento</div>
-            <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">Iscrizioni 2026/27</h3>
-            <p class="text-sm text-slate-500 mt-2">Scopri le modalità di tesseramento per la stagione 2026/27.</p>
-            <a href="#paga-quota" class="inline-block mt-4 font-extrabold text-granata">VEDI LE QUOTE →</a>
-          </article>
-        </div>
+        <article class="match-card rounded-2xl overflow-hidden">
+          <div class="match-card-head"><span>VOLLEY · UNDER 17</span><b>PROSSIMA GARA</b></div>
+          <div class="match-card-body compact"><strong>ATOTIS ISOLA</strong><span>VS</span><strong>DA DEFINIRE</strong><small>Calendario in aggiornamento</small></div>
+        </article>
+        <article class="match-card rounded-2xl overflow-hidden">
+          <div class="match-card-head"><span>VOLLEY · UNDER 15</span><b>PROSSIMA GARA</b></div>
+          <div class="match-card-body compact"><strong>ATOTIS ISOLA</strong><span>VS</span><strong>DA DEFINIRE</strong><small>Calendario in aggiornamento</small></div>
+        </article>
+        <article class="match-card rounded-2xl overflow-hidden">
+          <div class="match-card-head"><span>BASKET · I LUPI</span><b>PROSSIMA GARA</b></div>
+          <div class="match-card-body compact"><strong>ATOTIS ISOLA</strong><span>VS</span><strong>DA DEFINIRE</strong><small>Calendario in aggiornamento</small></div>
+        </article>
       </div>
     </div>
   </section>
@@ -538,20 +518,80 @@ footer a:hover{color:#ff4b55!important}
     </div>
   </div>
 
-  <!-- SPORTS -->
-  <section id="discipline" class="bg-blau text-white py-16">
+  <!-- NEWS -->
+  <section id="news" class="bg-[#f4f1ea] py-16">
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-10">
-        <div class="lg:col-span-4">
-          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-blue-200">Sport & attività</div>
-          <h2 class="font-display font-black uppercase text-6xl leading-[.85] mt-3">Scendi in campo.</h2>
-          <p class="text-blue-100/80 mt-6 leading-relaxed">Corsi, squadre e attività per tutte le età. Scegli la disciplina e vieni a conoscere la nostra comunità.</p>
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Ultime notizie</div>
+          <h2 class="font-display font-black uppercase text-5xl text-blau mt-2">APD Isola oggi</h2>
         </div>
-        <div class="lg:col-span-8 grid sm:grid-cols-2 gap-4">
-          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🏐</span><h3 class="font-display font-black uppercase text-3xl mt-5">Pallavolo</h3><p class="text-blue-100/70 text-sm mt-2">Corsi giovanili, Under e squadre di seconda divisione maschile e femminile.</p></div>
-          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🏀</span><h3 class="font-display font-black uppercase text-3xl mt-5">Basket</h3><p class="text-blue-100/70 text-sm mt-2">Attività agonistica e minibasket per coltivare talento e spirito di squadra.</p></div>
-          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🧘</span><h3 class="font-display font-black uppercase text-3xl mt-5">Benessere</h3><p class="text-blue-100/70 text-sm mt-2">Ginnastica dolce, fitness funzionale e corsi dedicati al benessere psico-fisico.</p></div>
-          <div class="rounded-3xl border border-white/15 p-6 bg-white/5"><span class="text-4xl">🏃</span><h3 class="font-display font-black uppercase text-3xl mt-5">Podismo</h3><p class="text-blue-100/70 text-sm mt-2">Gruppo podistico e organizzazione di eventi come la 3ª Gara di San Gabriele.</p></div>
+        <span class="hidden sm:block text-sm font-semibold text-slate-500">News · Risultati · Eventi</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-5">
+        <article class="lg:col-span-7 card rounded-3xl overflow-hidden group">
+          <div class="news-image h-72 sm:h-96 relative p-7 flex items-end">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+            <div class="relative z-10 text-white">
+              <div class="text-xs uppercase tracking-[.2em] font-bold text-blue-200">Evento · 2026</div>
+              <h3 class="font-display font-black uppercase text-4xl sm:text-6xl leading-[.9] mt-2">3ª Gara di San Gabriele</h3>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-slate-600 leading-relaxed">Percorso competitivo e non competitivo, pacco gara, premiazioni e ristoro per famiglie.</p>
+            <a href="#ricordi" class="inline-block mt-5 font-extrabold text-blau">VAI ALLA BACHECA →</a>
+          </div>
+        </article>
+
+        <div class="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
+          <article class="card rounded-3xl p-6 border-l-4 border-granata">
+            <div class="text-xs uppercase tracking-[.2em] font-bold text-granata">Basket · Risultato</div>
+            <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">APD ISOLA 78 - 65 TERAMO</h3>
+            <p class="text-sm text-slate-500 mt-2">Risultato registrato nel Match Center.</p>
+          </article>
+          <article class="card rounded-3xl p-6 border-l-4 border-blau">
+            <div class="text-xs uppercase tracking-[.2em] font-bold text-blau">Tesseramento</div>
+            <h3 class="font-display font-black uppercase text-3xl text-blau mt-2">Iscrizioni 2026/27</h3>
+            <p class="text-sm text-slate-500 mt-2">Scopri le modalità di tesseramento per la stagione 2026/27.</p>
+            <a href="#paga-quota" class="inline-block mt-4 font-extrabold text-granata">VEDI LE QUOTE →</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SPORT + QUOTE -->
+  <section id="discipline" class="bg-[#0a0a0b] text-white py-12">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+        <div class="lg:col-span-5 rounded-3xl border border-white/10 bg-[#111214] p-7 sm:p-8">
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-red-400">Sport & attività</div>
+          <h2 class="font-display font-black uppercase text-5xl sm:text-6xl leading-[.85] mt-3">Scendi in campo.</h2>
+          <p class="text-white/60 mt-4 leading-relaxed max-w-lg">Pallavolo, basket, benessere e podismo: scegli la tua attività e vivi lo sport con APD Isola.</p>
+          <div class="grid grid-cols-2 gap-3 mt-6">
+            <div class="sport-mini"><span>🏐</span><strong>Pallavolo</strong></div>
+            <div class="sport-mini"><span>🏀</span><strong>Basket</strong></div>
+            <div class="sport-mini"><span>🧘</span><strong>Benessere</strong></div>
+            <div class="sport-mini"><span>🏃</span><strong>Podismo</strong></div>
+          </div>
+        </div>
+
+        <div id="paga-quota" class="lg:col-span-7 rounded-3xl border border-white/10 bg-[#111214] p-7 sm:p-8">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
+            <div>
+              <div class="text-xs font-extrabold uppercase tracking-[.25em] text-red-400">Tesseramento 2026/27</div>
+              <h2 class="font-display font-black uppercase text-5xl leading-[.85] mt-2">Le quote</h2>
+            </div>
+            <div class="text-sm text-white/50">Scegli la formula più adatta</div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-3">
+            <div class="quote-card"><span>Mensile</span><div><b>€45</b><small>1 figlio</small></div><div><b>€80</b><small>2 figli</small></div><div><b>€105</b><small>3 figli</small></div></div>
+            <div class="quote-card active"><span>Trimestrale</span><div><b>€120</b><small>1 figlio</small></div><div><b>€210</b><small>2 figli</small></div><div><b>€270</b><small>3 figli</small></div></div>
+            <div class="quote-card"><span>Full · 9 mesi</span><div><b>€315</b><small>1 figlio</small></div><div><b>€540</b><small>2 figli</small></div><div><b>€675</b><small>3 figli</small></div></div>
+          </div>
+          <div class="kit-row"><span>Tesseramento + Kit sportivo</span><strong>€80</strong></div>
         </div>
       </div>
     </div>
@@ -581,22 +621,6 @@ footer a:hover{color:#ff4b55!important}
     </div>
   </section>
 
-  <!-- MEMBERSHIP -->
-  <section id="paga-quota" class="bg-white py-16">
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Tesseramento 2026/27</div>
-        <h2 class="font-display font-black uppercase text-6xl text-blau mt-2">Scegli la tua quota</h2>
-        <p class="text-slate-500 mt-3">Scopri le modalità di tesseramento per la stagione 2026/27.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="card rounded-3xl p-7"><div class="text-xs uppercase tracking-widest font-extrabold text-granata">Mensile</div><h3 class="font-display font-black uppercase text-4xl text-blau mt-2">Quota mensile</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b pb-3"><span>1 figlio</span><strong>€45</strong></div><div class="flex justify-between border-b pb-3"><span>2 figli</span><strong>€80</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€105</strong></div></div></div>
-        <div class="rounded-3xl p-7 bg-blau text-white shadow-xl"><div class="text-xs uppercase tracking-widest font-extrabold text-blue-200">Trimestrale</div><h3 class="font-display font-black uppercase text-4xl mt-2">3 mesi</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b border-white/15 pb-3"><span>1 figlio</span><strong>€120</strong></div><div class="flex justify-between border-b border-white/15 pb-3"><span>2 figli</span><strong>€210</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€270</strong></div></div></div>
-        <div class="rounded-3xl p-7 bg-granata text-white shadow-xl"><div class="text-xs uppercase tracking-widest font-extrabold text-pink-200">Full</div><h3 class="font-display font-black uppercase text-4xl mt-2">9 mesi</h3><div class="mt-6 space-y-3 text-sm"><div class="flex justify-between border-b border-white/15 pb-3"><span>1 figlio</span><strong>€315</strong></div><div class="flex justify-between border-b border-white/15 pb-3"><span>2 figli</span><strong>€540</strong></div><div class="flex justify-between"><span>3 figli</span><strong>€675</strong></div></div></div>
-      </div>
-      <div class="mt-5 rounded-3xl bg-[#f4f1ea] p-6 flex flex-col sm:flex-row justify-between items-center gap-3"><span class="font-display font-black uppercase text-2xl text-blau">Tesseramento + Kit sportivo</span><strong class="font-display text-4xl text-granata">€80</strong></div>
-    </div>
-  </section>
 
   <!-- FORM -->
   <section id="tesseramento" class="bg-[#f4f1ea] py-16">
