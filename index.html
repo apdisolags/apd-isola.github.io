@@ -1,4 +1,4 @@
-  !DOCTYPE html>
+  !!DOCTYPE html>
 <html lang="it" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -35,6 +35,29 @@
         }
     </script>
     <style>
+        /* Layout full-screen / edge-to-edge */
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            min-width: 100%;
+        }
+
+        main, section, footer {
+            width: 100%;
+        }
+
+        /* The page uses the full browser width; max-width only constrains content,
+           not the background/section itself. */
+        .full-bleed {
+            width: 100%;
+        }
+
         .hero-section {
             isolation: isolate;
             position: relative;
@@ -193,7 +216,7 @@
         </div>
     </header>
 
-    <section class="hero-section relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+    <main class="full-bleed">\n    <section class="hero-section relative min-h-[100svh] flex items-center pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden">
         <!-- Logo APD Isola in trasparenza, dietro al contenuto Hero -->
         <div class="hero-watermark" aria-hidden="true"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -278,31 +301,31 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
-                <button type="button" data-team="volley" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
+                <button type="button" data-team="volley-2div" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
                     <div class="w-12 h-12 rounded-xl bg-sport-blue/20 text-sport-cyan flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🏐</div>
                     <h3 class="font-display font-bold text-lg text-white">Pallavolo</h3>
                     <p class="text-xs text-sport-muted mt-1">Scopri la squadra</p>
                 </button>
 
-                <button type="button" data-team="basket" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
+                <button type="button" data-team="basket-lupi" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
                     <div class="w-12 h-12 rounded-xl bg-sport-accent/20 text-sport-accent flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🏀</div>
                     <h3 class="font-display font-bold text-lg text-white">Basket</h3>
                     <p class="text-xs text-sport-muted mt-1">Scopri la squadra</p>
                 </button>
 
-                <button type="button" data-team="minibasket" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
+                <button type="button" data-team="volley-3div" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
                     <div class="w-12 h-12 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🏀</div>
                     <h3 class="font-display font-bold text-lg text-white">Minibasket</h3>
                     <p class="text-xs text-sport-muted mt-1">Scopri la squadra</p>
                 </button>
 
-                <button type="button" data-team="podismo" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
+                <button type="button" data-team="volley-u17" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
                     <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🏃</div>
                     <h3 class="font-display font-bold text-lg text-white">Podismo</h3>
                     <p class="text-xs text-sport-muted mt-1">Scopri la squadra</p>
                 </button>
 
-                <button type="button" data-team="fitness" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
+                <button type="button" data-team="basket-lupi" class="team-card glass-card rounded-2xl p-5 text-left group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sport-cyan">
                     <div class="w-12 h-12 rounded-xl bg-sport-success/20 text-sport-success flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">💪</div>
                     <h3 class="font-display font-bold text-lg text-white">Fitness</h3>
                     <p class="text-xs text-sport-muted mt-1">Scopri la squadra</p>
@@ -616,7 +639,7 @@
         </div>
     </section>
 
-    <footer id="contatti" class="bg-[#05070a] border-t border-white/10 pt-16 pb-12">
+    </main>\n\n    <footer id="contatti" class="bg-[#05070a] border-t border-white/10 pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <!-- Footer Info -->
@@ -682,9 +705,7 @@
             });
         });
 
-        // Mini schede delle 5 squadre
-        const teamData = {
-        // Mini schede delle 4 squadre
+        // Mini schede delle squadre
         const teamData = {
             'volley-2div': {
                 title: 'Atotis Isola Volley - Seconda Divisione',
@@ -703,7 +724,6 @@
                 text: 'I Lupi del Gran Sasso: la nostra grintosa squadra di basket pronta a scendere in campo e difendere i colori del nostro territorio.'
             }
         };
-        };
 
         const teamModal = document.getElementById('team-modal');
         const teamModalTitle = document.getElementById('team-modal-title');
@@ -719,6 +739,7 @@
                 teamModalText.textContent = data.text;
                 teamModal.classList.remove('hidden');
                 teamModal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
                 teamModalClose.focus();
             });
         });
@@ -726,6 +747,7 @@
         function closeTeamModal() {
             teamModal.classList.add('hidden');
             teamModal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
         }
 
         teamModalClose.addEventListener('click', closeTeamModal);
