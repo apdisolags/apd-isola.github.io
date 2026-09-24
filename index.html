@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+  !DOCTYPE html>
 <html lang="it" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -35,6 +35,69 @@
         }
     </script>
     <style>
+        .hero-section {
+            isolation: isolate;
+            position: relative;
+            background-image: linear-gradient(rgba(10, 13, 20, 0.84), rgba(10, 13, 20, 0.90)), url('logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: min(700px, 62vw);
+        }
+
+        /* Logo della Polisportiva direttamente nello sfondo dell'Hero */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(circle at center, transparent 15%, rgba(10, 13, 20, 0.20) 55%, rgba(10, 13, 20, 0.58) 100%);
+        }
+
+        @media (max-width: 1023px) {
+            .hero-section {
+                background-size: min(560px, 80vw);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-section {
+                background-size: 430px;
+                background-position: center 42%;
+            }
+        }
+
+        /* Sezione quote più importante e leggibile */
+        #paga-quota .quota-card {
+            min-height: 360px;
+            padding: 2rem;
+        }
+
+        #paga-quota .quota-card h3 {
+            font-size: 1.7rem;
+        }
+
+        #paga-quota .quota-card .quota-price {
+            font-size: 1.15rem;
+        }
+
+        #paga-quota .kit-card {
+            margin-top: 2.5rem;
+            padding: 1.5rem 2rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, rgba(2,132,199,.16), rgba(56,189,248,.08));
+            border: 1px solid rgba(56,189,248,.35);
+            box-shadow: 0 18px 45px -25px rgba(2,132,199,.45);
+        }
+
+        #paga-quota .kit-card .kit-title {
+            font-size: 1.1rem;
+        }
+
+        #paga-quota .kit-card .kit-price {
+            font-size: 1.75rem;
+        }
+
         @keyframes floatSlow {
             0%, 100% { transform: translateY(0px) scale(1); }
             50% { transform: translateY(-15px) scale(1.03); }
@@ -130,7 +193,9 @@
         </div>
     </header>
 
-    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+    <section class="hero-section relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Logo APD Isola in trasparenza, dietro al contenuto Hero -->
+        <div class="hero-watermark" aria-hidden="true"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <!-- Hero Text Content -->
@@ -456,7 +521,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card rounded-2xl p-6">
+                <div class="glass-card rounded-2xl quota-card">
                     <span class="text-xs uppercase tracking-widest text-sport-cyan font-bold">Mensile</span>
                     <h3 class="font-display font-bold text-2xl text-white mt-2 mb-5">Quota mensile</h3>
                     <div class="space-y-3 text-sm">
@@ -467,7 +532,7 @@
                     <a href="#contatti" class="mt-6 block text-center px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-white font-bold transition-colors">Paga la quota</a>
                 </div>
 
-                <div class="glass-card rounded-2xl p-6 border-sport-blue/30">
+                <div class="glass-card rounded-2xl quota-card border-sport-blue/30">
                     <span class="text-xs uppercase tracking-widest text-sport-cyan font-bold">Trimestrale</span>
                     <h3 class="font-display font-bold text-2xl text-white mt-2 mb-5">3 mesi</h3>
                     <div class="space-y-3 text-sm">
@@ -478,7 +543,7 @@
                     <a href="#contatti" class="mt-6 block text-center px-5 py-3 bg-sport-blue hover:bg-sport-blue/90 rounded-xl text-white font-bold transition-colors">Paga la quota</a>
                 </div>
 
-                <div class="glass-card rounded-2xl p-6 border border-sport-cyan/30">
+                <div class="glass-card rounded-2xl quota-card border border-sport-cyan/30">
                     <span class="text-xs uppercase tracking-widest text-sport-cyan font-bold">Full</span>
                     <h3 class="font-display font-bold text-2xl text-white mt-2 mb-5">9 mesi · ottobre–giugno</h3>
                     <div class="space-y-3 text-sm">
@@ -490,8 +555,13 @@
                 </div>
             </div>
 
-            <div class="mt-8 text-center">
-                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sport-accent/10 border border-sport-accent/20 text-sport-accent text-xs font-bold uppercase tracking-wider">Tesseramento + Kit sportivo · €80</span>
+            <div class="kit-card text-center">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+                    <span class="kit-title text-white font-display font-extrabold uppercase tracking-wide">Tesseramento + Kit sportivo</span>
+                    <span class="hidden sm:block text-sport-muted">•</span>
+                    <span class="kit-price text-sport-cyan font-display font-black">€80</span>
+                </div>
+                <p class="text-sport-muted text-sm mt-2">Quota una tantum per tesseramento e kit sportivo.</p>
             </div>
         </div>
     </section>
@@ -678,11 +748,3 @@
     </script>
 </body>
 </html>
-APD_Isola_2026_2027_corretto.html
-HTML
-
-Airlapp S.R.L.S.
-
-Configuratore web 3D - Airlapp
-
-Configuratore 3D per aziende. Richiedi una demo.
