@@ -110,7 +110,7 @@
             </div>
 
             <!-- Mobile Menu Toggle Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-sport-cyan focus:outline-none">
+            <button id="mobile-menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-sport-cyan focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
@@ -400,23 +400,23 @@
                 <form id="reg-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Nome e Cognome</label>
-                            <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sport-cyan transition-colors" placeholder="Mario Rossi">
+                            <label for="nome-cognome" class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Nome e Cognome</label>
+                            <input id="nome-cognome" name="nome_cognome" type="text" required autocomplete="name" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sport-cyan transition-colors" placeholder="Mario Rossi">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Email di Contatto</label>
-                            <input type="email5" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sport-cyan transition-colors" placeholder="mario@email.it">
+                            <label for="email" class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Email di Contatto</label>
+                            <input id="email" name="email" type="email" required autocomplete="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sport-cyan transition-colors" placeholder="mario@email.it">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Telefono / WhatsApp</label>
-                            <input type="tel" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sport-cyan transition-colors" placeholder="+39 333 1234567">
+                            <label for="telefono" class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Telefono / WhatsApp</label>
+                            <input id="telefono" name="telefono" type="tel" required autocomplete="tel" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-sport-cyan transition-colors" placeholder="+39 333 1234567">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Disciplina d'Interesse</label>
-                            <select class="w-full bg-[#121722] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sport-cyan transition-colors">
+                            <label for="disciplina" class="block text-xs font-bold uppercase tracking-wider text-sport-muted mb-2">Disciplina d'Interesse</label>
+                            <select id="disciplina" name="disciplina" class="w-full bg-[#121722] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sport-cyan transition-colors">
                                 <option class="bg-sport-dark">Pallavolo</option>
                                 <option class="bg-sport-dark">Basket</option>
                                 <option class="bg-sport-dark">Benessere & Fitness</option>
@@ -487,13 +487,15 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
         });
 
         // Close mobile menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
 
