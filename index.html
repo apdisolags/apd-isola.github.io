@@ -76,6 +76,21 @@ body{font-family:Inter,sans-serif}
 .memory-stat strong{font-family:"Barlow Condensed",sans-serif;font-size:34px;font-weight:900;color:#a50044}
 .memory-stat span{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#071b49aa}
 
+
+/* Squadre: quattro card ufficiali */
+.team-logo-card{position:relative;display:flex;flex-direction:column;min-height:430px;padding:18px;border-radius:4px;background:#05070b;border:1px solid rgba(255,255,255,.12);overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.team-logo-card:hover{transform:translateY(-6px);border-color:rgba(245,110,35,.7);box-shadow:0 22px 45px rgba(0,0,0,.3)}
+.team-logo-wrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:320px;background:#08090c;border-radius:2px;overflow:hidden}
+.team-logo-wrap img{width:100%;height:100%;object-fit:contain;display:block}
+.team-card-footer{padding:17px 5px 4px}
+.team-card-footer .team-tag,.basket-team-card .team-tag{display:block;font-size:10px;font-weight:900;letter-spacing:.22em;color:#e36b21;margin-bottom:6px}
+.team-card-footer h3{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:900;text-transform:uppercase;line-height:.95;margin:0;color:#fff}
+.basket-team-card{position:relative;min-height:430px;padding:32px;border-radius:4px;background:linear-gradient(145deg,#a50044,#071b49 78%);border:1px solid rgba(255,255,255,.15);overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+.basket-team-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.55);box-shadow:0 22px 45px rgba(0,0,0,.3)}
+.basket-mark{font-size:86px;margin-bottom:auto;filter:grayscale(1) brightness(2)}
+.basket-team-card h3{font-family:"Barlow Condensed",sans-serif;font-size:39px;font-weight:900;text-transform:uppercase;line-height:.9;margin:0}
+.basket-team-card p{font-size:16px;color:rgba(255,255,255,.72);margin-top:10px}
+.basket-team-card .team-arrow{position:absolute;right:25px;bottom:25px;font-size:32px}
 </style>
 </head>
 <body>
@@ -249,27 +264,38 @@ body{font-family:Inter,sans-serif}
   </section>
 
   <!-- TEAMS -->
-  <section id="squadre" class="bg-white py-16">
+  <section id="squadre" class="bg-[#071b49] text-white py-20">
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-9">
-        <div class="text-xs font-extrabold uppercase tracking-[.25em] text-granata">Le nostre squadre</div>
-        <h2 class="font-display font-black uppercase text-5xl text-blau mt-2">Una polisportiva, tante sfide</h2>
+      <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+        <div>
+          <div class="text-xs font-extrabold uppercase tracking-[.25em] text-pink-300">ATOTIS ISOLA</div>
+          <h2 class="font-display font-black uppercase text-5xl md:text-6xl mt-2">Le nostre squadre</h2>
+        </div>
+        <p class="max-w-md text-white/65">Quattro formazioni, un'unica identità sportiva.</p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        <button data-team="volley-2div" class="team-card text-left rounded-3xl p-6 bg-blau text-white hover:-translate-y-1 transition shadow-xl">
-          <div class="text-4xl">🏐</div><h3 class="font-display font-black uppercase text-3xl mt-7">Pallavolo</h3><p class="text-sm text-blue-100 mt-1">Seconda divisione</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <button data-team="volley-2div" class="team-card team-logo-card text-left">
+          <div class="team-logo-wrap"><img src="apd_isola_volley_seconda_divisione.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
+          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Seconda Divisione</h3></div>
         </button>
-        <button data-team="basket-lupi" class="team-card text-left rounded-3xl p-6 bg-granata text-white hover:-translate-y-1 transition shadow-xl">
-          <div class="text-4xl">🏀</div><h3 class="font-display font-black uppercase text-3xl mt-7">Basket</h3><p class="text-sm text-pink-100 mt-1">I Lupi del Gran Sasso</p>
+
+        <button data-team="volley-u17" class="team-card team-logo-card text-left">
+          <div class="team-logo-wrap"><img src="apd_isola_volley_under_17.png" alt="ATOTIS Isola Volley Under 17"></div>
+          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 17</h3></div>
         </button>
-        <button data-team="minibasket" class="team-card text-left rounded-3xl p-6 bg-blue-700 text-white hover:-translate-y-1 transition shadow-xl">
-          <div class="text-4xl">🏀</div><h3 class="font-display font-black uppercase text-3xl mt-7">Minibasket</h3><p class="text-sm text-blue-100 mt-1">Settore giovanile</p>
+
+        <button data-team="volley-u15" class="team-card team-logo-card text-left">
+          <div class="team-logo-wrap"><img src="apd_isola_volley_under_15.png" alt="ATOTIS Isola Volley Under 15"></div>
+          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 15</h3></div>
         </button>
-        <button data-team="podismo" class="team-card text-left rounded-3xl p-6 bg-slate-900 text-white hover:-translate-y-1 transition shadow-xl">
-          <div class="text-4xl">🏃</div><h3 class="font-display font-black uppercase text-3xl mt-7">Podismo</h3><p class="text-sm text-slate-300 mt-1">Gare ed eventi</p>
-        </button>
-        <button data-team="fitness" class="team-card text-left rounded-3xl p-6 bg-gradient-to-br from-blau to-granata text-white hover:-translate-y-1 transition shadow-xl">
-          <div class="text-4xl">💪</div><h3 class="font-display font-black uppercase text-3xl mt-7">Fitness</h3><p class="text-sm text-blue-100 mt-1">Benessere e movimento</p>
+
+        <button data-team="basket-lupi" class="team-card basket-team-card text-left">
+          <div class="basket-mark">🏀</div>
+          <span class="team-tag">BASKET</span>
+          <h3>ATOTIS Isola Basket</h3>
+          <p>I Lupi del Gran Sasso</p>
+          <span class="team-arrow">→</span>
         </button>
       </div>
     </div>
@@ -390,11 +416,10 @@ mobileBtn.addEventListener('click',()=>{const hidden=mobileMenu.classList.toggle
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.add('hidden');mobileBtn.setAttribute('aria-expanded','false');}));
 
 const teamData={
-  'volley-2div':['Atotis Isola Volley - Seconda Divisione','La nostra prima squadra di pallavolo impegnata nel campionato di Seconda Divisione. Passione, agonismo e attaccamento alla maglia.'],
-  'basket-lupi':['Atotis Isola Basket - I Lupi del Gran Sasso','I Lupi del Gran Sasso: la nostra grintosa squadra di basket pronta a scendere in campo e difendere i colori del territorio.'],
-  'minibasket':['Minibasket','Attività dedicata ai più giovani per imparare i fondamentali, giocare e crescere insieme.'],
-  'podismo':['Podismo','Gruppo podistico e organizzazione di eventi come la 3ª Gara di San Gabriele.'],
-  'fitness':['Benessere & Fitness','Ginnastica, fitness funzionale e attività dedicate al benessere psico-fisico.']
+  'volley-2div':['ATOTIS Isola Volley - Seconda Divisione','La prima squadra di pallavolo, impegnata nel campionato di Seconda Divisione.'],
+  'volley-u17':['ATOTIS Isola Volley - Under 17','Il settore giovanile Under 17 di ATOTIS Isola Volley.'],
+  'volley-u15':['ATOTIS Isola Volley - Under 15','Il settore giovanile Under 15 di ATOTIS Isola Volley.'],
+  'basket-lupi':['ATOTIS Isola Basket - I Lupi del Gran Sasso','La squadra di basket che rappresenta Isola del Gran Sasso con il nome dei Lupi.']
 };
 const modal=document.getElementById('team-modal');
 document.querySelectorAll('.team-card').forEach(card=>card.addEventListener('click',()=>{
@@ -411,5 +436,3 @@ function handleFormSubmit(e){e.preventDefault();const msg=document.getElementByI
 </script>
 </body>
 </html>
-apd_isola_barca_style_v3.html
-HTML
