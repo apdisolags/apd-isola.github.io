@@ -39,7 +39,7 @@ body{font-family:Inter,sans-serif}
   min-height:clamp(620px,86vh,900px);
   background-image:
     linear-gradient(90deg,rgba(4,15,40,.58) 0%,rgba(7,27,73,.30) 52%,rgba(165,0,68,.10) 100%),
-    url("hero.png");
+    url("./sfondo.png");
   background-position:center center;
   background-size:cover;
   background-repeat:no-repeat;
@@ -299,53 +299,29 @@ body{font-family:Inter,sans-serif}
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <article class="team-logo-card">
-          <div class="team-logo-wrap"><img src="Secondo settore.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
-          <div class="team-card-footer">
-            <span class="team-tag">VOLLEY</span>
-            <h3>Seconda Divisione</h3>
-            <div class="team-actions">
-              <a href="#calendario" class="team-action team-action-primary">Calendario</a>
-              <a href="#classifica" class="team-action">Classifica</a>
-            </div>
-          </div>
-        </article>
+        <button data-team="volley-2div" class="team-card team-logo-card text-left">
+          <div class="team-logo-wrap"><img src="./Secondo%20settore.png" alt="ATOTIS Isola Volley Seconda Divisione"></div>
+          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Seconda Divisione</h3></div>
+        </button>
 
-        <article class="team-logo-card">
-          <div class="team-logo-wrap"><img src="Meno di 17 anni.png" alt="ATOTIS Isola Volley Under 17"></div>
-          <div class="team-card-footer">
-            <span class="team-tag">VOLLEY</span>
-            <h3>Under 17</h3>
-            <div class="team-actions">
-              <a href="#calendario" class="team-action team-action-primary">Calendario</a>
-              <a href="#classifica" class="team-action">Classifica</a>
-            </div>
-          </div>
-        </article>
+        <button data-team="volley-u17" class="team-card team-logo-card text-left">
+          <div class="team-logo-wrap"><img src="./Meno%20di%2017%20anni.png" alt="ATOTIS Isola Volley Under 17"></div>
+          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 17</h3></div>
+        </button>
 
-        <article class="team-logo-card">
-          <div class="team-logo-wrap"><img src="Meno di 15.png" alt="ATOTIS Isola Volley Under 15"></div>
-          <div class="team-card-footer">
-            <span class="team-tag">VOLLEY</span>
-            <h3>Under 15</h3>
-            <div class="team-actions">
-              <a href="#calendario" class="team-action team-action-primary">Calendario</a>
-              <a href="#classifica" class="team-action">Classifica</a>
-            </div>
-          </div>
-        </article>
+        <button data-team="volley-u15" class="team-card team-logo-card text-left">
+          <div class="team-logo-wrap"><img src="./Meno%20di%2015.png" alt="ATOTIS Isola Volley Under 15"></div>
+          <div class="team-card-footer"><span class="team-tag">VOLLEY</span><h3>Under 15</h3></div>
+        </button>
 
-        <article class="basket-team-card">
+        <button data-team="basket-lupi" class="team-card basket-team-card text-left">
           <div class="basket-mark">🏀</div>
           <span class="team-tag">BASKET</span>
           <h3>ATOTIS Isola Basket</h3>
           <p>I Lupi del Gran Sasso</p>
-          <div class="team-actions">
-            <a href="#calendario" class="team-action team-action-primary">Calendario</a>
-            <a href="#classifica" class="team-action">Classifica</a>
-          </div>
-        </article>
-      </div>      </div>
+          <span class="team-arrow">→</span>
+        </button>
+      </div>
     </div>
   </section>
 
